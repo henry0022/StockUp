@@ -203,13 +203,13 @@ public class LoginPage extends javax.swing.JFrame {
             conn = getConnection();
         }
         st = createStatement();
-        if (isAdminLogin(text, password)) {
-
-        } else if (isStoreLogin()) {
-
-        } else if (isDispatchLogin()) {
-
-        }
+//        if (isAdminLogin(text, password)) {
+//
+//        } else if (isStoreLogin()) {
+//
+//        } else if (isDispatchLogin()) {
+//
+//        }
 
     }
 
@@ -219,13 +219,14 @@ public class LoginPage extends javax.swing.JFrame {
         try {
             rs = st.executeQuery(query);
             while(rs.next()){
-                login = new login();
-                login.id = rs.getInt("user_id");
-                login.name = rs.getInt("user_id");
+//                login = new login();
+//                login.id = rs.getInt("user_id");
+//                login.name = rs.getInt("user_id");
             }
             return true;
         } catch (SQLException ex) {
             Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
     }
 
@@ -272,6 +273,11 @@ public class LoginPage extends javax.swing.JFrame {
     }
 
     private Statement createStatement() {
-        conn.createStatement(); //To change body of generated methods, choose Tools | Templates.
+        try {
+            st = conn.createStatement(); //To change body of generated methods, choose Tools | Templates.
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return st;
     }
 }
