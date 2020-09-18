@@ -5,7 +5,7 @@ create table if not exists Company (
 company_ID int not null auto_increment,
 company_Name varchar(45) not null,
 company_Address varchar(255) not null,
-company_PhoneNumber int(10) not null,
+company_PhoneNumber varchar(10) not null,
 primary key (company_ID)
 );
 
@@ -13,7 +13,7 @@ create table if not exists Admins (
 admin_ID int not null auto_increment,
 admin_Name varchar(45) not null,
 admin_Surname varchar(45) not null,
-admin_PhoneNumber int(10) not null,
+admin_PhoneNumber varchar(10) not null,
 company_ID int not null,
 username varchar(45) not null unique,
 password varchar(45) not null,
@@ -25,7 +25,7 @@ create table if not exists Dispatch (
 dispatch_ID int not null auto_increment,
 dispatch_Name varchar(45) not null,
 dispatch_Surname varchar(45) not null,
-dispatch_PhoneNumber int(10) not null,
+dispatch_PhoneNumber varchar(10) not null,
 company_ID int not null,
 username varchar(45) not null unique,
 password varchar(45) not null,
@@ -46,7 +46,7 @@ create table if not exists Store (
 store_ID int not null auto_increment,
 store_Name varchar(45) not null,
 store_Address varchar(255) not null,
-store_PhoneNumber int(10) not null,
+store_PhoneNumber varchar(10) not null,
 primary key (store_ID)
 );
 
@@ -54,7 +54,7 @@ create table if not exists Staff (
 staff_ID int not null auto_increment,
 staff_Name varchar(45) not null,
 staff_Surname varchar(45) not null,
-staff_PhoneNumber int(10) not null,
+staff_PhoneNumber varchar(10) not null,
 store_ID int not null,
 username varchar(45) not null unique,
 password varchar(45) not null,
