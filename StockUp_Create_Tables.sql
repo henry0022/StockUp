@@ -36,7 +36,7 @@ foreign key (company_ID) references Company (company_ID)
 create table if not exists Product (
 product_ID int not null auto_increment,
 product_Name varchar(45) not null,
-product_Description varchar(255) not null,
+product_UnitsPerCrate int not null,
 company_ID int not null,
 primary key (product_ID),
 foreign key (company_ID) references Company (company_ID)
@@ -92,11 +92,42 @@ values	('Adam', 'Jones', '0842139879', '001', 'dispatchOne', 'P@ssword123'),
 		('Eve', 'Stones', '0734672953', '001', 'dispatchTwo', 'P@ssword123'),
         ('John', 'Mecury', '0716623845', '001', 'dispatchThree', 'P@ssword123');
 
-insert into Product (product_Name, product_Description, company_ID)
-values	('whole chicken', 'A high quality whole free range chicken.', '001'),
-		('Thigh', 'A high quality cut thigh from free range chickens.', '001'),
-        ('Wing', 'A high quality cute wing from free range chickens.', '001'),
-        ('Drumsticks', 'A high quaility cut drum stick from free range chickens.', '001');
+insert into Product (product_Name, product_UnitsPerCrate, company_ID)
+values	('WS Breakfast Chipolatas', '6', '001'),
+		('WS Breasts - Skin On', '10', '001'),
+        ('WS BUDGET B Grade Drumsticks', '10', '001'),
+        ('WS BUDGET B Grade Portion Pack', '12', '001'),
+        ('WS BUDGET B Grade Skinless BFillets', '16', '001'),
+        ('WS BUDGET B Grade Thighs 4', '16', '001'),
+        ('WS BUDGET B Grade Wings', '10', '001'),
+        ('WS Burger Patties - Crumb Plain', '6', '001'),
+        ('WS Butterflied HALF - BBQ', '4', '001'),
+        ('WS Butterflied HALF - Peri Peri', '4', '001'),
+        ('WS Drums & Thighs', '8', '001'),
+        ('WS Drumsticks', '10', '001'),
+        ('WS Family Braaipack', '8', '001'),
+        ('WS Kebabs - Wings Sweet Chilli Glaze', '6', '001'),
+        ('WS Leg Quarters', '12', '001'),
+        ('WS Liver tubs 250g', '6', '001'),
+        ('WS Meatballs - Herb Crumb', '6', '001'),
+        ('WS Mince Chicken', '10', '001'),
+        ('WS Mini Fillets', '16', '001'),
+        ('WS Portion Pack', '8', '001'),
+        ('WS Sausage - Barbeque', '6', '001'),
+        ('WS Sausage - Garlic and Herb', '6', '001'),
+        ('WS Sausage - Kameeldoring', '6', '001'),
+        ('WS Skinless Breast Fillets - 4', '16', '001'),
+        ('WS Skinless Breast Fillets - Limited Edition', '12', '001'),
+        ('WS Skinless Breast Fillets - Rsmry Lmn & Yog', '12', '001'),
+        ('WS Skinless Breast Fillets - Salsa', '12', '001'),
+        ('WS Skinless Thigh Fillets - 12', '6', '001'),
+        ('WS Skinless Variety', '10', '001'),
+        ('WS Sosatie - Sticky BBQ & Pineapple', '6', '001'),
+        ('WS Sosatie - Sweet Curry & Peach', '6', '001'),
+        ('WS Whole Bird', '6', '001'),
+        ('WS Wings - Cocktail Plain', '8', '001'),
+        ('WS Wings - Spicy Sticky', '6', '001'),
+        ('WS Wings - Hot', '6', '001');
 
 insert into Store (store_Name, store_Address, store_PhoneNumber)
 values	('Durbanville', 'Shop 2, Spur Building, 2 Pampoenkraal Ln, Durbanville, Cape Town', '0609970724'),
