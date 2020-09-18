@@ -1,4 +1,5 @@
 
+import java.sql.ResultSet;
 import javax.swing.JFrame;
 
 /*
@@ -16,10 +17,12 @@ public class DispatchPage extends javax.swing.JFrame {
     /**
      * Creates new form DispatchPage
      */
-    public DispatchPage() {
+    public DispatchPage(LoginPage login, ResultSet rs) {
+        login.dispose();
         initComponents();
         setSize(1270,730);
         this.setLocationRelativeTo(null);
+        this.setVisible(true);
     }
 
     /**
@@ -37,6 +40,7 @@ public class DispatchPage extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         OrdersLbl = new javax.swing.JLabel();
+        btnSignOut = new javax.swing.JButton();
         PreviousBtn = new javax.swing.JButton();
         NextBtn = new javax.swing.JButton();
         FirstBtn = new javax.swing.JButton();
@@ -46,7 +50,6 @@ public class DispatchPage extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         SelectedOrderTbl = new javax.swing.JTable();
         ProcessOrderBtn = new javax.swing.JButton();
-        LogOutBtn = new javax.swing.JButton();
         StoreLbl = new javax.swing.JLabel();
         DateLbl = new javax.swing.JLabel();
         StoreTf = new javax.swing.JTextField();
@@ -92,6 +95,19 @@ public class DispatchPage extends javax.swing.JFrame {
         OrdersLbl.setText("Orders");
         jPanel3.add(OrdersLbl);
         OrdersLbl.setBounds(50, 14, 140, 30);
+
+        btnSignOut.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSignOut.setForeground(new java.awt.Color(255, 255, 255));
+        btnSignOut.setText("Sign Out");
+        btnSignOut.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(133, 1, 41), 3, true));
+        btnSignOut.setContentAreaFilled(false);
+        btnSignOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignOutActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnSignOut);
+        btnSignOut.setBounds(990, 10, 90, 30);
 
         jPanel2.add(jPanel3);
         jPanel3.setBounds(0, 0, 1100, 60);
@@ -168,12 +184,6 @@ public class DispatchPage extends javax.swing.JFrame {
         jPanel2.add(ProcessOrderBtn);
         ProcessOrderBtn.setBounds(150, 480, 130, 25);
 
-        LogOutBtn.setBackground(new java.awt.Color(168, 153, 104));
-        LogOutBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        LogOutBtn.setText("Log Out");
-        jPanel2.add(LogOutBtn);
-        LogOutBtn.setBounds(310, 480, 130, 25);
-
         StoreLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         StoreLbl.setForeground(new java.awt.Color(255, 255, 255));
         StoreLbl.setText("Store:");
@@ -211,40 +221,11 @@ public class DispatchPage extends javax.swing.JFrame {
         this.setState(JFrame.ICONIFIED);
     }//GEN-LAST:event_MinLblMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(DispatchPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(DispatchPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(DispatchPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(DispatchPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btnSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignOutActionPerformed
+        LoginPage lp = new LoginPage();
+        lp.signOut(this);
+    }//GEN-LAST:event_btnSignOutActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new DispatchPage().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DateLbl;
@@ -253,7 +234,6 @@ public class DispatchPage extends javax.swing.JFrame {
     private javax.swing.JButton FirstBtn;
     private javax.swing.JTable IncomingOrdersTbl;
     private javax.swing.JButton LastBtn;
-    private javax.swing.JButton LogOutBtn;
     private javax.swing.JLabel MinLbl;
     private javax.swing.JButton NextBtn;
     private javax.swing.JLabel OrdersLbl;
@@ -262,6 +242,7 @@ public class DispatchPage extends javax.swing.JFrame {
     private javax.swing.JTable SelectedOrderTbl;
     private javax.swing.JLabel StoreLbl;
     private javax.swing.JTextField StoreTf;
+    private javax.swing.JButton btnSignOut;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

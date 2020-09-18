@@ -1,4 +1,5 @@
 
+import java.sql.ResultSet;
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 
@@ -17,13 +18,17 @@ public class StorePage extends javax.swing.JFrame {
     /**
      * Creates new form StorePage
      */
-    public StorePage() {
+    
+    
+    public StorePage(LoginPage login, ResultSet rs) {
+        login.dispose();
         initComponents();
         setSize(1270,730);
         this.setLocationRelativeTo(null);
         ButtonGroup G = new ButtonGroup();
         G.add(OutofStockRdio);
         G.add(LowonStockRdio);
+        this.setVisible(true);
     }
 
     /**
@@ -41,6 +46,7 @@ public class StorePage extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         StoreNameLbl = new javax.swing.JLabel();
+        btnSignOut = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         ProductsTbl = new javax.swing.JTable();
         ProductLbl = new javax.swing.JLabel();
@@ -95,6 +101,19 @@ public class StorePage extends javax.swing.JFrame {
         StoreNameLbl.setText("StoreName");
         jPanel3.add(StoreNameLbl);
         StoreNameLbl.setBounds(50, 10, 240, 40);
+
+        btnSignOut.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSignOut.setForeground(new java.awt.Color(255, 255, 255));
+        btnSignOut.setText("Sign Out");
+        btnSignOut.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(133, 1, 41), 3, true));
+        btnSignOut.setContentAreaFilled(false);
+        btnSignOut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSignOutActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnSignOut);
+        btnSignOut.setBounds(990, 10, 90, 30);
 
         jPanel2.add(jPanel3);
         jPanel3.setBounds(0, 0, 1090, 60);
@@ -210,40 +229,12 @@ public class StorePage extends javax.swing.JFrame {
         this.setState(JFrame.ICONIFIED);
     }//GEN-LAST:event_MinLblMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StorePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StorePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StorePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StorePage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btnSignOutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSignOutActionPerformed
+        LoginPage lp = new LoginPage();
+        lp.signOut(this);
+    }//GEN-LAST:event_btnSignOutActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new StorePage().setVisible(true);
-            }
-        });
-    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddtoOrderBtn;
@@ -260,6 +251,7 @@ public class StorePage extends javax.swing.JFrame {
     private javax.swing.JLabel StoreNameLbl;
     private javax.swing.JLabel YourOrderLbl;
     private javax.swing.JTable YourOrdersTbl;
+    private javax.swing.JButton btnSignOut;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
