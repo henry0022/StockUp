@@ -99,9 +99,17 @@ values	('whole chicken', 'A high quality whole free range chicken.', '001'),
         ('Drumsticks', 'A high quaility cut drum stick from free range chickens.', '001');
 
 insert into Store (store_Name, store_Address, store_PhoneNumber)
-values	('Woolworths', 'Suikerbos St', '0219196969'),
-		('Pick n Pay', 'Amandel and Bottelary St Soneike', '0219065700'),
-        ('Checkers', '85 Kloof Ave', '0219007640');
+values	('Durbanville', 'Shop 2, Spur Building, 2 Pampoenkraal Ln, Durbanville, Cape Town', '0609970724'),
+		('George', 'Unit 1 Value Centre, C/O Market and, Hope St, George', '0823101042'),
+        ('Grabouw', 'Industrial Rd, Grabouw, Cape Town', '0796930470'),
+        ('Hermanus','Bergsig Business Park, Unit 2, Erf 1599, Bergsig Street, Sandbaai, Hermanus, Cape Town, 7200','0664758649'),
+        ('Kenilworth', 'Shop G1, Access Park, Chichester Rd, Claremont, Cape Town','0663014356'),
+        ('Montague Gardens','The Expo Building, 35 Stella Cove, Montague Gardens, Cape Town','0729118974'),
+        ('Paarl','Shop G107 Rembrandt Mall Cnr Bergriver Boulevard &, Dorp Street, Paarl, Cape Town','0609838417'),
+        ('Parklands','Shop 5b, Leonardo Park, Parklands Main Rd, Parklands, Cape Town','0829442636'),
+        ('Somerset West','Shop 25A, Somerset Value Mart Centenary Drive, Intersection of N2 and, R44, Somerset West, Cape Town, 7129','0724284528'),
+        ('Stellenbosch','6 John Costas Rd, Plankenburg, Stellenbosch','0664804917'),
+        ('Tokai','Shop No 333, South Palms Centre, Main Rd, Tokai, Cape Town','0767021830');
 
 insert into Staff (staff_Name, staff_Surname, staff_PhoneNumber, store_ID, username, password)
 values	('James', 'Jameson', '0831252543', '002', 'staffOne', 'P@ssword123'),
