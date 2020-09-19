@@ -3,15 +3,15 @@ use StockUp_db;
 insert into Company (company_Name, company_Address, company_PhoneNumber)
 values	('Elgin Free Range Chickens', 'Industrial Rd, Grabouw 7160', '0218592795');
 
-insert into Admins (admin_Name, admin_Surname, admin_PhoneNumber, company_ID, username, password)
-values	('Jim', 'Adams', '0832965736', '001', 'adminOne', 'P@ssword123'),
-		('Bob', 'Stevens', '0735992902', '001', 'adminTwo', 'P@ssword123'),
-        ('Mandy', 'Shore', '0846863495', '001', 'adminThree', 'P@ssword123');
+insert into Admins (admin_Name, admin_Surname, company_ID, username, password)
+values	('Jim', 'Adams', '001', 'adminOne', 'P@ssword123'),
+		('Bob', 'Stevens', '001', 'adminTwo', 'P@ssword123'),
+        ('Mandy', 'Shore', '001', 'adminThree', 'P@ssword123');
 
-insert into Dispatch (dispatch_Name, dispatch_Surname, dispatch_PhoneNumber, company_ID, username, password)
-values	('Adam', 'Jones', '0842139879', '001', 'dispatchOne', 'P@ssword123'),
-		('Eve', 'Stones', '0734672953', '001', 'dispatchTwo', 'P@ssword123'),
-        ('John', 'Mecury', '0716623845', '001', 'dispatchThree', 'P@ssword123');
+insert into Dispatch (dispatch_Name, dispatch_Surname, company_ID, username, password)
+values	('Adam', 'Jones', '001', 'dispatchOne', 'P@ssword123'),
+		('Eve', 'Stones', '001', 'dispatchTwo', 'P@ssword123'),
+        ('John', 'Mecury', '001', 'dispatchThree', 'P@ssword123');
 
 insert into Product (product_Name, product_UnitsPerCrate, company_ID)
 values	('WS Breakfast Chipolatas', '6', '001'),
@@ -63,10 +63,10 @@ values	('Durbanville', 'Shop 2, Spur Building, 2 Pampoenkraal Ln, Durbanville, C
         ('Stellenbosch','6 John Costas Rd, Plankenburg, Stellenbosch','0664804917'),
         ('Tokai','Shop No 333, South Palms Centre, Main Rd, Tokai, Cape Town','0767021830');
 
-insert into Staff (staff_Name, staff_Surname, staff_PhoneNumber, store_ID, username, password)
-values	('James', 'Jameson', '0831252543', '002', 'staffOne', 'P@ssword123'),
-		('Mary', 'Scarlet', '0847285377', '001', 'staffTwo', 'P@ssword123'),
-        ('Amy', 'Hendricks', '0712993475', '003', 'staffThree', 'P@ssword123');
+insert into Staff (staff_Name, staff_Surname, store_ID, username, password)
+values	('James', 'Jameson', '002', 'staffOne', 'P@ssword123'),
+		('Mary', 'Scarlet', '001', 'staffTwo', 'P@ssword123'),
+        ('Amy', 'Hendricks', '003', 'staffThree', 'P@ssword123');
 
 insert into Orders (order_Date, order_Status, store_ID)
 values	('2017-07-30','1', '003'),
