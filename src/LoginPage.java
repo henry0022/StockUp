@@ -24,7 +24,7 @@ public class LoginPage extends javax.swing.JFrame {
 
     String DB_URL = "jdbc:mysql://localhost:3306/stockup_db";
     String DB_Username = "root";
-    String DB_Password = "root";
+    String DB_Password = "";
     boolean serverFound = false;
     boolean DBFound = false;
 
@@ -60,10 +60,10 @@ public class LoginPage extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         UsernameTf = new javax.swing.JTextField();
-        PasswordTf = new javax.swing.JTextField();
         UsernameLbl = new javax.swing.JLabel();
         PasswordLbl = new javax.swing.JLabel();
         buttonLogin = new javax.swing.JButton();
+        PasswordTf = new javax.swing.JPasswordField();
         ExitLbl = new javax.swing.JLabel();
         MinLbl = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -76,7 +76,7 @@ public class LoginPage extends javax.swing.JFrame {
 
         lblConnectStatus.setText("status");
         jPanel2.add(lblConnectStatus);
-        lblConnectStatus.setBounds(20, 10, 120, 14);
+        lblConnectStatus.setBounds(20, 10, 120, 16);
 
         jPanel1.setBackground(new java.awt.Color(133, 1, 41));
         jPanel1.setLayout(null);
@@ -86,8 +86,6 @@ public class LoginPage extends javax.swing.JFrame {
         jLabel3.setBounds(250, 0, 260, 394);
         jPanel1.add(UsernameTf);
         UsernameTf.setBounds(100, 130, 140, 30);
-        jPanel1.add(PasswordTf);
-        PasswordTf.setBounds(100, 180, 140, 30);
 
         UsernameLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         UsernameLbl.setForeground(new java.awt.Color(255, 255, 255));
@@ -112,6 +110,15 @@ public class LoginPage extends javax.swing.JFrame {
         jPanel1.add(buttonLogin);
         buttonLogin.setBounds(70, 230, 120, 30);
 
+        PasswordTf.setText("jPasswordField1");
+        PasswordTf.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PasswordTfActionPerformed(evt);
+            }
+        });
+        jPanel1.add(PasswordTf);
+        PasswordTf.setBounds(100, 180, 140, 26);
+
         jPanel2.add(jPanel1);
         jPanel1.setBounds(380, 170, 510, 390);
 
@@ -124,7 +131,7 @@ public class LoginPage extends javax.swing.JFrame {
             }
         });
         jPanel2.add(ExitLbl);
-        ExitLbl.setBounds(1220, 0, 27, 64);
+        ExitLbl.setBounds(1220, 0, 28, 58);
 
         MinLbl.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         MinLbl.setForeground(new java.awt.Color(255, 255, 255));
@@ -135,7 +142,7 @@ public class LoginPage extends javax.swing.JFrame {
             }
         });
         jPanel2.add(MinLbl);
-        MinLbl.setBounds(1180, 0, 19, 64);
+        MinLbl.setBounds(1180, 0, 31, 58);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Lifestyle_Overlay.jpg"))); // NOI18N
         jPanel2.add(jLabel2);
@@ -146,6 +153,10 @@ public class LoginPage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void PasswordTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordTfActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PasswordTfActionPerformed
 
     private void ExitLblMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_ExitLblMouseClicked
         System.exit(0);
@@ -202,7 +213,7 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JLabel ExitLbl;
     private javax.swing.JLabel MinLbl;
     private javax.swing.JLabel PasswordLbl;
-    private javax.swing.JTextField PasswordTf;
+    private javax.swing.JPasswordField PasswordTf;
     private javax.swing.JLabel UsernameLbl;
     private javax.swing.JTextField UsernameTf;
     private javax.swing.JButton buttonLogin;
@@ -233,7 +244,7 @@ public class LoginPage extends javax.swing.JFrame {
                     if (rs.next()) {
                         new DispatchPage(this, rs);
                     } else {
-                        System.out.println("Ya nah ");
+                        JOptionPane.showMessageDialog(null, "Incorrect login details. Please try again.");
                     }
                 }
             }
@@ -316,9 +327,9 @@ public class LoginPage extends javax.swing.JFrame {
                 e.printStackTrace();
                 showErrorAndTerminate("Invalid Class.forName statement. Please Fix");
             }
-            return DriverManager.getConnection(DB_URL, DB_Password, DB_Password);
+            return DriverManager.getConnection(DB_URL, DB_Username, DB_Password);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Incorrect URL or login for database. \n Please enter valid details.");
+            JOptionPane.showMessageDialog(null, "Incorrect URL or login for database. \n Please enter valid details."+ex);
             return null;
         }
     }
