@@ -877,16 +877,16 @@ public class AdminPage extends javax.swing.JFrame {
             ScrollPane_AddStoreUserWarnings.setVisible(false);
             int storeID = Integer.parseInt(store.split(":")[0]);
             try {
-                System.out.println("INSERT INTO staff (staff_Name, staff_Surname, store_ID, username, password) VALUES "
+                System.out.println("INSERT INTO Staff (staff_Name, staff_Surname, store_ID, username, password) VALUES "
                         + "('" + name + "','"
                         + surname + "','"
-                        + storeID + ",'"
+                        + storeID + "','"
                         + uname + "','"
                         + password + "')");
-                st.executeUpdate("INSERT INTO staff (staff_Name, staff_Surname, staff_PhoneNumber, store_ID, username, password) VALUES "
+                st.executeUpdate("INSERT INTO Staff (staff_Name, staff_Surname, store_ID, username, password) VALUES "
                         + "('" + name + "','"
                         + surname + "','"
-                        + storeID + ",'"
+                        + storeID + "','"
                         + uname + "','"
                         + password + "')");
                 blinkGreen(StoreUserAddBtn, "SUCCESS");
@@ -948,7 +948,7 @@ public class AdminPage extends javax.swing.JFrame {
             DispatchUser_Password_Pf.setBackground(Color.WHITE);
         }
 
-        int amount = -1;
+        int amount = 1;
         if (valid) {
             ScrollPane_AddDispatchUserWarnings.setVisible(false);
             try {
@@ -958,10 +958,10 @@ public class AdminPage extends javax.swing.JFrame {
                         + amount + ",'"
                         + uname + "','"
                         + password + "')");
-                st.executeUpdate("INSERT INTO dispatch (dispatch_Name, dispatch_Surname, dispatch_PhoneNumber, company_ID, username, password) VALUES "
+                st.executeUpdate("INSERT INTO dispatch (dispatch_Name, dispatch_Surname, company_ID, username, password) VALUES "
                         + "('" + name + "','"
                         + surname + "','"
-                        + amount + ",'"
+                        + amount + "','"
                         + uname + "','"
                         + password + "')");
                 blinkGreen(DispatchUserAddBtn, "SUCCESS");
