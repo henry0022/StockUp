@@ -644,7 +644,7 @@ public class AdminPage extends javax.swing.JFrame {
     }//GEN-LAST:event_AddBtnActionPerformed
 
     private void StoreUserAddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StoreUserAddBtnActionPerformed
-        addStoreUser(StoreUser_Name_Tf.getText(), StoreUser_Surname_Tf.getText(), StoreUser_StoreName_Cb.getSelectedItem().toString(), StoreUser_Username_Tf.getText(), DispatchUser_Password_Pf.getText());
+        addStoreUser(StoreUser_Name_Tf.getText(), StoreUser_Surname_Tf.getText(), StoreUser_StoreName_Cb.getSelectedItem().toString(), StoreUser_Username_Tf.getText(), StoreUser_Password_Pf.getText());
     }//GEN-LAST:event_StoreUserAddBtnActionPerformed
 
     private void showPassword_AddDispatchUser_LblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showPassword_AddDispatchUser_LblMouseClicked
@@ -863,7 +863,7 @@ public class AdminPage extends javax.swing.JFrame {
         if (!isValidPassword(password)) {
             valid = false;
             warnings = warnings + "Invalid password \n";
-            DispatchUser_Password_Pf.setBackground(Color.RED);
+            StoreUser_Password_Pf.setBackground(Color.RED);
             password_warning_lbl1.setVisible(true);
             password_warning_lbl2.setVisible(true);
             password_warning_lbl3.setVisible(true);
