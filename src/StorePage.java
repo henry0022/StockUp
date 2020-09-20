@@ -143,43 +143,43 @@ public class StorePage extends javax.swing.JFrame {
         ProductLbl.setForeground(new java.awt.Color(255, 255, 255));
         ProductLbl.setText("Product:");
         jPanel2.add(ProductLbl);
-        ProductLbl.setBounds(630, 140, 70, 17);
+        ProductLbl.setBounds(640, 110, 70, 17);
 
         QuantityLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         QuantityLbl.setForeground(new java.awt.Color(255, 255, 255));
         QuantityLbl.setText("Product Quantity:");
         jPanel2.add(QuantityLbl);
-        QuantityLbl.setBounds(570, 180, 140, 17);
+        QuantityLbl.setBounds(580, 150, 140, 17);
         jPanel2.add(ProductTf);
-        ProductTf.setBounds(730, 140, 160, 20);
+        ProductTf.setBounds(730, 110, 160, 20);
         jPanel2.add(QuantitySpnr);
-        QuantitySpnr.setBounds(730, 180, 160, 20);
+        QuantitySpnr.setBounds(730, 150, 160, 20);
 
         OutofStockRdio.setBackground(new java.awt.Color(133, 1, 41));
         OutofStockRdio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         OutofStockRdio.setForeground(new java.awt.Color(255, 255, 255));
         OutofStockRdio.setText("Out of Stock");
         jPanel2.add(OutofStockRdio);
-        OutofStockRdio.setBounds(930, 140, 120, 25);
+        OutofStockRdio.setBounds(670, 430, 120, 25);
 
         LowonStockRdio.setBackground(new java.awt.Color(133, 1, 41));
         LowonStockRdio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         LowonStockRdio.setForeground(new java.awt.Color(255, 255, 255));
         LowonStockRdio.setText("Low on Stock");
         jPanel2.add(LowonStockRdio);
-        LowonStockRdio.setBounds(930, 180, 120, 25);
+        LowonStockRdio.setBounds(830, 430, 120, 25);
 
         AddtoOrderBtn.setBackground(new java.awt.Color(168, 153, 104));
         AddtoOrderBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         AddtoOrderBtn.setText("Add to Order");
         jPanel2.add(AddtoOrderBtn);
-        AddtoOrderBtn.setBounds(730, 230, 140, 25);
+        AddtoOrderBtn.setBounds(740, 200, 140, 25);
 
         YourOrderLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         YourOrderLbl.setForeground(new java.awt.Color(255, 255, 255));
         YourOrderLbl.setText("Your Order:");
         jPanel2.add(YourOrderLbl);
-        YourOrderLbl.setBounds(590, 270, 90, 14);
+        YourOrderLbl.setBounds(600, 240, 90, 14);
 
         YourOrdersTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -200,13 +200,13 @@ public class StorePage extends javax.swing.JFrame {
         jScrollPane2.setViewportView(YourOrdersTbl);
 
         jPanel2.add(jScrollPane2);
-        jScrollPane2.setBounds(580, 300, 452, 160);
+        jScrollPane2.setBounds(580, 260, 452, 160);
 
         ConfirmOrderBtn.setBackground(new java.awt.Color(168, 153, 104));
         ConfirmOrderBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ConfirmOrderBtn.setText("Confirm Order");
         jPanel2.add(ConfirmOrderBtn);
-        ConfirmOrderBtn.setBounds(730, 480, 140, 25);
+        ConfirmOrderBtn.setBounds(740, 480, 140, 25);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(90, 100, 1090, 540);
