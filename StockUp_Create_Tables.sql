@@ -33,7 +33,7 @@ foreign key (company_ID) references Company (company_ID)
 
 create table if not exists Product (
 product_ID int not null auto_increment,
-product_Name varchar(45) not null,
+product_Name varchar(45) not null unique, 
 product_UnitsPerCrate int not null,
 company_ID int not null,
 primary key (product_ID),
@@ -42,7 +42,7 @@ foreign key (company_ID) references Company (company_ID)
 
 create table if not exists Store (
 store_ID int not null auto_increment,
-store_Name varchar(45) not null,
+store_Name varchar(45) not null unique,
 store_Address varchar(255) not null,
 store_PhoneNumber varchar(10) not null,
 primary key (store_ID)

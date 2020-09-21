@@ -74,15 +74,16 @@ public class AdminPage extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         StoreNameLbl = new javax.swing.JLabel();
         ContactNumberLbl = new javax.swing.JLabel();
-        UsernameLbl = new javax.swing.JLabel();
         StoreAddressLbl = new javax.swing.JLabel();
         StoreNameTf = new javax.swing.JTextField();
         ContactNumberTf = new javax.swing.JTextField();
-        UsernameTf = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         StoreAddressTa = new javax.swing.JTextArea();
         AddStoreBtn = new javax.swing.JButton();
         DeleteStoreBtn = new javax.swing.JButton();
+        warning_Store_Name_Lbl = new javax.swing.JLabel();
+        warning_Store_Number_Lbl = new javax.swing.JLabel();
+        warning_Store_Address_Lbl = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         ProductNameLbl = new javax.swing.JLabel();
         ProductNameTf = new javax.swing.JTextField();
@@ -198,30 +199,22 @@ public class AdminPage extends javax.swing.JFrame {
         jPanel3.add(ContactNumberLbl);
         ContactNumberLbl.setBounds(220, 120, 118, 17);
 
-        UsernameLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        UsernameLbl.setForeground(new java.awt.Color(255, 255, 255));
-        UsernameLbl.setText("Username:");
-        jPanel3.add(UsernameLbl);
-        UsernameLbl.setBounds(260, 160, 80, 17);
-
         StoreAddressLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         StoreAddressLbl.setForeground(new java.awt.Color(255, 255, 255));
         StoreAddressLbl.setText("Store address:");
         jPanel3.add(StoreAddressLbl);
-        StoreAddressLbl.setBounds(230, 200, 110, 17);
+        StoreAddressLbl.setBounds(230, 160, 110, 17);
         jPanel3.add(StoreNameTf);
         StoreNameTf.setBounds(370, 80, 310, 20);
         jPanel3.add(ContactNumberTf);
         ContactNumberTf.setBounds(370, 120, 310, 20);
-        jPanel3.add(UsernameTf);
-        UsernameTf.setBounds(370, 160, 310, 20);
 
         StoreAddressTa.setColumns(20);
         StoreAddressTa.setRows(5);
         jScrollPane1.setViewportView(StoreAddressTa);
 
         jPanel3.add(jScrollPane1);
-        jScrollPane1.setBounds(370, 200, 310, 180);
+        jScrollPane1.setBounds(370, 160, 310, 180);
 
         AddStoreBtn.setBackground(new java.awt.Color(168, 153, 104));
         AddStoreBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -232,13 +225,30 @@ public class AdminPage extends javax.swing.JFrame {
             }
         });
         jPanel3.add(AddStoreBtn);
-        AddStoreBtn.setBounds(420, 400, 90, 30);
+        AddStoreBtn.setBounds(390, 400, 120, 30);
 
         DeleteStoreBtn.setBackground(new java.awt.Color(168, 153, 104));
         DeleteStoreBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         DeleteStoreBtn.setText("Delete");
+        DeleteStoreBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteStoreBtnActionPerformed(evt);
+            }
+        });
         jPanel3.add(DeleteStoreBtn);
-        DeleteStoreBtn.setBounds(540, 400, 90, 30);
+        DeleteStoreBtn.setBounds(540, 400, 110, 30);
+
+        warning_Store_Name_Lbl.setText("warning");
+        jPanel3.add(warning_Store_Name_Lbl);
+        warning_Store_Name_Lbl.setBounds(690, 80, 220, 20);
+
+        warning_Store_Number_Lbl.setText("warning");
+        jPanel3.add(warning_Store_Number_Lbl);
+        warning_Store_Number_Lbl.setBounds(690, 120, 220, 20);
+
+        warning_Store_Address_Lbl.setText("warning");
+        jPanel3.add(warning_Store_Address_Lbl);
+        warning_Store_Address_Lbl.setBounds(690, 180, 220, 20);
 
         jTabbedPane1.addTab("Add/Delete Store", jPanel3);
 
@@ -707,7 +717,7 @@ public class AdminPage extends javax.swing.JFrame {
 
     private void AddStoreBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddStoreBtnActionPerformed
         if (doneblinking) {
-            addStore(StoreNameTf.getText(), ContactNumberTf.getText(), UsernameTf.getText(), StoreAddressTa.getText());
+            addStore(StoreNameTf.getText(), ContactNumberTf.getText(), StoreAddressTa.getText());
         }
     }//GEN-LAST:event_AddStoreBtnActionPerformed
 
@@ -791,6 +801,12 @@ public class AdminPage extends javax.swing.JFrame {
         deleteProduct();
     }//GEN-LAST:event_DeleteProductBtnActionPerformed
 
+    private void DeleteStoreBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteStoreBtnActionPerformed
+        String name = StoreNameTf.getText();
+        clearAddStoreFields();
+        deleteStore(name);        // TODO add your handling code here:
+    }//GEN-LAST:event_DeleteStoreBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddProductBtn;
@@ -853,8 +869,6 @@ public class AdminPage extends javax.swing.JFrame {
     private javax.swing.JLabel UnitsPerCrateLbl1;
     private javax.swing.JLabel UnitsPerCrateLbl2;
     private javax.swing.JTextField UnitsPerCrateTf;
-    private javax.swing.JLabel UsernameLbl;
-    private javax.swing.JTextField UsernameTf;
     private javax.swing.JButton btnSignOut;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -880,9 +894,67 @@ public class AdminPage extends javax.swing.JFrame {
     private javax.swing.JLabel showPassword_AddAdminUser_Lbl;
     private javax.swing.JLabel showPassword_AddDispatchUser_Lbl;
     private javax.swing.JLabel showPassword_AddStoreUser_Lbl;
+    private javax.swing.JLabel warning_Store_Address_Lbl;
+    private javax.swing.JLabel warning_Store_Name_Lbl;
+    private javax.swing.JLabel warning_Store_Number_Lbl;
     // End of variables declaration//GEN-END:variables
 
-    private void addStore(String store, String phone, String username, String address) {
+    private void addStore(String store, String phone, String address) {
+
+        boolean valid = true;
+        if (store.isEmpty()) {
+            valid = false;
+            warning_Store_Name_Lbl.setVisible(true);
+            warning_Store_Name_Lbl.setText("Please specify");
+            StoreNameTf.setBackground(Color.RED);
+        } else {
+            if (storeExists(store)) {
+                valid = false;
+                warning_Store_Name_Lbl.setVisible(true);
+                warning_Store_Name_Lbl.setText("Store name already used.");
+                StoreNameTf.setBackground(Color.RED);
+            } else {
+                warning_Store_Name_Lbl.setVisible(false);
+                StoreNameTf.setBackground(Color.WHITE);
+            }
+        }
+        if (phone.isEmpty()) {
+            valid = false;
+            warning_Store_Number_Lbl.setVisible(true);
+            warning_Store_Number_Lbl.setText("Please specify");
+            ContactNumberTf.setBackground(Color.RED);
+
+        } else {
+            if (isValidCellphone(phone)) {
+                warning_Store_Number_Lbl.setVisible(false);
+
+                ContactNumberTf.setBackground(Color.WHITE);
+            } else {
+                valid = false;
+                warning_Store_Number_Lbl.setVisible(true);
+                warning_Store_Number_Lbl.setText("Invalid number");
+                ContactNumberTf.setBackground(Color.RED);
+            }
+        }
+        if (address.isEmpty()) {
+            valid = false;
+            warning_Store_Address_Lbl.setVisible(true);
+            warning_Store_Address_Lbl.setText("Please specify");
+            StoreAddressTa.setBackground(Color.RED);
+        } else {
+            warning_Store_Number_Lbl.setVisible(false);
+            StoreAddressTa.setBackground(Color.WHITE);
+        }
+
+        try {
+            if (valid) {
+
+                st.executeUpdate("INSERT INTO store (store_Name, store_Address, store_PhoneNumber) VALUES ('" + store + "','" + address + "','" + phone + "')");
+                blinkGreen(AddStoreBtn, "ADDED!");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
     }
 
@@ -932,9 +1004,9 @@ public class AdminPage extends javax.swing.JFrame {
 
     public boolean isValidPassword(String pass) {
 
-        final String cellphoneRegex = "^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$";
+        final String passwordRegex = "^(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$";
 
-        Pattern pattern = Pattern.compile(cellphoneRegex);
+        Pattern pattern = Pattern.compile(passwordRegex);
         Matcher matcher = pattern.matcher(pass);
         return matcher.matches();
     }
@@ -1164,6 +1236,9 @@ public class AdminPage extends javax.swing.JFrame {
         password_warning_lbl7.setVisible(false);
         password_warning_lbl8.setVisible(false);
         password_warning_lbl9.setVisible(false);
+        warning_Store_Address_Lbl.setVisible(false);
+        warning_Store_Number_Lbl.setVisible(false);
+        warning_Store_Name_Lbl.setVisible(false);
     }
 
     private boolean companyExists(int c_ID) throws SQLException {
@@ -1195,6 +1270,21 @@ public class AdminPage extends javax.swing.JFrame {
             lblWarningProduct.setVisible(false);
             return false;
         }
+    }
+
+    private boolean storeExists(String store_Name) {
+
+        try {
+            rs = st.executeQuery("SELECT * FROM store WHERE store_Name = '" + store_Name + "';");
+            if (rs.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
     }
 
     private boolean usernameExists(String table, String u_Name) {
@@ -1287,6 +1377,13 @@ public class AdminPage extends javax.swing.JFrame {
         }
     }
 
+    private void clearAddStoreFields() {
+        ContactNumberTf.setText("");
+        StoreAddressTa.setText("");
+        warning_Store_Number_Lbl.setVisible(false);
+        warning_Store_Address_Lbl.setVisible(false);
+    }
+
     private void clearAddStoreUserFields() {
         StoreUser_Name_Tf.setText("");
         StoreUser_Surname_Tf.setText("");
@@ -1327,6 +1424,27 @@ public class AdminPage extends javax.swing.JFrame {
         } else {
             ScrollPane_AddStoreUserWarnings.setVisible(true);
             Ta_AddStoreUserWarnings.setText("User not found");
+        }
+    }
+
+    private void deleteStore(String store) {
+        if (storeExists(store)) {
+            try {
+                st.executeUpdate("DELETE FROM store WHERE store_Name = '" + store + "'");
+
+                blinkGreen(DeleteStoreBtn, "DELETED");
+                warning_Store_Name_Lbl.setVisible(false);
+                StoreNameTf.setBackground(Color.WHITE);
+                ContactNumberTf.setBackground(Color.WHITE);
+                StoreAddressTa.setBackground(Color.WHITE);
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminPage.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            StoreNameTf.setBackground(Color.RED);
+            warning_Store_Name_Lbl.setVisible(true);
+            warning_Store_Name_Lbl.setText("Store not found");
+            blink(DeleteStoreBtn);
         }
     }
 
@@ -1379,6 +1497,13 @@ public class AdminPage extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(AdminPage.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private boolean isValidCellphone(String phone) {
+        String cellphoneRegex = "^((?:\\+27|27)|0)(\\d{2})-?(\\d{3})-?(\\d{4})$";
+        Pattern pattern = Pattern.compile(cellphoneRegex);
+        Matcher matcher = pattern.matcher(phone);
+        return matcher.matches();
     }
 
 }
