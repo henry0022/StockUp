@@ -87,8 +87,8 @@ public class AdminPage extends javax.swing.JFrame {
         ProductNameLbl = new javax.swing.JLabel();
         ProductNameTf = new javax.swing.JTextField();
         UnitsPerCrateTf = new javax.swing.JTextField();
-        AddBtn = new javax.swing.JButton();
-        DeleteBtn = new javax.swing.JButton();
+        AddProductBtn = new javax.swing.JButton();
+        DeleteProductBtn = new javax.swing.JButton();
         lblWarningUnits = new javax.swing.JLabel();
         UnitsPerCrateLbl1 = new javax.swing.JLabel();
         UnitsPerCrateLbl2 = new javax.swing.JLabel();
@@ -100,7 +100,7 @@ public class AdminPage extends javax.swing.JFrame {
         DispatchUserLbl = new javax.swing.JLabel();
         DispatchPasswordLbl = new javax.swing.JLabel();
         DispatchUser_Name_Tf = new javax.swing.JTextField();
-        DipatchUserDeleteBtn = new javax.swing.JButton();
+        DispatchUserDeleteBtn = new javax.swing.JButton();
         DispatchUserAddBtn = new javax.swing.JButton();
         ScrollPane_AddDispatchUserWarnings = new javax.swing.JScrollPane();
         Ta_AddDispatchUserWarnings = new javax.swing.JTextArea();
@@ -109,11 +109,11 @@ public class AdminPage extends javax.swing.JFrame {
         DispatchUser_Username_Tf = new javax.swing.JTextField();
         DispatchUser_Surname_Tf = new javax.swing.JTextField();
         password_warning_lbl5 = new javax.swing.JLabel();
-        showPassword_AddDispatchUser_Lbl = new javax.swing.JLabel();
         DispatchUser_Name_Lbl1 = new javax.swing.JLabel();
         DispatchUser_Surame_Lbl1 = new javax.swing.JLabel();
         password_warning_lbl4 = new javax.swing.JLabel();
         password_warning_lbl6 = new javax.swing.JLabel();
+        showPassword_AddDispatchUser_Lbl = new javax.swing.JLabel();
         StoreUserLbl = new javax.swing.JLabel();
         AdminUserLbl = new javax.swing.JLabel();
         StorePasswordLbl = new javax.swing.JLabel();
@@ -137,7 +137,7 @@ public class AdminPage extends javax.swing.JFrame {
         password_warning_lbl2 = new javax.swing.JLabel();
         ScrollPane_AddStoreUserWarnings = new javax.swing.JScrollPane();
         Ta_AddStoreUserWarnings = new javax.swing.JTextArea();
-        ScrollPane_AddStoreUserWarnings2 = new javax.swing.JScrollPane();
+        ScrollPane_AddAdminUserWarnings = new javax.swing.JScrollPane();
         Ta_AddAdminUserWarnings = new javax.swing.JTextArea();
         StoreUser_Password_Pf = new javax.swing.JPasswordField();
         showPassword_AddStoreUser_Lbl = new javax.swing.JLabel();
@@ -145,10 +145,11 @@ public class AdminPage extends javax.swing.JFrame {
         DispatchUser_Surame_Lbl = new javax.swing.JLabel();
         AdminUsernameTf = new javax.swing.JTextField();
         AdminSurnameTf = new javax.swing.JTextField();
-        AdminPasswordPf = new javax.swing.JPasswordField();
+        AdminUser_Password_Pf = new javax.swing.JPasswordField();
         password_warning_lbl7 = new javax.swing.JLabel();
         password_warning_lbl8 = new javax.swing.JLabel();
         password_warning_lbl9 = new javax.swing.JLabel();
+        showPassword_AddAdminUser_Lbl = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         AdminNameLbl = new javax.swing.JLabel();
         btnSignOut = new javax.swing.JButton();
@@ -169,7 +170,7 @@ public class AdminPage extends javax.swing.JFrame {
             }
         });
         jPanel1.add(MinLbl);
-        MinLbl.setBounds(1180, 0, 31, 58);
+        MinLbl.setBounds(1180, 0, 19, 64);
 
         ExitLbl.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         ExitLbl.setForeground(new java.awt.Color(255, 255, 255));
@@ -180,7 +181,7 @@ public class AdminPage extends javax.swing.JFrame {
             }
         });
         jPanel1.add(ExitLbl);
-        ExitLbl.setBounds(1220, 0, 28, 58);
+        ExitLbl.setBounds(1220, 0, 27, 64);
 
         jPanel3.setBackground(new java.awt.Color(133, 1, 41));
         jPanel3.setLayout(null);
@@ -195,7 +196,7 @@ public class AdminPage extends javax.swing.JFrame {
         ContactNumberLbl.setForeground(new java.awt.Color(255, 255, 255));
         ContactNumberLbl.setText("Contact number:");
         jPanel3.add(ContactNumberLbl);
-        ContactNumberLbl.setBounds(220, 120, 117, 17);
+        ContactNumberLbl.setBounds(220, 120, 118, 17);
 
         UsernameLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         UsernameLbl.setForeground(new java.awt.Color(255, 255, 255));
@@ -209,11 +210,11 @@ public class AdminPage extends javax.swing.JFrame {
         jPanel3.add(StoreAddressLbl);
         StoreAddressLbl.setBounds(230, 200, 110, 17);
         jPanel3.add(StoreNameTf);
-        StoreNameTf.setBounds(370, 80, 310, 26);
+        StoreNameTf.setBounds(370, 80, 310, 20);
         jPanel3.add(ContactNumberTf);
-        ContactNumberTf.setBounds(370, 120, 310, 26);
+        ContactNumberTf.setBounds(370, 120, 310, 20);
         jPanel3.add(UsernameTf);
-        UsernameTf.setBounds(370, 160, 310, 26);
+        UsernameTf.setBounds(370, 160, 310, 20);
 
         StoreAddressTa.setColumns(20);
         StoreAddressTa.setRows(5);
@@ -254,28 +255,33 @@ public class AdminPage extends javax.swing.JFrame {
         jPanel4.add(UnitsPerCrateTf);
         UnitsPerCrateTf.setBounds(480, 200, 220, 30);
 
-        AddBtn.setBackground(new java.awt.Color(168, 153, 104));
-        AddBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        AddBtn.setText("Add");
-        AddBtn.addActionListener(new java.awt.event.ActionListener() {
+        AddProductBtn.setBackground(new java.awt.Color(168, 153, 104));
+        AddProductBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        AddProductBtn.setText("Add");
+        AddProductBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddBtnActionPerformed(evt);
+                AddProductBtnActionPerformed(evt);
             }
         });
-        jPanel4.add(AddBtn);
-        AddBtn.setBounds(400, 310, 100, 30);
+        jPanel4.add(AddProductBtn);
+        AddProductBtn.setBounds(400, 310, 100, 30);
 
-        DeleteBtn.setBackground(new java.awt.Color(168, 153, 104));
-        DeleteBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        DeleteBtn.setText("Delete");
-        jPanel4.add(DeleteBtn);
-        DeleteBtn.setBounds(550, 310, 100, 30);
+        DeleteProductBtn.setBackground(new java.awt.Color(168, 153, 104));
+        DeleteProductBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        DeleteProductBtn.setText("Delete");
+        DeleteProductBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteProductBtnActionPerformed(evt);
+            }
+        });
+        jPanel4.add(DeleteProductBtn);
+        DeleteProductBtn.setBounds(550, 310, 100, 30);
 
         lblWarningUnits.setBackground(new java.awt.Color(255, 153, 51));
         lblWarningUnits.setForeground(new java.awt.Color(255, 0, 0));
         lblWarningUnits.setText("warning");
         jPanel4.add(lblWarningUnits);
-        lblWarningUnits.setBounds(710, 210, 210, 16);
+        lblWarningUnits.setBounds(710, 210, 210, 14);
 
         UnitsPerCrateLbl1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         UnitsPerCrateLbl1.setForeground(new java.awt.Color(255, 255, 255));
@@ -295,13 +301,13 @@ public class AdminPage extends javax.swing.JFrame {
         lblWarningCompanyId.setForeground(new java.awt.Color(255, 0, 0));
         lblWarningCompanyId.setText("warning");
         jPanel4.add(lblWarningCompanyId);
-        lblWarningCompanyId.setBounds(710, 260, 210, 16);
+        lblWarningCompanyId.setBounds(710, 260, 210, 14);
 
         lblWarningProduct.setBackground(new java.awt.Color(255, 153, 51));
         lblWarningProduct.setForeground(new java.awt.Color(255, 0, 0));
         lblWarningProduct.setText("warning");
         jPanel4.add(lblWarningProduct);
-        lblWarningProduct.setBounds(710, 160, 210, 16);
+        lblWarningProduct.setBounds(710, 160, 210, 14);
 
         jTabbedPane1.addTab("Add/Delete Product", jPanel4);
 
@@ -327,16 +333,16 @@ public class AdminPage extends javax.swing.JFrame {
         jPanel5.add(DispatchUser_Name_Tf);
         DispatchUser_Name_Tf.setBounds(150, 60, 130, 30);
 
-        DipatchUserDeleteBtn.setBackground(new java.awt.Color(91, 0, 26));
-        DipatchUserDeleteBtn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
-        DipatchUserDeleteBtn.setText("Delete User");
-        DipatchUserDeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+        DispatchUserDeleteBtn.setBackground(new java.awt.Color(91, 0, 26));
+        DispatchUserDeleteBtn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        DispatchUserDeleteBtn.setText("Delete User");
+        DispatchUserDeleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DipatchUserDeleteBtnActionPerformed(evt);
+                DispatchUserDeleteBtnActionPerformed(evt);
             }
         });
-        jPanel5.add(DipatchUserDeleteBtn);
-        DipatchUserDeleteBtn.setBounds(190, 390, 110, 23);
+        jPanel5.add(DispatchUserDeleteBtn);
+        DispatchUserDeleteBtn.setBounds(190, 390, 110, 23);
 
         DispatchUserAddBtn.setBackground(new java.awt.Color(91, 0, 26));
         DispatchUserAddBtn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -383,30 +389,19 @@ public class AdminPage extends javax.swing.JFrame {
         password_warning_lbl5.setForeground(new java.awt.Color(255, 0, 0));
         password_warning_lbl5.setText("One special character (@#$%^&+=)");
         jPanel5.add(password_warning_lbl5);
-        password_warning_lbl5.setBounds(120, 330, 204, 20);
-
-        showPassword_AddDispatchUser_Lbl.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
-        showPassword_AddDispatchUser_Lbl.setForeground(new java.awt.Color(255, 255, 255));
-        showPassword_AddDispatchUser_Lbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/show-password-white.png"))); // NOI18N
-        showPassword_AddDispatchUser_Lbl.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                showPassword_AddDispatchUser_LblMouseClicked(evt);
-            }
-        });
-        jPanel5.add(showPassword_AddDispatchUser_Lbl);
-        showPassword_AddDispatchUser_Lbl.setBounds(290, 220, 30, 50);
+        password_warning_lbl5.setBounds(120, 330, 202, 20);
 
         DispatchUser_Name_Lbl1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         DispatchUser_Name_Lbl1.setForeground(new java.awt.Color(255, 255, 255));
         DispatchUser_Name_Lbl1.setText("Name:");
         jPanel5.add(DispatchUser_Name_Lbl1);
-        DispatchUser_Name_Lbl1.setBounds(60, 70, 40, 14);
+        DispatchUser_Name_Lbl1.setBounds(60, 70, 40, 15);
 
         DispatchUser_Surame_Lbl1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         DispatchUser_Surame_Lbl1.setForeground(new java.awt.Color(255, 255, 255));
         DispatchUser_Surame_Lbl1.setText("Surame:");
         jPanel5.add(DispatchUser_Surame_Lbl1);
-        DispatchUser_Surame_Lbl1.setBounds(50, 120, 60, 14);
+        DispatchUser_Surame_Lbl1.setBounds(50, 120, 60, 15);
 
         password_warning_lbl4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         password_warning_lbl4.setForeground(new java.awt.Color(255, 0, 0));
@@ -418,7 +413,18 @@ public class AdminPage extends javax.swing.JFrame {
         password_warning_lbl6.setForeground(new java.awt.Color(255, 0, 0));
         password_warning_lbl6.setText("One uppercase, one lowercase");
         jPanel5.add(password_warning_lbl6);
-        password_warning_lbl6.setBounds(120, 300, 180, 14);
+        password_warning_lbl6.setBounds(120, 300, 180, 15);
+
+        showPassword_AddDispatchUser_Lbl.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
+        showPassword_AddDispatchUser_Lbl.setForeground(new java.awt.Color(255, 255, 255));
+        showPassword_AddDispatchUser_Lbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/show-password-white.png"))); // NOI18N
+        showPassword_AddDispatchUser_Lbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                showPassword_AddDispatchUser_LblMouseClicked(evt);
+            }
+        });
+        jPanel5.add(showPassword_AddDispatchUser_Lbl);
+        showPassword_AddDispatchUser_Lbl.setBounds(290, 220, 30, 50);
 
         jPanel2.add(jPanel5);
         jPanel5.setBounds(350, 0, 340, 540);
@@ -445,7 +451,7 @@ public class AdminPage extends javax.swing.JFrame {
         StoreIdentityLbl.setForeground(new java.awt.Color(255, 255, 255));
         StoreIdentityLbl.setText("Store:");
         jPanel2.add(StoreIdentityLbl);
-        StoreIdentityLbl.setBounds(20, 180, 60, 14);
+        StoreIdentityLbl.setBounds(20, 180, 60, 15);
 
         AdminUsernameLbl.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         AdminUsernameLbl.setForeground(new java.awt.Color(255, 255, 255));
@@ -463,7 +469,7 @@ public class AdminPage extends javax.swing.JFrame {
 
         AdminNameTf.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jPanel2.add(AdminNameTf);
-        AdminNameTf.setBounds(850, 70, 130, 24);
+        AdminNameTf.setBounds(850, 70, 130, 21);
 
         jPanel2.add(StoreUser_StoreName_Cb);
         StoreUser_StoreName_Cb.setBounds(130, 170, 130, 30);
@@ -477,7 +483,7 @@ public class AdminPage extends javax.swing.JFrame {
             }
         });
         jPanel2.add(StoreUserAddBtn);
-        StoreUserAddBtn.setBounds(40, 390, 110, 29);
+        StoreUserAddBtn.setBounds(40, 390, 110, 23);
 
         StoreUserDeleteBtn.setBackground(new java.awt.Color(46, 50, 64));
         StoreUserDeleteBtn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -488,7 +494,7 @@ public class AdminPage extends javax.swing.JFrame {
             }
         });
         jPanel2.add(StoreUserDeleteBtn);
-        StoreUserDeleteBtn.setBounds(180, 390, 110, 29);
+        StoreUserDeleteBtn.setBounds(180, 390, 110, 23);
 
         AdminUserAddBtn.setBackground(new java.awt.Color(46, 50, 64));
         AdminUserAddBtn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
@@ -499,13 +505,18 @@ public class AdminPage extends javax.swing.JFrame {
             }
         });
         jPanel2.add(AdminUserAddBtn);
-        AdminUserAddBtn.setBounds(740, 390, 110, 29);
+        AdminUserAddBtn.setBounds(740, 390, 110, 23);
 
         AdminUserDeleteBtn.setBackground(new java.awt.Color(46, 50, 64));
         AdminUserDeleteBtn.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         AdminUserDeleteBtn.setText("Delete User");
+        AdminUserDeleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AdminUserDeleteBtnActionPerformed(evt);
+            }
+        });
         jPanel2.add(AdminUserDeleteBtn);
-        AdminUserDeleteBtn.setBounds(890, 390, 110, 29);
+        AdminUserDeleteBtn.setBounds(890, 390, 110, 23);
 
         StoreUsernameLbl1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         StoreUsernameLbl1.setForeground(new java.awt.Color(255, 255, 255));
@@ -545,7 +556,7 @@ public class AdminPage extends javax.swing.JFrame {
         password_warning_lbl2.setForeground(new java.awt.Color(255, 0, 0));
         password_warning_lbl2.setText("One uppercase, one lowercase");
         jPanel2.add(password_warning_lbl2);
-        password_warning_lbl2.setBounds(130, 350, 190, 14);
+        password_warning_lbl2.setBounds(130, 350, 190, 15);
 
         ScrollPane_AddStoreUserWarnings.setBorder(null);
 
@@ -561,7 +572,7 @@ public class AdminPage extends javax.swing.JFrame {
         jPanel2.add(ScrollPane_AddStoreUserWarnings);
         ScrollPane_AddStoreUserWarnings.setBounds(40, 420, 250, 150);
 
-        ScrollPane_AddStoreUserWarnings2.setBorder(null);
+        ScrollPane_AddAdminUserWarnings.setBorder(null);
 
         Ta_AddAdminUserWarnings.setEditable(false);
         Ta_AddAdminUserWarnings.setBackground(new java.awt.Color(133, 1, 41));
@@ -570,10 +581,10 @@ public class AdminPage extends javax.swing.JFrame {
         Ta_AddAdminUserWarnings.setForeground(new java.awt.Color(255, 0, 0));
         Ta_AddAdminUserWarnings.setRows(5);
         Ta_AddAdminUserWarnings.setText("Warnings");
-        ScrollPane_AddStoreUserWarnings2.setViewportView(Ta_AddAdminUserWarnings);
+        ScrollPane_AddAdminUserWarnings.setViewportView(Ta_AddAdminUserWarnings);
 
-        jPanel2.add(ScrollPane_AddStoreUserWarnings2);
-        ScrollPane_AddStoreUserWarnings2.setBounds(740, 420, 260, 150);
+        jPanel2.add(ScrollPane_AddAdminUserWarnings);
+        ScrollPane_AddAdminUserWarnings.setBounds(740, 420, 260, 150);
 
         StoreUser_Password_Pf.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         jPanel2.add(StoreUser_Password_Pf);
@@ -594,23 +605,23 @@ public class AdminPage extends javax.swing.JFrame {
         DispatchUser_Name_Lbl.setForeground(new java.awt.Color(255, 255, 255));
         DispatchUser_Name_Lbl.setText("Name:");
         jPanel2.add(DispatchUser_Name_Lbl);
-        DispatchUser_Name_Lbl.setBounds(750, 70, 40, 14);
+        DispatchUser_Name_Lbl.setBounds(750, 70, 40, 15);
 
         DispatchUser_Surame_Lbl.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         DispatchUser_Surame_Lbl.setForeground(new java.awt.Color(255, 255, 255));
         DispatchUser_Surame_Lbl.setText("Surame:");
         jPanel2.add(DispatchUser_Surame_Lbl);
-        DispatchUser_Surame_Lbl.setBounds(750, 110, 60, 14);
+        DispatchUser_Surame_Lbl.setBounds(750, 110, 60, 15);
 
         AdminUsernameTf.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jPanel2.add(AdminUsernameTf);
-        AdminUsernameTf.setBounds(850, 150, 130, 24);
+        AdminUsernameTf.setBounds(850, 150, 130, 21);
 
         AdminSurnameTf.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jPanel2.add(AdminSurnameTf);
-        AdminSurnameTf.setBounds(850, 110, 130, 24);
-        jPanel2.add(AdminPasswordPf);
-        AdminPasswordPf.setBounds(850, 200, 130, 26);
+        AdminSurnameTf.setBounds(850, 110, 130, 21);
+        jPanel2.add(AdminUser_Password_Pf);
+        AdminUser_Password_Pf.setBounds(850, 200, 130, 20);
 
         password_warning_lbl7.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         password_warning_lbl7.setForeground(new java.awt.Color(255, 0, 0));
@@ -622,13 +633,24 @@ public class AdminPage extends javax.swing.JFrame {
         password_warning_lbl8.setForeground(new java.awt.Color(255, 0, 0));
         password_warning_lbl8.setText("One uppercase, one lowercase");
         jPanel2.add(password_warning_lbl8);
-        password_warning_lbl8.setBounds(810, 270, 180, 14);
+        password_warning_lbl8.setBounds(810, 270, 180, 15);
 
         password_warning_lbl9.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         password_warning_lbl9.setForeground(new java.awt.Color(255, 0, 0));
         password_warning_lbl9.setText("One special character (@#$%^&+=)");
         jPanel2.add(password_warning_lbl9);
-        password_warning_lbl9.setBounds(810, 300, 204, 20);
+        password_warning_lbl9.setBounds(810, 300, 202, 20);
+
+        showPassword_AddAdminUser_Lbl.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
+        showPassword_AddAdminUser_Lbl.setForeground(new java.awt.Color(255, 255, 255));
+        showPassword_AddAdminUser_Lbl.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/show-password-white.png"))); // NOI18N
+        showPassword_AddAdminUser_Lbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                showPassword_AddAdminUser_LblMouseClicked(evt);
+            }
+        });
+        jPanel2.add(showPassword_AddAdminUser_Lbl);
+        showPassword_AddAdminUser_Lbl.setBounds(990, 190, 30, 50);
 
         jTabbedPane1.addTab("Add/Delete User", jPanel2);
 
@@ -684,12 +706,16 @@ public class AdminPage extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSignOutActionPerformed
 
     private void AddStoreBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddStoreBtnActionPerformed
-        addStore(StoreNameTf.getText(), ContactNumberTf.getText(), UsernameTf.getText(), StoreAddressTa.getText());
+        if (doneblinking) {
+            addStore(StoreNameTf.getText(), ContactNumberTf.getText(), UsernameTf.getText(), StoreAddressTa.getText());
+        }
     }//GEN-LAST:event_AddStoreBtnActionPerformed
 
-    private void AddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddBtnActionPerformed
-        addProduct(ProductNameTf.getText(), UnitsPerCrateTf.getText(), CompanyIDTf.getText());
-    }//GEN-LAST:event_AddBtnActionPerformed
+    private void AddProductBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProductBtnActionPerformed
+        if (doneblinking) {
+            addProduct(ProductNameTf.getText(), UnitsPerCrateTf.getText(), CompanyIDTf.getText());
+        }
+    }//GEN-LAST:event_AddProductBtnActionPerformed
 
     private void StoreUserAddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StoreUserAddBtnActionPerformed
         addStoreUser(StoreUser_Name_Tf.getText(), StoreUser_Surname_Tf.getText(), StoreUser_StoreName_Cb.getSelectedItem().toString(), StoreUser_Username_Tf.getText(), StoreUser_Password_Pf.getText());
@@ -718,12 +744,12 @@ public class AdminPage extends javax.swing.JFrame {
         addDispatchUser(DispatchUser_Name_Tf.getText(), DispatchUser_Surname_Tf.getText(), DispatchUser_Username_Tf.getText(), DispatchUser_Password_Pf.getText());
     }//GEN-LAST:event_DispatchUserAddBtnActionPerformed
 
-    private void DipatchUserDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DipatchUserDeleteBtnActionPerformed
+    private void DispatchUserDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DispatchUserDeleteBtnActionPerformed
 
         String u_name = DispatchUser_Username_Tf.getText();
         clearAddStoreUserFields();
-        deleteStoreUser(u_name);
-    }//GEN-LAST:event_DipatchUserDeleteBtnActionPerformed
+        deleteDispatchUser(u_name);
+    }//GEN-LAST:event_DispatchUserDeleteBtnActionPerformed
 
     private void showPassword_AddStoreUser_LblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showPassword_AddStoreUser_LblMouseClicked
         char clear = 0;
@@ -739,31 +765,54 @@ public class AdminPage extends javax.swing.JFrame {
     }//GEN-LAST:event_showPassword_AddStoreUser_LblMouseClicked
 
     private void AdminUserAddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminUserAddBtnActionPerformed
-        addAdminUser(AdminNameTf.getText(), AdminSurnameTf.getText(), AdminUsernameTf.getText(), AdminPasswordPf.getText());
+        addAdminUser(AdminNameTf.getText(), AdminSurnameTf.getText(), AdminUsernameTf.getText(), AdminUser_Password_Pf.getText());
     }//GEN-LAST:event_AdminUserAddBtnActionPerformed
+
+    private void showPassword_AddAdminUser_LblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showPassword_AddAdminUser_LblMouseClicked
+        char clear = 0;
+        char current = AdminUser_Password_Pf.getEchoChar();
+        int compareOneTwo = Character.compare(current, clear);
+        if (compareOneTwo == 0) {
+            showPassword_AddAdminUser_Lbl.setIcon(getImageIcon(new File("src/Resources/show-password.png")));
+            AdminUser_Password_Pf.setEchoChar('*');
+        } else {
+            showPassword_AddAdminUser_Lbl.setIcon(getImageIcon(new File("src/Resources/show-password-on.png")));
+            AdminUser_Password_Pf.setEchoChar(clear);
+        }
+    }//GEN-LAST:event_showPassword_AddAdminUser_LblMouseClicked
+
+    private void AdminUserDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminUserDeleteBtnActionPerformed
+        String u_name = AdminUsernameTf.getText();
+        clearAddAdminUserFields();
+        deleteAdminUser(u_name);
+    }//GEN-LAST:event_AdminUserDeleteBtnActionPerformed
+
+    private void DeleteProductBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteProductBtnActionPerformed
+        deleteProduct();
+    }//GEN-LAST:event_DeleteProductBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AddBtn;
+    private javax.swing.JButton AddProductBtn;
     private javax.swing.JButton AddStoreBtn;
     private javax.swing.JLabel AdminNameLbl;
     private javax.swing.JTextField AdminNameTf;
     private javax.swing.JLabel AdminPasswordLbl;
-    private javax.swing.JPasswordField AdminPasswordPf;
     private javax.swing.JTextField AdminSurnameTf;
     private javax.swing.JButton AdminUserAddBtn;
     private javax.swing.JButton AdminUserDeleteBtn;
     private javax.swing.JLabel AdminUserLbl;
+    private javax.swing.JPasswordField AdminUser_Password_Pf;
     private javax.swing.JLabel AdminUsernameLbl;
     private javax.swing.JTextField AdminUsernameTf;
     private javax.swing.JTextField CompanyIDTf;
     private javax.swing.JLabel ContactNumberLbl;
     private javax.swing.JTextField ContactNumberTf;
-    private javax.swing.JButton DeleteBtn;
+    private javax.swing.JButton DeleteProductBtn;
     private javax.swing.JButton DeleteStoreBtn;
-    private javax.swing.JButton DipatchUserDeleteBtn;
     private javax.swing.JLabel DispatchPasswordLbl;
     private javax.swing.JButton DispatchUserAddBtn;
+    private javax.swing.JButton DispatchUserDeleteBtn;
     private javax.swing.JLabel DispatchUserLbl;
     private javax.swing.JLabel DispatchUser_Name_Lbl;
     private javax.swing.JLabel DispatchUser_Name_Lbl1;
@@ -777,9 +826,9 @@ public class AdminPage extends javax.swing.JFrame {
     private javax.swing.JLabel MinLbl;
     private javax.swing.JLabel ProductNameLbl;
     private javax.swing.JTextField ProductNameTf;
+    private javax.swing.JScrollPane ScrollPane_AddAdminUserWarnings;
     private javax.swing.JScrollPane ScrollPane_AddDispatchUserWarnings;
     private javax.swing.JScrollPane ScrollPane_AddStoreUserWarnings;
-    private javax.swing.JScrollPane ScrollPane_AddStoreUserWarnings2;
     private javax.swing.JLabel StoreAddressLbl;
     private javax.swing.JTextArea StoreAddressTa;
     private javax.swing.JLabel StoreIdentityLbl;
@@ -828,6 +877,7 @@ public class AdminPage extends javax.swing.JFrame {
     private javax.swing.JLabel password_warning_lbl7;
     private javax.swing.JLabel password_warning_lbl8;
     private javax.swing.JLabel password_warning_lbl9;
+    private javax.swing.JLabel showPassword_AddAdminUser_Lbl;
     private javax.swing.JLabel showPassword_AddDispatchUser_Lbl;
     private javax.swing.JLabel showPassword_AddStoreUser_Lbl;
     // End of variables declaration//GEN-END:variables
@@ -848,9 +898,9 @@ public class AdminPage extends javax.swing.JFrame {
     private void addProduct(String name, String units, String compID) {
 
         boolean valid = true;
-        int amount = -1;
+        int u_p_crate = -1;
         try {
-            amount = Integer.parseInt(units);
+            u_p_crate = Integer.parseInt(units);
             lblWarningUnits.setVisible(false);
         } catch (NumberFormatException e) {
             valid = false;
@@ -869,15 +919,16 @@ public class AdminPage extends javax.swing.JFrame {
         }
         try {
             if (companyExists(c_ID) & !productExists(name) & valid) {
-                System.out.println("INSERT INTO product (product_Name, units_Per_Crate, company_ID) VALUES ('" + name + "',amount," + compID + ")");
-//                st.executeUpdate("INSERT INTO product (product_Name, units_Per_Crate, company_ID) VALUES ('"+name+"',amount,"+compID+")");
+                st.executeUpdate("INSERT INTO product (product_Name, product_UnitsPerCrate, company_ID) VALUES ('" + name + "'," + u_p_crate + "," + compID + ")");
+                blinkGreen(AddProductBtn, "ADDED!");
+            } else {
+                blink(AddProductBtn);
             }
         } catch (SQLException ex) {
             Logger.getLogger(AdminPage.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
-
 
     public boolean isValidPassword(String pass) {
 
@@ -905,7 +956,6 @@ public class AdminPage extends javax.swing.JFrame {
             StoreUser_Surname_Tf.setBackground(Color.WHITE);
         }
 
-        
         if (usernameExists("Staff", uname)) {
             valid = false;
             warnings = warnings + "Username already exists \n";
@@ -936,12 +986,6 @@ public class AdminPage extends javax.swing.JFrame {
             ScrollPane_AddStoreUserWarnings.setVisible(false);
             int storeID = Integer.parseInt(store.split(":")[0]);
             try {
-                System.out.println("INSERT INTO Staff (staff_Name, staff_Surname, store_ID, username, password) VALUES "
-                        + "('" + name + "','"
-                        + surname + "','"
-                        + storeID + "','"
-                        + uname + "','"
-                        + password + "')");
                 st.executeUpdate("INSERT INTO Staff (staff_Name, staff_Surname, store_ID, username, password) VALUES "
                         + "('" + name + "','"
                         + surname + "','"
@@ -1011,12 +1055,6 @@ public class AdminPage extends javax.swing.JFrame {
         if (valid) {
             ScrollPane_AddDispatchUserWarnings.setVisible(false);
             try {
-                System.out.println("INSERT INTO dispatch (dispatch_Name, dispatch_Surname, dispatch_PhoneNumber, company_ID, username, password) VALUES "
-                        + "('" + name + "','"
-                        + surname + "','"
-                        + amount + ",'"
-                        + uname + "','"
-                        + password + "')");
                 st.executeUpdate("INSERT INTO dispatch (dispatch_Name, dispatch_Surname, company_ID, username, password) VALUES "
                         + "('" + name + "','"
                         + surname + "','"
@@ -1024,7 +1062,7 @@ public class AdminPage extends javax.swing.JFrame {
                         + uname + "','"
                         + password + "')");
                 blinkGreen(DispatchUserAddBtn, "SUCCESS");
-                clearAddStoreUserFields();
+                clearAddDispatchUserFields();
             } catch (SQLException ex) {
                 Logger.getLogger(AdminPage.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -1038,6 +1076,7 @@ public class AdminPage extends javax.swing.JFrame {
         }
 
     }
+
     private void addAdminUser(String name, String surname, String uname, String password) {
 
         String warnings = "";
@@ -1055,7 +1094,6 @@ public class AdminPage extends javax.swing.JFrame {
             AdminSurnameTf.setBackground(Color.WHITE);
         }
 
-        
         if (usernameExists("Admins", uname)) {
             valid = false;
             warnings = warnings + "Username already exists \n";
@@ -1072,7 +1110,7 @@ public class AdminPage extends javax.swing.JFrame {
         if (!isValidPassword(password)) {
             valid = false;
             warnings = warnings + "Invalid password \n";
-            AdminPasswordPf.setBackground(Color.RED);
+            AdminUser_Password_Pf.setBackground(Color.RED);
             password_warning_lbl7.setVisible(true);
             password_warning_lbl8.setVisible(true);
             password_warning_lbl9.setVisible(true);
@@ -1080,18 +1118,12 @@ public class AdminPage extends javax.swing.JFrame {
             password_warning_lbl7.setVisible(false);
             password_warning_lbl8.setVisible(false);
             password_warning_lbl9.setVisible(false);
-            AdminPasswordPf.setBackground(Color.WHITE);
+            AdminUser_Password_Pf.setBackground(Color.WHITE);
         }
         if (valid) {
-            ScrollPane_AddStoreUserWarnings.setVisible(false);
-            int companyID =1;
+            ScrollPane_AddAdminUserWarnings.setVisible(false);
+            int companyID = 1;
             try {
-                System.out.println("INSERT INTO Admins (admin_Name, admin_Surname, company_ID, username, password) VALUES "
-                        + "('" + name + "','"
-                        + surname + "','"
-                        + companyID + "','"
-                        + uname + "','"
-                        + password + "')");
                 st.executeUpdate("INSERT INTO Admins (admin_Name, admin_Surname, company_ID, username, password) VALUES "
                         + "('" + name + "','"
                         + surname + "','"
@@ -1108,7 +1140,7 @@ public class AdminPage extends javax.swing.JFrame {
 
             blink(AdminUserAddBtn);
             AdminUserAddBtn.setBackground(Color.WHITE);
-            ScrollPane_AddStoreUserWarnings.setVisible(true);
+            ScrollPane_AddAdminUserWarnings.setVisible(true);
             Ta_AddAdminUserWarnings.setText(warnings);
         }
 
@@ -1122,6 +1154,7 @@ public class AdminPage extends javax.swing.JFrame {
         lblWarningProduct.setVisible(false);
         ScrollPane_AddStoreUserWarnings.setVisible(false);
         ScrollPane_AddDispatchUserWarnings.setVisible(false);
+        ScrollPane_AddAdminUserWarnings.setVisible(false);
         password_warning_lbl1.setVisible(false);
         password_warning_lbl2.setVisible(false);
         password_warning_lbl3.setVisible(false);
@@ -1155,7 +1188,6 @@ public class AdminPage extends javax.swing.JFrame {
         }
         rs = st.executeQuery("SELECT * FROM PRODUCT WHERE product_Name = '" + name + "';");
         if (rs.next()) {
-            System.out.println("Exists");
             lblWarningProduct.setVisible(true);
             lblWarningProduct.setText("Product already exists.");
             return true;
@@ -1165,13 +1197,11 @@ public class AdminPage extends javax.swing.JFrame {
         }
     }
 
-
     private boolean usernameExists(String table, String u_Name) {
 
         try {
             rs = st.executeQuery("SELECT * FROM " + table + " WHERE username = '" + u_Name + "';");
             if (rs.next()) {
-                System.out.println("username exists");
                 return true;
             } else {
                 return false;
@@ -1274,14 +1304,14 @@ public class AdminPage extends javax.swing.JFrame {
         showPassword_AddDispatchUser_Lbl.setIcon(getImageIcon(new File("src/Resources/show-password-white.png")));
         DispatchUser_Password_Pf.setEchoChar('*');
     }
-    
-        private void clearAddAdminUserFields() {
+
+    private void clearAddAdminUserFields() {
         AdminNameTf.setText("");
         AdminSurnameTf.setText("");
         AdminUsernameTf.setText("");
-        AdminPasswordPf.setText("");
-        showPassword_AddDispatchUser_Lbl.setIcon(getImageIcon(new File("src/Resources/show-password.png")));
-        AdminPasswordPf.setEchoChar('*');
+        AdminUser_Password_Pf.setText("");
+        showPassword_AddAdminUser_Lbl.setIcon(getImageIcon(new File("src/Resources/show-password.png")));
+        AdminUser_Password_Pf.setEchoChar('*');
     }
 
     private void deleteStoreUser(String u_name) {
@@ -1297,6 +1327,57 @@ public class AdminPage extends javax.swing.JFrame {
         } else {
             ScrollPane_AddStoreUserWarnings.setVisible(true);
             Ta_AddStoreUserWarnings.setText("User not found");
+        }
+    }
+
+    private void deleteDispatchUser(String u_name) {
+        if (usernameExists("dispatch", u_name)) {
+            try {
+                st.executeUpdate("DELETE FROM dispatch WHERE username = '" + u_name + "'");
+
+                blinkGreen(DispatchUserDeleteBtn, "DELETED");
+                ScrollPane_AddDispatchUserWarnings.setVisible(false);
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminPage.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            ScrollPane_AddDispatchUserWarnings.setVisible(true);
+            Ta_AddDispatchUserWarnings.setText("User not found");
+        }
+    }
+
+    private void deleteAdminUser(String u_name) {
+        if (usernameExists("admins", u_name)) {
+            try {
+                st.executeUpdate("DELETE FROM admins WHERE username = '" + u_name + "'");
+
+                blinkGreen(AdminUserDeleteBtn, "DELETED");
+                ScrollPane_AddAdminUserWarnings.setVisible(false);
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminPage.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } else {
+            ScrollPane_AddAdminUserWarnings.setVisible(true);
+            Ta_AddAdminUserWarnings.setText("User not found");
+        }
+    }
+
+    private void deleteProduct() {
+        try {
+            if (doneblinking) {
+                if (productExists(ProductNameTf.getText())) {
+
+                    st.executeUpdate("DELETE FROM product WHERE product_Name = '" + ProductNameTf.getText() + "'");
+                    blinkGreen(DeleteProductBtn, "DELETED");
+                    lblWarningProduct.setVisible(false);
+                } else {
+                    lblWarningProduct.setText("Product does not exist.");
+                    lblWarningProduct.setVisible(true);
+                }
+
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminPage.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

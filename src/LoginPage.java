@@ -24,7 +24,7 @@ public class LoginPage extends javax.swing.JFrame {
 
     String DB_URL = "jdbc:mysql://localhost:3306/stockup_db";
     String DB_Username = "root";
-    String DB_Password = "";
+    String DB_Password = "root";
     boolean serverFound = false;
     boolean DBFound = false;
 
