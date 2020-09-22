@@ -691,6 +691,11 @@ public class AdminPage extends javax.swing.JFrame {
         btnSignOut.setText("Sign Out");
         btnSignOut.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(133, 1, 41), 3, true));
         btnSignOut.setContentAreaFilled(false);
+        btnSignOut.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                btnSignOutMouseMoved(evt);
+            }
+        });
         btnSignOut.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSignOutActionPerformed(evt);
@@ -824,6 +829,10 @@ public class AdminPage extends javax.swing.JFrame {
     private void MinLblMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinLblMouseMoved
         MinLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }//GEN-LAST:event_MinLblMouseMoved
+
+    private void btnSignOutMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignOutMouseMoved
+        btnSignOut.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_btnSignOutMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
