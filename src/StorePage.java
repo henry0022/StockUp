@@ -1,14 +1,23 @@
 
+import java.awt.Color;
+import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Liam
@@ -18,17 +27,27 @@ public class StorePage extends javax.swing.JFrame {
     /**
      * Creates new form StorePage
      */
-    
-    
-    public StorePage(LoginPage login, ResultSet rs) {
+    Connection conn = null;
+    Statement st = null;
+    ResultSet rs = null;
+    ArrayList<Object[]> productList = new ArrayList<Object[]>();
+    ArrayList<Object[]> newOrder = new ArrayList<Object[]>();
+
+    public StorePage(LoginPage login, ResultSet rs, Connection conn) {
         login.dispose();
         initComponents();
-        setSize(1270,730);
+        setSize(1270, 730);
         this.setLocationRelativeTo(null);
         ButtonGroup G = new ButtonGroup();
-        G.add(OutofStockRdio);
-        G.add(LowonStockRdio);
+//        G.add(OutofStockRdio);
+//        G.add(LowonStockRdio);
         this.setVisible(true);
+        try {
+            this.conn = conn;
+            displayTable();
+        } catch (SQLException ex) {
+            Logger.getLogger(StorePage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -40,6 +59,7 @@ public class StorePage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        storePageButtonGroup = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         ExitLbl = new javax.swing.JLabel();
         MinLbl = new javax.swing.JLabel();
@@ -55,11 +75,12 @@ public class StorePage extends javax.swing.JFrame {
         QuantitySpnr = new javax.swing.JSpinner();
         OutofStockRdio = new javax.swing.JRadioButton();
         LowonStockRdio = new javax.swing.JRadioButton();
-        AddtoOrderBtn = new javax.swing.JButton();
+        UpdateOrderBtn = new javax.swing.JButton();
         YourOrderLbl = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         YourOrdersTbl = new javax.swing.JTable();
         ConfirmOrderBtn = new javax.swing.JButton();
+        AddtoOrderBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -123,15 +144,27 @@ public class StorePage extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Product", "Units Per Crate"
+                "Product", "Units Per Crate", "product_ID"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, true
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        ProductsTbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ProductsTblMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(ProductsTbl);
@@ -150,6 +183,8 @@ public class StorePage extends javax.swing.JFrame {
         QuantityLbl.setText("Product Quantity:");
         jPanel2.add(QuantityLbl);
         QuantityLbl.setBounds(580, 150, 140, 17);
+
+        ProductTf.setEditable(false);
         jPanel2.add(ProductTf);
         ProductTf.setBounds(730, 110, 160, 20);
         jPanel2.add(QuantitySpnr);
@@ -159,6 +194,16 @@ public class StorePage extends javax.swing.JFrame {
         OutofStockRdio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         OutofStockRdio.setForeground(new java.awt.Color(255, 255, 255));
         OutofStockRdio.setText("Out of Stock");
+        OutofStockRdio.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                OutofStockRdioItemStateChanged(evt);
+            }
+        });
+        OutofStockRdio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                OutofStockRdioMouseClicked(evt);
+            }
+        });
         jPanel2.add(OutofStockRdio);
         OutofStockRdio.setBounds(670, 430, 120, 25);
 
@@ -166,14 +211,29 @@ public class StorePage extends javax.swing.JFrame {
         LowonStockRdio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         LowonStockRdio.setForeground(new java.awt.Color(255, 255, 255));
         LowonStockRdio.setText("Low on Stock");
+        LowonStockRdio.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                LowonStockRdioItemStateChanged(evt);
+            }
+        });
+        LowonStockRdio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LowonStockRdioMouseClicked(evt);
+            }
+        });
         jPanel2.add(LowonStockRdio);
         LowonStockRdio.setBounds(830, 430, 120, 25);
 
-        AddtoOrderBtn.setBackground(new java.awt.Color(168, 153, 104));
-        AddtoOrderBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        AddtoOrderBtn.setText("Add to Order");
-        jPanel2.add(AddtoOrderBtn);
-        AddtoOrderBtn.setBounds(740, 200, 140, 25);
+        UpdateOrderBtn.setBackground(new java.awt.Color(168, 153, 104));
+        UpdateOrderBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        UpdateOrderBtn.setText("Update Quantity");
+        UpdateOrderBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UpdateOrderBtnActionPerformed(evt);
+            }
+        });
+        jPanel2.add(UpdateOrderBtn);
+        UpdateOrderBtn.setBounds(730, 200, 170, 25);
 
         YourOrderLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         YourOrderLbl.setForeground(new java.awt.Color(255, 255, 255));
@@ -197,6 +257,11 @@ public class StorePage extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        YourOrdersTbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                YourOrdersTblMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(YourOrdersTbl);
 
         jPanel2.add(jScrollPane2);
@@ -205,8 +270,24 @@ public class StorePage extends javax.swing.JFrame {
         ConfirmOrderBtn.setBackground(new java.awt.Color(168, 153, 104));
         ConfirmOrderBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ConfirmOrderBtn.setText("Confirm Order");
+        ConfirmOrderBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ConfirmOrderBtnActionPerformed(evt);
+            }
+        });
         jPanel2.add(ConfirmOrderBtn);
         ConfirmOrderBtn.setBounds(740, 480, 140, 25);
+
+        AddtoOrderBtn.setBackground(new java.awt.Color(168, 153, 104));
+        AddtoOrderBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        AddtoOrderBtn.setText("Add to Order");
+        AddtoOrderBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddtoOrderBtnActionPerformed(evt);
+            }
+        });
+        jPanel2.add(AddtoOrderBtn);
+        AddtoOrderBtn.setBounds(730, 200, 140, 25);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(90, 100, 1090, 540);
@@ -234,6 +315,91 @@ public class StorePage extends javax.swing.JFrame {
         lp.signOut(this);
     }//GEN-LAST:event_btnSignOutActionPerformed
 
+    private void ProductsTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductsTblMouseClicked
+        ProductTf.setText("" + ProductsTbl.getValueAt(ProductsTbl.getSelectedRow(), 0));
+        QuantitySpnr.setValue(1);
+        AddtoOrderBtn.setVisible(true);
+        UpdateOrderBtn.setVisible(false);
+    }//GEN-LAST:event_ProductsTblMouseClicked
+
+    private void UpdateOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateOrderBtnActionPerformed
+        Object product[] = {YourOrdersTbl.getValueAt(YourOrdersTbl.getSelectedRow(), 0), QuantitySpnr.getValue(), YourOrdersTbl.getValueAt(YourOrdersTbl.getSelectedRow(), 2)};
+        newOrder.set(YourOrdersTbl.getSelectedRow(), product);
+        refreshCurrentList();
+    }//GEN-LAST:event_UpdateOrderBtnActionPerformed
+
+    private void YourOrdersTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_YourOrdersTblMouseClicked
+        ProductTf.setText("" + YourOrdersTbl.getValueAt(YourOrdersTbl.getSelectedRow(), 0));
+        QuantitySpnr.setValue(YourOrdersTbl.getValueAt(YourOrdersTbl.getSelectedRow(), 1));
+        AddtoOrderBtn.setVisible(false);
+        UpdateOrderBtn.setVisible(true);
+    }//GEN-LAST:event_YourOrdersTblMouseClicked
+
+    private void AddtoOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddtoOrderBtnActionPerformed
+
+        addToOrder(ProductTf.getText(), Integer.parseInt(QuantitySpnr.getValue() + ""));
+    }//GEN-LAST:event_AddtoOrderBtnActionPerformed
+
+    private void OutofStockRdioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_OutofStockRdioItemStateChanged
+//        LowonStockRdio.setSelected(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_OutofStockRdioItemStateChanged
+
+    private void LowonStockRdioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_LowonStockRdioItemStateChanged
+//        OutofStockRdio.setSelected(false);
+    }//GEN-LAST:event_LowonStockRdioItemStateChanged
+
+    boolean sleeping = false;
+    private void LowonStockRdioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LowonStockRdioMouseClicked
+
+        if (!sleeping) {
+
+            try {
+                sleeping = true;
+                Thread.sleep(500);
+                sleeping = false;
+            } catch (InterruptedException ex) {
+                Logger.getLogger(StorePage.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (OutofStockRdio.isSelected()) {
+                OutofStockRdio.setSelected(false);
+                if (LowonStockRdio.isSelected()) {
+                    OutofStockRdio.setSelected(false);
+                }
+            }
+        }
+    }//GEN-LAST:event_LowonStockRdioMouseClicked
+
+    private void OutofStockRdioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OutofStockRdioMouseClicked
+
+        if (!sleeping) {
+
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(StorePage.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (LowonStockRdio.isSelected()) {
+                LowonStockRdio.setSelected(false);
+                if (OutofStockRdio.isSelected()) {
+                    LowonStockRdio.setSelected(false);
+                }
+            }
+        }
+    }//GEN-LAST:event_OutofStockRdioMouseClicked
+
+    private void ConfirmOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmOrderBtnActionPerformed
+        if (OutofStockRdio.isSelected() && LowonStockRdio.isSelected()) {
+            OutofStockRdio.setForeground(Color.RED);
+            LowonStockRdio.setForeground(Color.RED);
+
+        } else {
+            addOrder(newOrder);
+            OutofStockRdio.setForeground(Color.WHITE);
+            LowonStockRdio.setForeground(Color.WHITE);
+
+        }
+    }//GEN-LAST:event_ConfirmOrderBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -249,6 +415,7 @@ public class StorePage extends javax.swing.JFrame {
     private javax.swing.JLabel QuantityLbl;
     private javax.swing.JSpinner QuantitySpnr;
     private javax.swing.JLabel StoreNameLbl;
+    private javax.swing.JButton UpdateOrderBtn;
     private javax.swing.JLabel YourOrderLbl;
     private javax.swing.JTable YourOrdersTbl;
     private javax.swing.JButton btnSignOut;
@@ -258,5 +425,77 @@ public class StorePage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.ButtonGroup storePageButtonGroup;
     // End of variables declaration//GEN-END:variables
+
+    private void displayTable() throws SQLException {
+        st = conn.createStatement();
+        rs = st.executeQuery("SELECT * FROM product");
+        DefaultTableModel model = new DefaultTableModel(new Object[]{"Product name", "Units per crate", "Product ID"}, 0);
+        int a = 0;
+        while (rs.next()) {
+            System.out.println(a++);
+            System.out.println(rs.getString("product_Name") + "," + rs.getInt("product_UnitsPerCrate") + "," + rs.getInt("product_Id"));
+            Object product[] = {rs.getString("product_Name"), rs.getInt("product_UnitsPerCrate"), rs.getInt("product_Id")};
+            productList.add(product);
+            System.out.println(productList.size());
+            model.addRow(productList.get(productList.size() - 1));
+        }
+        ProductsTbl.setModel(model);
+    }
+
+    private void addToOrder(String name, int value) {
+        Object product[] = {name, value, "" + ProductsTbl.getValueAt(ProductsTbl.getSelectedRow(), 2)};
+        removeFromList(ProductsTbl.getSelectedRow());
+
+        newOrder.add(product);
+        populateCurrentOrder(newOrder);
+    }
+
+    private void populateCurrentOrder(ArrayList<Object[]> newOrder1) {
+        DefaultTableModel model = new DefaultTableModel(new Object[]{"Product name", "Number of crates", "Product ID"}, 0);
+
+        for (int i = 0; i < newOrder1.size(); i++) {
+            model.addRow(newOrder1.get(i));
+        }
+        YourOrdersTbl.setModel(model);
+    }
+
+    private void removeFromList(int selectedRow) {
+        productList.remove(selectedRow);
+        refreshList();
+    }
+
+    private void refreshList() {
+        DefaultTableModel model = new DefaultTableModel(new Object[]{"Product name", "Units per crate", "Product ID"}, 0);
+        for (int i = 0; i < productList.size(); i++) {
+            model.addRow(productList.get(i));
+        }
+        ProductsTbl.setModel(model);
+    }
+
+    private void refreshCurrentList() {
+        DefaultTableModel model = new DefaultTableModel(new Object[]{"Product name", "Number of crates", "Product ID"}, 0);
+        for (int i = 0; i < newOrder.size(); i++) {
+            model.addRow(newOrder.get(i));
+        }
+        YourOrdersTbl.setModel(model);
+    }
+
+    private void addOrder(ArrayList<Object[]> newOrder) {
+        try {
+            //STILL BUSY
+//            st.executeUpdate("INSERT INTO orders (order_Date, urgency, order_status, store_ID) VALUES (" + Calendar.getInstance() + ", " + product_ID + ")");
+            int order_ID = 0;
+            for (int i = 0; i < newOrder.size(); i++) {
+                String nr_Crates = YourOrdersTbl.getValueAt(i, 1).toString();
+                String product_ID = YourOrdersTbl.getValueAt(i, 2).toString();
+
+                System.out.println("INSERT INTO orderdetails (od_CratesOrdered,product_ID,order_ID) VALUES (" + nr_Crates + "," + product_ID + "," + order_ID + ");");
+                st.executeUpdate("INSERT INTO orderdetails (od_CratesOrdered,product_ID,order_ID) VALUES (" + nr_Crates + "," + product_ID + "," + order_ID + ");");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(StorePage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

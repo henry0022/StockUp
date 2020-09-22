@@ -68,15 +68,15 @@ values	('James', 'Jameson', '002', 'staffOne', 'P@ssword123'),
 		('Mary', 'Scarlet', '001', 'staffTwo', 'P@ssword123'),
         ('Amy', 'Hendricks', '003', 'staffThree', 'P@ssword123');
 
-insert into Orders (order_Date, order_Status, store_ID)
-values	('2017-07-30','1', '003'),
-		('2017-10-27','1', '001'),
-        ('2018-06-17','0', '003'),
-        ('2019-04-25', '0','002'),
-        ('2019-12-01', '0','001'),
-		('2020-03-24', '0','002'),
-		('2020-05-13', '1','001'),
-        ('2020-08-02', '1','003');
+insert into Orders (order_Date, order_Status, store_ID, urgency)
+values	('2017-07-30','1', '003', 'low'),
+		('2017-10-27','1', '001', 'out'),
+        ('2018-06-17','0', '003', 'normal'),
+        ('2019-04-25', '0','002', 'out'),
+        ('2019-12-01', '0','001', 'out'),
+		('2020-03-24', '0','002', 'normal'),
+		('2020-05-13', '1','001', 'low'),
+        ('2020-08-02', '1','003', 'low');
 
 insert into OrderDetails (od_CratesOrdered, product_ID, order_ID)
 values	('10', '002', '006'),

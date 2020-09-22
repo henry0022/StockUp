@@ -37,7 +37,7 @@ public class LoginPage extends javax.swing.JFrame {
      */
     public LoginPage() {
         initComponents();
-        UsernameTf.setText("adminOne");
+        UsernameTf.setText("staffOne");
         PasswordTf.setText("P@ssword123");
         testConnection();
         setSize(1270, 730);
@@ -238,11 +238,11 @@ public class LoginPage extends javax.swing.JFrame {
             } else {
                 rs = returnUser("staff", text, password);
                 if (rs.next()) {
-                    new StorePage(this, rs);
+                    new StorePage(this, rs, conn);
                 } else {
                     rs = returnUser("dispatch", text, password);
                     if (rs.next()) {
-                        new DispatchPage(this, rs);
+                        new DispatchPage(this, rs, conn);
                     } else {
                         JOptionPane.showMessageDialog(null, "Incorrect login details. Please try again.");
                     }

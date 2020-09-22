@@ -62,6 +62,7 @@ foreign key (store_ID) references Store (store_ID)
 create table if not exists Orders (
 order_ID int not null auto_increment,
 order_Date date not null,
+urgency varchar(40) not null,
 order_Status boolean not null,
 store_ID int not null,
 primary key (order_ID),

@@ -1,6 +1,9 @@
 
+import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.JFrame;
+import javax.swing.JTable;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,12 +20,17 @@ public class DispatchPage extends javax.swing.JFrame {
     /**
      * Creates new form DispatchPage
      */
-    public DispatchPage(LoginPage login, ResultSet rs) {
+    
+    Connection conn = null;
+    Statement st = null;
+    ResultSet rs = null;
+    public DispatchPage(LoginPage login, ResultSet rs, Connection conn) {
         login.dispose();
         initComponents();
-        setSize(1270,730);
+        setSize(1270, 730);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        displayProducts();
     }
 
     /**
@@ -152,6 +160,16 @@ public class DispatchPage extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
+        IncomingOrdersTbl.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                IncomingOrdersTblMouseClicked(evt);
+            }
+        });
+        IncomingOrdersTbl.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                IncomingOrdersTblPropertyChange(evt);
+            }
+        });
         jScrollPane1.setViewportView(IncomingOrdersTbl);
 
         jPanel2.add(jScrollPane1);
@@ -226,6 +244,15 @@ public class DispatchPage extends javax.swing.JFrame {
         lp.signOut(this);
     }//GEN-LAST:event_btnSignOutActionPerformed
 
+    private void IncomingOrdersTblPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_IncomingOrdersTblPropertyChange
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IncomingOrdersTblPropertyChange
+
+    private void IncomingOrdersTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IncomingOrdersTblMouseClicked
+        System.out.println(IncomingOrdersTbl.getSelectedRow());
+        System.out.println(IncomingOrdersTbl.getAccessibleContext());
+    }//GEN-LAST:event_IncomingOrdersTblMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel DateLbl;
@@ -250,4 +277,8 @@ public class DispatchPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
+
+    private void displayProducts() {
+//        Resul
+    }
 }

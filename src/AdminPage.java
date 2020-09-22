@@ -1,5 +1,4 @@
 
-import com.sun.java.swing.plaf.windows.resources.windows;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
@@ -619,7 +618,7 @@ public class AdminPage extends javax.swing.JFrame {
 
         DispatchUser_Surame_Lbl.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         DispatchUser_Surame_Lbl.setForeground(new java.awt.Color(255, 255, 255));
-        DispatchUser_Surame_Lbl.setText("Surame:");
+        DispatchUser_Surame_Lbl.setText("Surname:");
         jPanel2.add(DispatchUser_Surame_Lbl);
         DispatchUser_Surame_Lbl.setBounds(750, 110, 60, 15);
 
@@ -1322,7 +1321,7 @@ public class AdminPage extends javax.swing.JFrame {
                         doneblinking = true;
                         ((Timer) e.getSource()).stop();
                     } else {
-                        button.setBackground(on ? Color.GREEN : null);
+                        button.setBackground(on ? Color.GREEN : original);
                         on = !on;
                         count++;
                     }
@@ -1389,8 +1388,6 @@ public class AdminPage extends javax.swing.JFrame {
         StoreUser_Surname_Tf.setText("");
         StoreUser_Username_Tf.setText("");
         StoreUser_Password_Pf.setText("");
-        showPassword_AddDispatchUser_Lbl.setIcon(getImageIcon(new File("src/Resources/show-password.png")));
-        StoreUser_Password_Pf.setEchoChar('*');
     }
 
     private void clearAddDispatchUserFields() {
@@ -1398,8 +1395,6 @@ public class AdminPage extends javax.swing.JFrame {
         DispatchUser_Surname_Tf.setText("");
         DispatchUser_Username_Tf.setText("");
         DispatchUser_Password_Pf.setText("");
-        showPassword_AddDispatchUser_Lbl.setIcon(getImageIcon(new File("src/Resources/show-password-white.png")));
-        DispatchUser_Password_Pf.setEchoChar('*');
     }
 
     private void clearAddAdminUserFields() {
@@ -1407,7 +1402,6 @@ public class AdminPage extends javax.swing.JFrame {
         AdminSurnameTf.setText("");
         AdminUsernameTf.setText("");
         AdminUser_Password_Pf.setText("");
-        showPassword_AddAdminUser_Lbl.setIcon(getImageIcon(new File("src/Resources/show-password.png")));
         AdminUser_Password_Pf.setEchoChar('*');
     }
 
