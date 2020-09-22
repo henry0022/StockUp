@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -164,6 +165,11 @@ public class AdminPage extends javax.swing.JFrame {
         MinLbl.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         MinLbl.setForeground(new java.awt.Color(255, 255, 255));
         MinLbl.setText("-");
+        MinLbl.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                MinLblMouseMoved(evt);
+            }
+        });
         MinLbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MinLblMouseClicked(evt);
@@ -175,6 +181,11 @@ public class AdminPage extends javax.swing.JFrame {
         ExitLbl.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         ExitLbl.setForeground(new java.awt.Color(255, 255, 255));
         ExitLbl.setText("x");
+        ExitLbl.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                ExitLblMouseMoved(evt);
+            }
+        });
         ExitLbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ExitLblMouseClicked(evt);
@@ -805,6 +816,14 @@ public class AdminPage extends javax.swing.JFrame {
         clearAddStoreFields();
         deleteStore(name);        // TODO add your handling code here:
     }//GEN-LAST:event_DeleteStoreBtnActionPerformed
+
+    private void ExitLblMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitLblMouseMoved
+        ExitLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_ExitLblMouseMoved
+
+    private void MinLblMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinLblMouseMoved
+        MinLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_MinLblMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

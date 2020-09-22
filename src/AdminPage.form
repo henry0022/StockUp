@@ -48,6 +48,7 @@
             <Property name="text" type="java.lang.String" value="-"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="MinLblMouseMoved"/>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="MinLblMouseClicked"/>
           </Events>
           <Constraints>
@@ -67,6 +68,7 @@
             <Property name="text" type="java.lang.String" value="x"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="ExitLblMouseMoved"/>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="ExitLblMouseClicked"/>
           </Events>
           <Constraints>

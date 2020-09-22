@@ -1,6 +1,7 @@
 
 import com.mysql.cj.jdbc.exceptions.SQLError;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -76,7 +77,7 @@ public class LoginPage extends javax.swing.JFrame {
 
         lblConnectStatus.setText("status");
         jPanel2.add(lblConnectStatus);
-        lblConnectStatus.setBounds(20, 10, 120, 16);
+        lblConnectStatus.setBounds(20, 10, 120, 14);
 
         jPanel1.setBackground(new java.awt.Color(133, 1, 41));
         jPanel1.setLayout(null);
@@ -117,7 +118,7 @@ public class LoginPage extends javax.swing.JFrame {
             }
         });
         jPanel1.add(PasswordTf);
-        PasswordTf.setBounds(100, 180, 140, 26);
+        PasswordTf.setBounds(100, 180, 140, 20);
 
         jPanel2.add(jPanel1);
         jPanel1.setBounds(380, 170, 510, 390);
@@ -125,24 +126,34 @@ public class LoginPage extends javax.swing.JFrame {
         ExitLbl.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         ExitLbl.setForeground(new java.awt.Color(255, 255, 255));
         ExitLbl.setText("x");
+        ExitLbl.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                ExitLblMouseMoved(evt);
+            }
+        });
         ExitLbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ExitLblMouseClicked(evt);
             }
         });
         jPanel2.add(ExitLbl);
-        ExitLbl.setBounds(1220, 0, 28, 58);
+        ExitLbl.setBounds(1220, 0, 27, 64);
 
         MinLbl.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         MinLbl.setForeground(new java.awt.Color(255, 255, 255));
         MinLbl.setText("-");
+        MinLbl.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                MinLblMouseMoved(evt);
+            }
+        });
         MinLbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MinLblMouseClicked(evt);
             }
         });
         jPanel2.add(MinLbl);
-        MinLbl.setBounds(1180, 0, 31, 58);
+        MinLbl.setBounds(1180, 0, 19, 64);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Lifestyle_Overlay.jpg"))); // NOI18N
         jPanel2.add(jLabel2);
@@ -157,6 +168,14 @@ public class LoginPage extends javax.swing.JFrame {
     private void PasswordTfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PasswordTfActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_PasswordTfActionPerformed
+
+    private void ExitLblMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitLblMouseMoved
+        ExitLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_ExitLblMouseMoved
+
+    private void MinLblMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinLblMouseMoved
+        MinLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_MinLblMouseMoved
 
     private void ExitLblMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_ExitLblMouseClicked
         System.exit(0);

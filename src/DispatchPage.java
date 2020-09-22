@@ -1,4 +1,5 @@
 
+import java.awt.Cursor;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -81,6 +82,11 @@ public class DispatchPage extends javax.swing.JFrame {
         ExitLbl.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         ExitLbl.setForeground(new java.awt.Color(255, 255, 255));
         ExitLbl.setText("x");
+        ExitLbl.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                ExitLblMouseMoved(evt);
+            }
+        });
         ExitLbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ExitLblMouseClicked(evt);
@@ -92,6 +98,11 @@ public class DispatchPage extends javax.swing.JFrame {
         MinLbl.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         MinLbl.setForeground(new java.awt.Color(255, 255, 255));
         MinLbl.setText("-");
+        MinLbl.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                MinLblMouseMoved(evt);
+            }
+        });
         MinLbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MinLblMouseClicked(evt);
@@ -299,6 +310,14 @@ public class DispatchPage extends javax.swing.JFrame {
         int lastRow = IncomingOrdersTbl.getRowCount();
         IncomingOrdersTbl.setRowSelectionInterval(lastRow-1, lastRow-1);
     }//GEN-LAST:event_LastBtnActionPerformed
+
+    private void ExitLblMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitLblMouseMoved
+        ExitLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_ExitLblMouseMoved
+
+    private void MinLblMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinLblMouseMoved
+        MinLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_MinLblMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

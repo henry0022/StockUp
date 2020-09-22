@@ -1,5 +1,6 @@
 
 import java.awt.Color;
+import java.awt.Cursor;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -92,24 +93,34 @@ public class StorePage extends javax.swing.JFrame {
         ExitLbl.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         ExitLbl.setForeground(new java.awt.Color(255, 255, 255));
         ExitLbl.setText("x");
+        ExitLbl.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                ExitLblMouseMoved(evt);
+            }
+        });
         ExitLbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 ExitLblMouseClicked(evt);
             }
         });
         jPanel1.add(ExitLbl);
-        ExitLbl.setBounds(1220, 0, 28, 58);
+        ExitLbl.setBounds(1220, 0, 27, 64);
 
         MinLbl.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         MinLbl.setForeground(new java.awt.Color(255, 255, 255));
         MinLbl.setText("-");
+        MinLbl.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                MinLblMouseMoved(evt);
+            }
+        });
         MinLbl.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MinLblMouseClicked(evt);
             }
         });
         jPanel1.add(MinLbl);
-        MinLbl.setBounds(1180, 0, 31, 58);
+        MinLbl.setBounds(1180, 0, 19, 64);
 
         jPanel2.setBackground(new java.awt.Color(133, 1, 41));
         jPanel2.setLayout(null);
@@ -207,7 +218,7 @@ public class StorePage extends javax.swing.JFrame {
             }
         });
         jPanel2.add(OutofStockRdio);
-        OutofStockRdio.setBounds(670, 430, 120, 23);
+        OutofStockRdio.setBounds(670, 430, 120, 25);
 
         LowonStockRdio.setBackground(new java.awt.Color(133, 1, 41));
         LowonStockRdio.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -224,7 +235,7 @@ public class StorePage extends javax.swing.JFrame {
             }
         });
         jPanel2.add(LowonStockRdio);
-        LowonStockRdio.setBounds(830, 430, 120, 23);
+        LowonStockRdio.setBounds(830, 430, 120, 25);
 
         UpdateOrderBtn.setBackground(new java.awt.Color(168, 153, 104));
         UpdateOrderBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -235,7 +246,7 @@ public class StorePage extends javax.swing.JFrame {
             }
         });
         jPanel2.add(UpdateOrderBtn);
-        UpdateOrderBtn.setBounds(730, 200, 170, 29);
+        UpdateOrderBtn.setBounds(730, 200, 170, 25);
 
         YourOrderLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         YourOrderLbl.setForeground(new java.awt.Color(255, 255, 255));
@@ -267,7 +278,7 @@ public class StorePage extends javax.swing.JFrame {
         jScrollPane2.setViewportView(YourOrdersTbl);
 
         jPanel2.add(jScrollPane2);
-        jScrollPane2.setBounds(580, 260, 454, 160);
+        jScrollPane2.setBounds(580, 260, 452, 160);
 
         ConfirmOrderBtn.setBackground(new java.awt.Color(168, 153, 104));
         ConfirmOrderBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -278,7 +289,7 @@ public class StorePage extends javax.swing.JFrame {
             }
         });
         jPanel2.add(ConfirmOrderBtn);
-        ConfirmOrderBtn.setBounds(740, 480, 140, 29);
+        ConfirmOrderBtn.setBounds(740, 480, 140, 25);
 
         AddtoOrderBtn.setBackground(new java.awt.Color(168, 153, 104));
         AddtoOrderBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -289,7 +300,7 @@ public class StorePage extends javax.swing.JFrame {
             }
         });
         jPanel2.add(AddtoOrderBtn);
-        AddtoOrderBtn.setBounds(730, 200, 140, 29);
+        AddtoOrderBtn.setBounds(730, 200, 140, 25);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(90, 100, 1090, 540);
@@ -402,6 +413,14 @@ public class StorePage extends javax.swing.JFrame {
 
         }
     }//GEN-LAST:event_ConfirmOrderBtnActionPerformed
+
+    private void ExitLblMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitLblMouseMoved
+        ExitLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_ExitLblMouseMoved
+
+    private void MinLblMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MinLblMouseMoved
+        MinLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_MinLblMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
