@@ -1,16 +1,19 @@
 
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
-import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Liam
@@ -20,10 +23,11 @@ public class DispatchPage extends javax.swing.JFrame {
     /**
      * Creates new form DispatchPage
      */
-    
     Connection conn = null;
     Statement st = null;
     ResultSet rs = null;
+    ArrayList<Object[]> orderList = new ArrayList();
+
     public DispatchPage(LoginPage login, ResultSet rs, Connection conn) {
         login.dispose();
         initComponents();
@@ -31,6 +35,13 @@ public class DispatchPage extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.setVisible(true);
         displayProducts();
+
+        try {
+            this.conn = conn;
+            displayOrders();
+        } catch (SQLException ex) {
+            Logger.getLogger(DispatchPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -58,10 +69,6 @@ public class DispatchPage extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         SelectedOrderTbl = new javax.swing.JTable();
         ProcessOrderBtn = new javax.swing.JButton();
-        StoreLbl = new javax.swing.JLabel();
-        DateLbl = new javax.swing.JLabel();
-        StoreTf = new javax.swing.JTextField();
-        DateTf = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -79,7 +86,7 @@ public class DispatchPage extends javax.swing.JFrame {
             }
         });
         jPanel1.add(ExitLbl);
-        ExitLbl.setBounds(1220, 0, 27, 64);
+        ExitLbl.setBounds(1220, 0, 28, 58);
 
         MinLbl.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         MinLbl.setForeground(new java.awt.Color(255, 255, 255));
@@ -90,7 +97,7 @@ public class DispatchPage extends javax.swing.JFrame {
             }
         });
         jPanel1.add(MinLbl);
-        MinLbl.setBounds(1180, 0, 19, 64);
+        MinLbl.setBounds(1180, 0, 31, 58);
 
         jPanel2.setBackground(new java.awt.Color(133, 1, 41));
         jPanel2.setLayout(null);
@@ -124,40 +131,47 @@ public class DispatchPage extends javax.swing.JFrame {
         PreviousBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         PreviousBtn.setText("Previous");
         jPanel2.add(PreviousBtn);
-        PreviousBtn.setBounds(180, 90, 100, 25);
+        PreviousBtn.setBounds(180, 90, 100, 29);
 
         NextBtn.setBackground(new java.awt.Color(168, 153, 104));
         NextBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         NextBtn.setText("Next");
         jPanel2.add(NextBtn);
-        NextBtn.setBounds(310, 90, 100, 25);
+        NextBtn.setBounds(310, 90, 100, 29);
 
         FirstBtn.setBackground(new java.awt.Color(168, 153, 104));
         FirstBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         FirstBtn.setText("First");
         jPanel2.add(FirstBtn);
-        FirstBtn.setBounds(180, 130, 100, 25);
+        FirstBtn.setBounds(180, 130, 100, 29);
 
         LastBtn.setBackground(new java.awt.Color(168, 153, 104));
         LastBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         LastBtn.setText("Last");
         jPanel2.add(LastBtn);
-        LastBtn.setBounds(310, 130, 100, 25);
+        LastBtn.setBounds(310, 130, 100, 29);
 
         IncomingOrdersTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Order Number", "Status"
+                "Order Number", "Date", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         IncomingOrdersTbl.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -194,29 +208,13 @@ public class DispatchPage extends javax.swing.JFrame {
         jScrollPane2.setViewportView(SelectedOrderTbl);
 
         jPanel2.add(jScrollPane2);
-        jScrollPane2.setBounds(582, 182, 440, 280);
+        jScrollPane2.setBounds(582, 92, 440, 370);
 
         ProcessOrderBtn.setBackground(new java.awt.Color(168, 153, 104));
         ProcessOrderBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ProcessOrderBtn.setText("Process Order");
         jPanel2.add(ProcessOrderBtn);
-        ProcessOrderBtn.setBounds(150, 480, 130, 25);
-
-        StoreLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        StoreLbl.setForeground(new java.awt.Color(255, 255, 255));
-        StoreLbl.setText("Store:");
-        jPanel2.add(StoreLbl);
-        StoreLbl.setBounds(650, 90, 50, 17);
-
-        DateLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        DateLbl.setForeground(new java.awt.Color(255, 255, 255));
-        DateLbl.setText("Date:");
-        jPanel2.add(DateLbl);
-        DateLbl.setBounds(650, 130, 50, 17);
-        jPanel2.add(StoreTf);
-        StoreTf.setBounds(710, 90, 260, 20);
-        jPanel2.add(DateTf);
-        DateTf.setBounds(710, 130, 260, 20);
+        ProcessOrderBtn.setBounds(230, 480, 130, 29);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(90, 100, 1090, 540);
@@ -255,8 +253,6 @@ public class DispatchPage extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel DateLbl;
-    private javax.swing.JTextField DateTf;
     private javax.swing.JLabel ExitLbl;
     private javax.swing.JButton FirstBtn;
     private javax.swing.JTable IncomingOrdersTbl;
@@ -267,8 +263,6 @@ public class DispatchPage extends javax.swing.JFrame {
     private javax.swing.JButton PreviousBtn;
     private javax.swing.JButton ProcessOrderBtn;
     private javax.swing.JTable SelectedOrderTbl;
-    private javax.swing.JLabel StoreLbl;
-    private javax.swing.JTextField StoreTf;
     private javax.swing.JButton btnSignOut;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
@@ -281,4 +275,46 @@ public class DispatchPage extends javax.swing.JFrame {
     private void displayProducts() {
 //        Resul
     }
+
+    private void displayOrders() throws SQLException {
+        st = conn.createStatement();
+        rs = st.executeQuery("SELECT * FROM Orders");
+        DefaultTableModel model = new DefaultTableModel(new Object[]{"Order ID", "Order Date", "Store", "Order Status"}, 0);
+
+        while (rs.next()) {
+            //System.out.println(a++);
+            //System.out.println(rs.getInt("order_ID") + "," + rs.getInt("order_Status"));
+
+            if (rs.getInt("order_Status") > 0) {
+                Object order[] = {rs.getInt("order_ID"), rs.getDate("order_Date"), getStoreName(rs.getInt("store_ID")), "Complete"};
+                orderList.add(order);
+            } else {
+                Object order[] = {rs.getInt("order_ID"), rs.getDate("order_Date"), getStoreName(rs.getInt("store_ID")), "Incomplete"};
+                orderList.add(order);
+            }
+            //System.out.println(orderList.size());
+            model.addRow(orderList.get(orderList.size() - 1));
+        }
+        IncomingOrdersTbl.setModel(model);
+    }
+
+    private String getStoreName(int ID) {
+        String store_Name = null;
+        Statement st_1; 
+        ResultSet rs_1;
+
+        try {
+            st_1 = conn.createStatement();
+            rs_1 = st_1.executeQuery("SELECT store_Name FROM Store WHERE store_ID =" + ID);
+            while (rs_1.next()) {
+                store_Name = rs_1.getString("store_Name");
+            }
+
+        } catch (SQLException e) {
+            Logger.getLogger(DispatchPage.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println("Here");
+        }
+        return store_Name;
+    }
+
 }

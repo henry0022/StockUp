@@ -30,8 +30,8 @@ public class StorePage extends javax.swing.JFrame {
     Connection conn = null;
     Statement st = null;
     ResultSet rs = null;
-    ArrayList<Object[]> productList = new ArrayList<Object[]>();
-    ArrayList<Object[]> newOrder = new ArrayList<Object[]>();
+    ArrayList<Object[]> productList = new ArrayList();
+    ArrayList<Object[]> newOrder = new ArrayList();
 
     public StorePage(LoginPage login, ResultSet rs, Connection conn) {
         login.dispose();

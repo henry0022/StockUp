@@ -24,7 +24,7 @@ public class LoginPage extends javax.swing.JFrame {
 
     String DB_URL = "jdbc:mysql://localhost:3306/stockup_db";
     String DB_Username = "root";
-    String DB_Password = "root";
+    String DB_Password = "";
     boolean serverFound = false;
     boolean DBFound = false;
 
@@ -37,7 +37,7 @@ public class LoginPage extends javax.swing.JFrame {
      */
     public LoginPage() {
         initComponents();
-        UsernameTf.setText("staffOne");
+        UsernameTf.setText("dispatchOne");
         PasswordTf.setText("P@ssword123");
         testConnection();
         setSize(1270, 730);
