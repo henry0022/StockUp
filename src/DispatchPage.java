@@ -278,7 +278,7 @@ public class DispatchPage extends javax.swing.JFrame {
 
     private void displayOrders() throws SQLException {
         st = conn.createStatement();
-        rs = st.executeQuery("SELECT * FROM Orders");
+        rs = st.executeQuery("SELECT * FROM Orders ORDER BY order_Status, order_Date");
         DefaultTableModel model = new DefaultTableModel(new Object[]{"Order ID", "Order Date", "Store", "Order Status"}, 0);
 
         while (rs.next()) {
