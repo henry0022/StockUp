@@ -1546,13 +1546,13 @@ public class AdminPage extends javax.swing.JFrame {
         st = conn.createStatement();
         rs = st.executeQuery("SELECT * FROM product");
         DefaultTableModel model = new DefaultTableModel(new Object[]{"Product name", "Units per crate", "Product ID"}, 0);
-        int a = 0;
+        //int a = 0;
         while (rs.next()) {
-            System.out.println(a++);
-            System.out.println(rs.getString("product_Name") + "," + rs.getInt("product_UnitsPerCrate") + "," + rs.getInt("product_Id"));
+            //System.out.println(a++);
+            //System.out.println(rs.getString("product_Name") + "," + rs.getInt("product_UnitsPerCrate") + "," + rs.getInt("product_Id"));
             Object product[] = {rs.getString("product_Name"), rs.getInt("product_UnitsPerCrate"), rs.getInt("product_Id")};
             productList.add(product);
-            System.out.println(productList.size());
+            //System.out.println(productList.size());
             model.addRow(productList.get(productList.size() - 1));
         }
         ProductTbl.setModel(model);
