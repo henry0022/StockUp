@@ -28,6 +28,8 @@ public class DispatchPage extends javax.swing.JFrame {
     Statement st = null;
     ResultSet rs = null;
     ArrayList<Object[]> orderList = new ArrayList();
+    ArrayList<Object[]> productList = new ArrayList();
+    int row;
 
     public DispatchPage(LoginPage login, ResultSet rs, Connection conn) {
         login.dispose();
@@ -35,8 +37,8 @@ public class DispatchPage extends javax.swing.JFrame {
         setSize(1270, 730);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-        displayProducts();
-        
+        //displayProducts();
+
         try {
             this.conn = conn;
             displayOrders();
@@ -44,6 +46,10 @@ public class DispatchPage extends javax.swing.JFrame {
             Logger.getLogger(DispatchPage.class.getName()).log(Level.SEVERE, null, ex);
         }
         IncomingOrdersTbl.setRowSelectionInterval(0, 0);
+
+        row = IncomingOrdersTbl.getSelectedRow();
+        displayProducts(row);
+
     }
 
     /**
@@ -284,21 +290,30 @@ public class DispatchPage extends javax.swing.JFrame {
     }//GEN-LAST:event_IncomingOrdersTblPropertyChange
 
     private void IncomingOrdersTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IncomingOrdersTblMouseClicked
-        System.out.println(IncomingOrdersTbl.getSelectedRow());
-        System.out.println(IncomingOrdersTbl.getAccessibleContext());
+        row = IncomingOrdersTbl.getSelectedRow();
+        displayProducts(row);
     }//GEN-LAST:event_IncomingOrdersTblMouseClicked
 
     private void PreviousBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreviousBtnActionPerformed
         if (IncomingOrdersTbl.getSelectedRow() != 0) {
             int prevRow = IncomingOrdersTbl.getSelectedRow() - 1;
             IncomingOrdersTbl.setRowSelectionInterval(prevRow, prevRow);
+
+            row = IncomingOrdersTbl.getSelectedRow();
+            displayProducts(row);
         } else {
             IncomingOrdersTbl.setRowSelectionInterval(0, 0);
+
+            row = IncomingOrdersTbl.getSelectedRow();
+            displayProducts(row);
         }
     }//GEN-LAST:event_PreviousBtnActionPerformed
 
     private void FirstBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FirstBtnActionPerformed
         IncomingOrdersTbl.setRowSelectionInterval(0, 0);
+
+        row = IncomingOrdersTbl.getSelectedRow();
+        displayProducts(row);
     }//GEN-LAST:event_FirstBtnActionPerformed
 
     private void NextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NextBtnActionPerformed
@@ -306,14 +321,23 @@ public class DispatchPage extends javax.swing.JFrame {
         if (IncomingOrdersTbl.getSelectedRow() != lastRow) {
             int nextRow = IncomingOrdersTbl.getSelectedRow() + 1;
             IncomingOrdersTbl.setRowSelectionInterval(nextRow, nextRow);
+
+            row = IncomingOrdersTbl.getSelectedRow();
+            displayProducts(row);
         } else {
-            IncomingOrdersTbl.setRowSelectionInterval(lastRow-1, lastRow-1);
+            IncomingOrdersTbl.setRowSelectionInterval(lastRow - 1, lastRow - 1);
+
+            row = IncomingOrdersTbl.getSelectedRow();
+            displayProducts(row);
         }
     }//GEN-LAST:event_NextBtnActionPerformed
 
     private void LastBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LastBtnActionPerformed
         int lastRow = IncomingOrdersTbl.getRowCount();
-        IncomingOrdersTbl.setRowSelectionInterval(lastRow-1, lastRow-1);
+        IncomingOrdersTbl.setRowSelectionInterval(lastRow - 1, lastRow - 1);
+
+        row = IncomingOrdersTbl.getSelectedRow();
+        displayProducts(row);
     }//GEN-LAST:event_LastBtnActionPerformed
 
     private void ExitLblMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitLblMouseMoved
@@ -349,8 +373,24 @@ public class DispatchPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 
-    private void displayProducts() {
-//        Resul
+    private void displayProducts(int row) {
+        //System.out.println("selected row: " + row);
+        int order_ID = Integer.parseInt(IncomingOrdersTbl.getValueAt(row, 0) + "");
+        //System.out.println(order_ID);
+        try {
+            Statement st_2 = conn.createStatement();
+            ResultSet rs_2 = st_2.executeQuery("SELECT * FROM OrderDetails WHERE order_ID=" + order_ID);
+            DefaultTableModel model = new DefaultTableModel(new Object[]{"Product", "Number of Crates"}, 0);
+
+            while (rs_2.next()) {
+                Object product[] = {getProductName(rs_2.getInt("product_ID")), rs_2.getInt("od_CratesOrdered")};
+                productList.add(product);
+                model.addRow(productList.get(productList.size() - 1));
+            }
+            SelectedOrderTbl.setModel(model);
+        } catch (SQLException e) {
+            Logger.getLogger(DispatchPage.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
 
     private void displayOrders() throws SQLException {
@@ -377,7 +417,7 @@ public class DispatchPage extends javax.swing.JFrame {
 
     private String getStoreName(int ID) {
         String store_Name = null;
-        Statement st_1; 
+        Statement st_1;
         ResultSet rs_1;
 
         try {
@@ -389,9 +429,28 @@ public class DispatchPage extends javax.swing.JFrame {
 
         } catch (SQLException e) {
             Logger.getLogger(DispatchPage.class.getName()).log(Level.SEVERE, null, e);
-            System.out.println("Here");
+            //System.out.println("Here");
         }
         return store_Name;
+    }
+
+    private String getProductName(int ID) {
+        String product_Name = null;
+        Statement st_3;
+        ResultSet rs_3;
+
+        try {
+            st_3 = conn.createStatement();
+            rs_3 = st_3.executeQuery("SELECT product_Name FROM Product WHERE product_ID =" + ID);
+            while (rs_3.next()) {
+                product_Name = rs_3.getString("product_Name");
+            }
+
+        } catch (SQLException e) {
+            Logger.getLogger(DispatchPage.class.getName()).log(Level.SEVERE, null, e);
+            //System.out.println("Here");
+        }
+        return product_Name;
     }
 
 }
