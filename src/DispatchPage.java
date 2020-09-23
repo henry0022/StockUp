@@ -1,5 +1,8 @@
 
 import java.awt.Cursor;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,6 +13,7 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -77,7 +81,8 @@ public class DispatchPage extends javax.swing.JFrame {
         IncomingOrdersTbl = new javax.swing.JTable();
         jScrollPane2 = new javax.swing.JScrollPane();
         SelectedOrderTbl = new javax.swing.JTable();
-        ProcessOrderBtn = new javax.swing.JButton();
+        ExportToExcelBtn = new javax.swing.JButton();
+        ProcessOrderBtn1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -254,16 +259,27 @@ public class DispatchPage extends javax.swing.JFrame {
         jPanel2.add(jScrollPane2);
         jScrollPane2.setBounds(582, 92, 440, 370);
 
-        ProcessOrderBtn.setBackground(new java.awt.Color(168, 153, 104));
-        ProcessOrderBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ProcessOrderBtn.setText("Process Order");
-        ProcessOrderBtn.addActionListener(new java.awt.event.ActionListener() {
+        ExportToExcelBtn.setBackground(new java.awt.Color(168, 153, 104));
+        ExportToExcelBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ExportToExcelBtn.setText("Export To Excel");
+        ExportToExcelBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ProcessOrderBtnActionPerformed(evt);
+                ExportToExcelBtnActionPerformed(evt);
             }
         });
-        jPanel2.add(ProcessOrderBtn);
-        ProcessOrderBtn.setBounds(230, 480, 130, 29);
+        jPanel2.add(ExportToExcelBtn);
+        ExportToExcelBtn.setBounds(310, 480, 140, 29);
+
+        ProcessOrderBtn1.setBackground(new java.awt.Color(168, 153, 104));
+        ProcessOrderBtn1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ProcessOrderBtn1.setText("Process Order");
+        ProcessOrderBtn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProcessOrderBtn1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(ProcessOrderBtn1);
+        ProcessOrderBtn1.setBounds(150, 480, 130, 29);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(90, 100, 1090, 540);
@@ -358,14 +374,21 @@ public class DispatchPage extends javax.swing.JFrame {
         btnSignOut.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }//GEN-LAST:event_btnSignOutMouseMoved
 
-    private void ProcessOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProcessOrderBtnActionPerformed
+    private void ExportToExcelBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExportToExcelBtnActionPerformed
         row = IncomingOrdersTbl.getSelectedRow();
-        processOrder(row);
-    }//GEN-LAST:event_ProcessOrderBtnActionPerformed
+        toExcel(row);
+        JOptionPane.showMessageDialog(null, "File created");
+
+    }//GEN-LAST:event_ExportToExcelBtnActionPerformed
+
+    private void ProcessOrderBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProcessOrderBtn1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ProcessOrderBtn1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ExitLbl;
+    private javax.swing.JButton ExportToExcelBtn;
     private javax.swing.JButton FirstBtn;
     private javax.swing.JTable IncomingOrdersTbl;
     private javax.swing.JButton LastBtn;
@@ -373,7 +396,7 @@ public class DispatchPage extends javax.swing.JFrame {
     private javax.swing.JButton NextBtn;
     private javax.swing.JLabel OrdersLbl;
     private javax.swing.JButton PreviousBtn;
-    private javax.swing.JButton ProcessOrderBtn;
+    private javax.swing.JButton ProcessOrderBtn1;
     private javax.swing.JTable SelectedOrderTbl;
     private javax.swing.JButton btnSignOut;
     private javax.swing.JLabel jLabel1;
@@ -466,15 +489,44 @@ public class DispatchPage extends javax.swing.JFrame {
 
     private void processOrder(int row) {
         int order_ID = Integer.parseInt(IncomingOrdersTbl.getValueAt(row, 0) + "");
-        try{
+        try {
             st = conn.createStatement();
-            st.executeUpdate("UPDATE Orders SET order_Status = 1 WHERE order_ID = "+order_ID);
-            JOptionPane.showMessageDialog(null, "Order "+order_ID+"processed!");
+            st.executeUpdate("UPDATE Orders SET order_Status = 1 WHERE order_ID = " + order_ID);
+            JOptionPane.showMessageDialog(null, "Order " + order_ID + " processed!");
             displayOrders();
-        }catch(SQLException e){
+        } catch (SQLException e) {
             Logger.getLogger(DispatchPage.class.getName()).log(Level.SEVERE, null, e);
         }
-        
+
     }
 
+    private void toExcel(int row) {
+        int order_ID = Integer.parseInt(IncomingOrdersTbl.getValueAt(row, 0) + "");
+        String file = System.getProperty("user.home")+("/Desktop/Order "+order_ID+".tsv");
+        
+        
+        //File file = new File("Order "+order_ID);
+        try {
+            TableModel model = SelectedOrderTbl.getModel();
+            FileWriter excel = new FileWriter(file);
+
+            for (int i = 0; i < model.getColumnCount(); i++) {
+                excel.write(model.getColumnName(i) + "\t");
+            }
+
+            excel.write("\n");
+
+            for (int i = 0; i < model.getRowCount(); i++) {
+                for (int j = 0; j < model.getColumnCount(); j++) {
+                    excel.write(model.getValueAt(i, j).toString() + "\t");
+                }
+                excel.write("\n");
+            }
+
+            excel.close();
+
+        } catch (IOException e) {
+            System.out.println(e);
+        }
+    }
 }
