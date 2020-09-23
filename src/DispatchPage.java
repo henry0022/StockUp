@@ -502,7 +502,7 @@ public class DispatchPage extends javax.swing.JFrame {
 
     private void toExcel(int row) {
         int order_ID = Integer.parseInt(IncomingOrdersTbl.getValueAt(row, 0) + "");
-        String file = System.getProperty("user.home")+("/Desktop/Order "+order_ID+".tsv");
+        String file = System.getProperty("user.home")+("/Desktop/Order "+order_ID+".csv");
         
         
         //File file = new File("Order "+order_ID);
@@ -511,14 +511,14 @@ public class DispatchPage extends javax.swing.JFrame {
             FileWriter excel = new FileWriter(file);
 
             for (int i = 0; i < model.getColumnCount(); i++) {
-                excel.write(model.getColumnName(i) + "\t");
+                excel.write(model.getColumnName(i) + ",");
             }
 
             excel.write("\n");
 
             for (int i = 0; i < model.getRowCount(); i++) {
                 for (int j = 0; j < model.getColumnCount(); j++) {
-                    excel.write(model.getValueAt(i, j).toString() + "\t");
+                    excel.write(model.getValueAt(i, j).toString() + ",");
                 }
                 excel.write("\n");
             }
