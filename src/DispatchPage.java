@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /*
@@ -99,7 +100,7 @@ public class DispatchPage extends javax.swing.JFrame {
             }
         });
         jPanel1.add(ExitLbl);
-        ExitLbl.setBounds(1220, 0, 27, 64);
+        ExitLbl.setBounds(1220, 0, 28, 58);
 
         MinLbl.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         MinLbl.setForeground(new java.awt.Color(255, 255, 255));
@@ -115,7 +116,7 @@ public class DispatchPage extends javax.swing.JFrame {
             }
         });
         jPanel1.add(MinLbl);
-        MinLbl.setBounds(1180, 0, 19, 64);
+        MinLbl.setBounds(1180, 0, 31, 58);
 
         jPanel2.setBackground(new java.awt.Color(133, 1, 41));
         jPanel2.setLayout(null);
@@ -159,7 +160,7 @@ public class DispatchPage extends javax.swing.JFrame {
             }
         });
         jPanel2.add(PreviousBtn);
-        PreviousBtn.setBounds(180, 90, 100, 25);
+        PreviousBtn.setBounds(180, 90, 100, 29);
 
         NextBtn.setBackground(new java.awt.Color(168, 153, 104));
         NextBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -170,7 +171,7 @@ public class DispatchPage extends javax.swing.JFrame {
             }
         });
         jPanel2.add(NextBtn);
-        NextBtn.setBounds(310, 90, 100, 25);
+        NextBtn.setBounds(310, 90, 100, 29);
 
         FirstBtn.setBackground(new java.awt.Color(168, 153, 104));
         FirstBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -181,7 +182,7 @@ public class DispatchPage extends javax.swing.JFrame {
             }
         });
         jPanel2.add(FirstBtn);
-        FirstBtn.setBounds(180, 130, 100, 25);
+        FirstBtn.setBounds(180, 130, 100, 29);
 
         LastBtn.setBackground(new java.awt.Color(168, 153, 104));
         LastBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -192,7 +193,7 @@ public class DispatchPage extends javax.swing.JFrame {
             }
         });
         jPanel2.add(LastBtn);
-        LastBtn.setBounds(310, 130, 100, 25);
+        LastBtn.setBounds(310, 130, 100, 29);
 
         IncomingOrdersTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -256,8 +257,13 @@ public class DispatchPage extends javax.swing.JFrame {
         ProcessOrderBtn.setBackground(new java.awt.Color(168, 153, 104));
         ProcessOrderBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ProcessOrderBtn.setText("Process Order");
+        ProcessOrderBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ProcessOrderBtnActionPerformed(evt);
+            }
+        });
         jPanel2.add(ProcessOrderBtn);
-        ProcessOrderBtn.setBounds(230, 480, 130, 25);
+        ProcessOrderBtn.setBounds(230, 480, 130, 29);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(90, 100, 1090, 540);
@@ -351,6 +357,11 @@ public class DispatchPage extends javax.swing.JFrame {
     private void btnSignOutMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSignOutMouseMoved
         btnSignOut.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }//GEN-LAST:event_btnSignOutMouseMoved
+
+    private void ProcessOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProcessOrderBtnActionPerformed
+        row = IncomingOrdersTbl.getSelectedRow();
+        processOrder(row);
+    }//GEN-LAST:event_ProcessOrderBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -451,6 +462,19 @@ public class DispatchPage extends javax.swing.JFrame {
             //System.out.println("Here");
         }
         return product_Name;
+    }
+
+    private void processOrder(int row) {
+        int order_ID = Integer.parseInt(IncomingOrdersTbl.getValueAt(row, 0) + "");
+        try{
+            st = conn.createStatement();
+            st.executeUpdate("UPDATE Orders SET order_Status = 1 WHERE order_ID = "+order_ID);
+            JOptionPane.showMessageDialog(null, "Order "+order_ID+"processed!");
+            displayOrders();
+        }catch(SQLException e){
+            Logger.getLogger(DispatchPage.class.getName()).log(Level.SEVERE, null, e);
+        }
+        
     }
 
 }
