@@ -77,30 +77,7 @@ public class AdminPage extends javax.swing.JFrame {
         MinLbl = new javax.swing.JLabel();
         ExitLbl = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel3 = new javax.swing.JPanel();
-        StoreNameLbl = new javax.swing.JLabel();
-        ContactNumberLbl = new javax.swing.JLabel();
-        StoreAddressLbl = new javax.swing.JLabel();
-        StoreNameTf = new javax.swing.JTextField();
-        ContactNumberTf = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        StoreAddressTa = new javax.swing.JTextArea();
-        AddStoreBtn = new javax.swing.JButton();
-        DeleteStoreBtn = new javax.swing.JButton();
-        warning_Store_Name_Lbl = new javax.swing.JLabel();
-        warning_Store_Number_Lbl = new javax.swing.JLabel();
-        warning_Store_Address_Lbl = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
-        ProductNameLbl = new javax.swing.JLabel();
-        ProductNameTf = new javax.swing.JTextField();
-        UnitsPerCrateTf = new javax.swing.JTextField();
-        AddProductBtn = new javax.swing.JButton();
-        DeleteProductBtn = new javax.swing.JButton();
-        lblWarningUnits = new javax.swing.JLabel();
-        UnitsPerCrateLbl1 = new javax.swing.JLabel();
-        lblWarningProduct = new javax.swing.JLabel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        ProductTbl = new javax.swing.JTable();
+        jPanel7 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         DispatchUserLbl = new javax.swing.JLabel();
@@ -156,7 +133,30 @@ public class AdminPage extends javax.swing.JFrame {
         password_warning_lbl8 = new javax.swing.JLabel();
         password_warning_lbl9 = new javax.swing.JLabel();
         showPassword_AddAdminUser_Lbl = new javax.swing.JLabel();
-        jPanel7 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        StoreNameLbl = new javax.swing.JLabel();
+        ContactNumberLbl = new javax.swing.JLabel();
+        StoreAddressLbl = new javax.swing.JLabel();
+        StoreNameTf = new javax.swing.JTextField();
+        ContactNumberTf = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        StoreAddressTa = new javax.swing.JTextArea();
+        AddStoreBtn = new javax.swing.JButton();
+        DeleteStoreBtn = new javax.swing.JButton();
+        warning_Store_Name_Lbl = new javax.swing.JLabel();
+        warning_Store_Number_Lbl = new javax.swing.JLabel();
+        warning_Store_Address_Lbl = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        ProductNameLbl = new javax.swing.JLabel();
+        ProductNameTf = new javax.swing.JTextField();
+        UnitsPerCrateTf = new javax.swing.JTextField();
+        AddProductBtn = new javax.swing.JButton();
+        DeleteProductBtn = new javax.swing.JButton();
+        lblWarningUnits = new javax.swing.JLabel();
+        UnitsPerCrateLbl1 = new javax.swing.JLabel();
+        lblWarningProduct = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        ProductTbl = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
         AdminNameLbl = new javax.swing.JLabel();
         btnSignOut = new javax.swing.JButton();
@@ -200,147 +200,9 @@ public class AdminPage extends javax.swing.JFrame {
         jPanel1.add(ExitLbl);
         ExitLbl.setBounds(1220, 0, 27, 64);
 
-        jPanel3.setBackground(new java.awt.Color(133, 1, 41));
-        jPanel3.setLayout(null);
-
-        StoreNameLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        StoreNameLbl.setForeground(new java.awt.Color(255, 255, 255));
-        StoreNameLbl.setText("Store name:");
-        jPanel3.add(StoreNameLbl);
-        StoreNameLbl.setBounds(260, 77, 100, 30);
-
-        ContactNumberLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ContactNumberLbl.setForeground(new java.awt.Color(255, 255, 255));
-        ContactNumberLbl.setText("Contact number:");
-        jPanel3.add(ContactNumberLbl);
-        ContactNumberLbl.setBounds(230, 120, 118, 30);
-
-        StoreAddressLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        StoreAddressLbl.setForeground(new java.awt.Color(255, 255, 255));
-        StoreAddressLbl.setText("Store address:");
-        jPanel3.add(StoreAddressLbl);
-        StoreAddressLbl.setBounds(250, 160, 110, 30);
-        jPanel3.add(StoreNameTf);
-        StoreNameTf.setBounds(370, 80, 310, 30);
-        jPanel3.add(ContactNumberTf);
-        ContactNumberTf.setBounds(370, 120, 310, 30);
-
-        StoreAddressTa.setColumns(20);
-        StoreAddressTa.setRows(5);
-        jScrollPane1.setViewportView(StoreAddressTa);
-
-        jPanel3.add(jScrollPane1);
-        jScrollPane1.setBounds(370, 160, 310, 180);
-
-        AddStoreBtn.setBackground(new java.awt.Color(168, 153, 104));
-        AddStoreBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        AddStoreBtn.setText("Add");
-        AddStoreBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddStoreBtnActionPerformed(evt);
-            }
-        });
-        jPanel3.add(AddStoreBtn);
-        AddStoreBtn.setBounds(390, 400, 120, 30);
-
-        DeleteStoreBtn.setBackground(new java.awt.Color(168, 153, 104));
-        DeleteStoreBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        DeleteStoreBtn.setText("Delete");
-        DeleteStoreBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DeleteStoreBtnActionPerformed(evt);
-            }
-        });
-        jPanel3.add(DeleteStoreBtn);
-        DeleteStoreBtn.setBounds(540, 400, 110, 30);
-
-        warning_Store_Name_Lbl.setForeground(new java.awt.Color(255, 0, 0));
-        warning_Store_Name_Lbl.setText("warning");
-        jPanel3.add(warning_Store_Name_Lbl);
-        warning_Store_Name_Lbl.setBounds(690, 80, 220, 30);
-
-        warning_Store_Number_Lbl.setForeground(new java.awt.Color(255, 0, 0));
-        warning_Store_Number_Lbl.setText("warning");
-        jPanel3.add(warning_Store_Number_Lbl);
-        warning_Store_Number_Lbl.setBounds(690, 120, 220, 30);
-
-        warning_Store_Address_Lbl.setForeground(new java.awt.Color(255, 0, 0));
-        warning_Store_Address_Lbl.setText("warning");
-        jPanel3.add(warning_Store_Address_Lbl);
-        warning_Store_Address_Lbl.setBounds(690, 160, 220, 30);
-
-        jTabbedPane1.addTab("Add/Delete Store", jPanel3);
-
-        jPanel4.setBackground(new java.awt.Color(133, 1, 41));
-        jPanel4.setLayout(null);
-
-        ProductNameLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        ProductNameLbl.setForeground(new java.awt.Color(255, 255, 255));
-        ProductNameLbl.setText("Product name:");
-        jPanel4.add(ProductNameLbl);
-        ProductNameLbl.setBounds(540, 150, 110, 30);
-        jPanel4.add(ProductNameTf);
-        ProductNameTf.setBounds(650, 150, 220, 30);
-        jPanel4.add(UnitsPerCrateTf);
-        UnitsPerCrateTf.setBounds(650, 200, 220, 30);
-
-        AddProductBtn.setBackground(new java.awt.Color(168, 153, 104));
-        AddProductBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        AddProductBtn.setText("Add");
-        AddProductBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddProductBtnActionPerformed(evt);
-            }
-        });
-        jPanel4.add(AddProductBtn);
-        AddProductBtn.setBounds(710, 240, 100, 30);
-
-        DeleteProductBtn.setBackground(new java.awt.Color(168, 153, 104));
-        DeleteProductBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        DeleteProductBtn.setText("Delete");
-        DeleteProductBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DeleteProductBtnActionPerformed(evt);
-            }
-        });
-        jPanel4.add(DeleteProductBtn);
-        DeleteProductBtn.setBounds(210, 450, 100, 30);
-
-        lblWarningUnits.setBackground(new java.awt.Color(255, 153, 51));
-        lblWarningUnits.setForeground(new java.awt.Color(255, 0, 0));
-        lblWarningUnits.setText("warning");
-        jPanel4.add(lblWarningUnits);
-        lblWarningUnits.setBounds(880, 210, 210, 14);
-
-        UnitsPerCrateLbl1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        UnitsPerCrateLbl1.setForeground(new java.awt.Color(255, 255, 255));
-        UnitsPerCrateLbl1.setText("Units per crate:");
-        jPanel4.add(UnitsPerCrateLbl1);
-        UnitsPerCrateLbl1.setBounds(530, 200, 120, 30);
-
-        lblWarningProduct.setBackground(new java.awt.Color(255, 153, 51));
-        lblWarningProduct.setForeground(new java.awt.Color(255, 0, 0));
-        lblWarningProduct.setText("warning");
-        jPanel4.add(lblWarningProduct);
-        lblWarningProduct.setBounds(880, 160, 210, 14);
-
-        ProductTbl.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPane2.setViewportView(ProductTbl);
-
-        jPanel4.add(jScrollPane2);
-        jScrollPane2.setBounds(40, 30, 452, 404);
-
-        jTabbedPane1.addTab("Add/Delete Product", jPanel4);
+        jPanel7.setBackground(new java.awt.Color(133, 1, 41));
+        jPanel7.setLayout(null);
+        jTabbedPane1.addTab("Orders", jPanel7);
 
         jPanel2.setBackground(new java.awt.Color(133, 1, 41));
         jPanel2.setLayout(null);
@@ -691,8 +553,147 @@ public class AdminPage extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Add/Delete User", jPanel2);
 
-        jPanel7.setBackground(new java.awt.Color(133, 1, 41));
-        jTabbedPane1.addTab("Orders", jPanel7);
+        jPanel3.setBackground(new java.awt.Color(133, 1, 41));
+        jPanel3.setLayout(null);
+
+        StoreNameLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        StoreNameLbl.setForeground(new java.awt.Color(255, 255, 255));
+        StoreNameLbl.setText("Store name:");
+        jPanel3.add(StoreNameLbl);
+        StoreNameLbl.setBounds(260, 77, 100, 30);
+
+        ContactNumberLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ContactNumberLbl.setForeground(new java.awt.Color(255, 255, 255));
+        ContactNumberLbl.setText("Contact number:");
+        jPanel3.add(ContactNumberLbl);
+        ContactNumberLbl.setBounds(230, 120, 118, 30);
+
+        StoreAddressLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        StoreAddressLbl.setForeground(new java.awt.Color(255, 255, 255));
+        StoreAddressLbl.setText("Store address:");
+        jPanel3.add(StoreAddressLbl);
+        StoreAddressLbl.setBounds(250, 160, 110, 30);
+        jPanel3.add(StoreNameTf);
+        StoreNameTf.setBounds(370, 80, 310, 30);
+        jPanel3.add(ContactNumberTf);
+        ContactNumberTf.setBounds(370, 120, 310, 30);
+
+        StoreAddressTa.setColumns(20);
+        StoreAddressTa.setRows(5);
+        jScrollPane1.setViewportView(StoreAddressTa);
+
+        jPanel3.add(jScrollPane1);
+        jScrollPane1.setBounds(370, 160, 310, 180);
+
+        AddStoreBtn.setBackground(new java.awt.Color(168, 153, 104));
+        AddStoreBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        AddStoreBtn.setText("Add");
+        AddStoreBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddStoreBtnActionPerformed(evt);
+            }
+        });
+        jPanel3.add(AddStoreBtn);
+        AddStoreBtn.setBounds(390, 400, 120, 30);
+
+        DeleteStoreBtn.setBackground(new java.awt.Color(168, 153, 104));
+        DeleteStoreBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        DeleteStoreBtn.setText("Delete");
+        DeleteStoreBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteStoreBtnActionPerformed(evt);
+            }
+        });
+        jPanel3.add(DeleteStoreBtn);
+        DeleteStoreBtn.setBounds(540, 400, 110, 30);
+
+        warning_Store_Name_Lbl.setForeground(new java.awt.Color(255, 0, 0));
+        warning_Store_Name_Lbl.setText("warning");
+        jPanel3.add(warning_Store_Name_Lbl);
+        warning_Store_Name_Lbl.setBounds(690, 80, 220, 30);
+
+        warning_Store_Number_Lbl.setForeground(new java.awt.Color(255, 0, 0));
+        warning_Store_Number_Lbl.setText("warning");
+        jPanel3.add(warning_Store_Number_Lbl);
+        warning_Store_Number_Lbl.setBounds(690, 120, 220, 30);
+
+        warning_Store_Address_Lbl.setForeground(new java.awt.Color(255, 0, 0));
+        warning_Store_Address_Lbl.setText("warning");
+        jPanel3.add(warning_Store_Address_Lbl);
+        warning_Store_Address_Lbl.setBounds(690, 160, 220, 30);
+
+        jTabbedPane1.addTab("Add/Delete Store", jPanel3);
+
+        jPanel4.setBackground(new java.awt.Color(133, 1, 41));
+        jPanel4.setLayout(null);
+
+        ProductNameLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        ProductNameLbl.setForeground(new java.awt.Color(255, 255, 255));
+        ProductNameLbl.setText("Product name:");
+        jPanel4.add(ProductNameLbl);
+        ProductNameLbl.setBounds(540, 150, 110, 30);
+        jPanel4.add(ProductNameTf);
+        ProductNameTf.setBounds(650, 150, 220, 30);
+        jPanel4.add(UnitsPerCrateTf);
+        UnitsPerCrateTf.setBounds(650, 200, 220, 30);
+
+        AddProductBtn.setBackground(new java.awt.Color(168, 153, 104));
+        AddProductBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        AddProductBtn.setText("Add");
+        AddProductBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddProductBtnActionPerformed(evt);
+            }
+        });
+        jPanel4.add(AddProductBtn);
+        AddProductBtn.setBounds(710, 240, 100, 30);
+
+        DeleteProductBtn.setBackground(new java.awt.Color(168, 153, 104));
+        DeleteProductBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        DeleteProductBtn.setText("Delete");
+        DeleteProductBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeleteProductBtnActionPerformed(evt);
+            }
+        });
+        jPanel4.add(DeleteProductBtn);
+        DeleteProductBtn.setBounds(210, 450, 100, 30);
+
+        lblWarningUnits.setBackground(new java.awt.Color(255, 153, 51));
+        lblWarningUnits.setForeground(new java.awt.Color(255, 0, 0));
+        lblWarningUnits.setText("warning");
+        jPanel4.add(lblWarningUnits);
+        lblWarningUnits.setBounds(880, 210, 210, 14);
+
+        UnitsPerCrateLbl1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        UnitsPerCrateLbl1.setForeground(new java.awt.Color(255, 255, 255));
+        UnitsPerCrateLbl1.setText("Units per crate:");
+        jPanel4.add(UnitsPerCrateLbl1);
+        UnitsPerCrateLbl1.setBounds(530, 200, 120, 30);
+
+        lblWarningProduct.setBackground(new java.awt.Color(255, 153, 51));
+        lblWarningProduct.setForeground(new java.awt.Color(255, 0, 0));
+        lblWarningProduct.setText("warning");
+        jPanel4.add(lblWarningProduct);
+        lblWarningProduct.setBounds(880, 160, 210, 14);
+
+        ProductTbl.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(ProductTbl);
+
+        jPanel4.add(jScrollPane2);
+        jScrollPane2.setBounds(40, 30, 452, 404);
+
+        jTabbedPane1.addTab("Add/Delete Product", jPanel4);
 
         jPanel1.add(jTabbedPane1);
         jTabbedPane1.setBounds(120, 130, 1040, 550);
