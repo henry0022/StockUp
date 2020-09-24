@@ -24,6 +24,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Liam
  * @author Henry
+ * @author Kyle
  */
 public class StorePage extends javax.swing.JFrame {
 

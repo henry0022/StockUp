@@ -32,6 +32,8 @@ import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Liam
+ * @author Henry
+ * @author Kyle
  */
 public class AdminPage extends javax.swing.JFrame {
 
