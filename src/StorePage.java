@@ -72,7 +72,7 @@ public class StorePage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        storePageButtonGroup = new javax.swing.ButtonGroup();
+        //storePageButtonGroup = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         ExitLbl = new javax.swing.JLabel();
         MinLbl = new javax.swing.JLabel();
