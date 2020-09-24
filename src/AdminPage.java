@@ -787,10 +787,13 @@ public class AdminPage extends javax.swing.JFrame {
 
     private void StoreUserDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StoreUserDeleteBtnActionPerformed
         String u_name = StoreUser_Username_Tf.getText();
-        clearAddAdminUserFields();
-        clearAddDispatchUserFields();
-        clearAddStoreUserFields();
-        deleteStoreUser(u_name);
+        int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete " + u_name);
+        if (confirm == 0) {
+            clearAddAdminUserFields();
+            clearAddDispatchUserFields();
+            clearAddStoreUserFields();
+            deleteStoreUser(u_name);
+        }
     }//GEN-LAST:event_StoreUserDeleteBtnActionPerformed
 
     private void DispatchUserAddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DispatchUserAddBtnActionPerformed
@@ -799,10 +802,13 @@ public class AdminPage extends javax.swing.JFrame {
 
     private void DispatchUserDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DispatchUserDeleteBtnActionPerformed
         String u_name = DispatchUser_Username_Tf.getText();
-        clearAddAdminUserFields();
-        clearAddDispatchUserFields();
-        clearAddStoreUserFields();
-        deleteDispatchUser(u_name);
+        int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete " + u_name);
+        if (confirm == 0) {
+            clearAddAdminUserFields();
+            clearAddDispatchUserFields();
+            clearAddStoreUserFields();
+            deleteDispatchUser(u_name);
+        }
     }//GEN-LAST:event_DispatchUserDeleteBtnActionPerformed
 
     private void showPassword_AddStoreUser_LblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showPassword_AddStoreUser_LblMouseClicked
@@ -840,14 +846,21 @@ public class AdminPage extends javax.swing.JFrame {
 
     private void AdminUserDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminUserDeleteBtnActionPerformed
         String u_name = AdminUsernameTf.getText();
-        clearAddAdminUserFields();
-        clearAddDispatchUserFields();
-        clearAddStoreUserFields();
-        deleteAdminUser(u_name);
+        int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete " + u_name);
+        if (confirm == 0) {
+            clearAddAdminUserFields();
+            clearAddDispatchUserFields();
+            clearAddStoreUserFields();
+            deleteAdminUser(u_name);
+        }
     }//GEN-LAST:event_AdminUserDeleteBtnActionPerformed
 
     private void DeleteProductBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteProductBtnActionPerformed
-        deleteProduct();
+        String name = ProductTbl.getValueAt(ProductTbl.getSelectedRow(), 0) + "";
+        int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete " + name);
+        if (confirm == 0) {
+            deleteProduct();
+        }
         try {
             displayTable();
         } catch (SQLException e) {
