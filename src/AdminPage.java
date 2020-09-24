@@ -1331,11 +1331,19 @@ public class AdminPage extends javax.swing.JFrame {
     private boolean usernameExists(String table, String u_Name) {
 
         try {
-            rs = st.executeQuery("SELECT * FROM " + table + " WHERE username = '" + u_Name + "';");
+            rs = st.executeQuery("SELECT * FROM Admins WHERE username = '" + u_Name + "';");
             if (rs.next()) {
                 return true;
             } else {
-                return false;
+                rs = st.executeQuery("SELECT * FROM Dispatch WHERE username = '" + u_Name + "';");
+                if (rs.next()) {
+                    return true;
+                } else {
+                    rs = st.executeQuery("SELECT * FROM Staff WHERE username = '" + u_Name + "';");
+                    if (rs.next()) {
+                        return true;
+                    }
+                }
             }
         } catch (SQLException ex) {
             Logger.getLogger(AdminPage.class.getName()).log(Level.SEVERE, null, ex);
