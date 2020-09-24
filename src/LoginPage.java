@@ -2,6 +2,16 @@
 import com.mysql.cj.jdbc.exceptions.SQLError;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Frame;
+import java.awt.GraphicsConfiguration;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.io.File;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -9,8 +19,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import javax.swing.Timer;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -67,6 +82,7 @@ public class LoginPage extends javax.swing.JFrame {
         PasswordLbl = new javax.swing.JLabel();
         buttonLogin = new javax.swing.JButton();
         PasswordTf = new javax.swing.JPasswordField();
+        labelLoading = new javax.swing.JLabel();
         ExitLbl = new javax.swing.JLabel();
         MinLbl = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -105,13 +121,13 @@ public class LoginPage extends javax.swing.JFrame {
         buttonLogin.setBackground(new java.awt.Color(168, 153, 104));
         buttonLogin.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         buttonLogin.setText("Login");
-        buttonLogin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonLoginActionPerformed(evt);
+        buttonLogin.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                buttonLoginMousePressed(evt);
             }
         });
         jPanel1.add(buttonLogin);
-        buttonLogin.setBounds(70, 230, 120, 30);
+        buttonLogin.setBounds(80, 230, 120, 30);
 
         PasswordTf.setText("jPasswordField1");
         PasswordTf.addActionListener(new java.awt.event.ActionListener() {
@@ -121,6 +137,11 @@ public class LoginPage extends javax.swing.JFrame {
         });
         jPanel1.add(PasswordTf);
         PasswordTf.setBounds(100, 180, 140, 30);
+
+        labelLoading.setText("Checken");
+        labelLoading.setPreferredSize(new java.awt.Dimension(190, 109));
+        jPanel1.add(labelLoading);
+        labelLoading.setBounds(100, 210, 120, 70);
 
         jPanel2.add(jPanel1);
         jPanel1.setBounds(380, 170, 510, 390);
@@ -179,6 +200,36 @@ public class LoginPage extends javax.swing.JFrame {
         MinLbl.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }//GEN-LAST:event_MinLblMouseMoved
 
+    private void buttonLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonLoginMouseClicked
+
+    }//GEN-LAST:event_buttonLoginMouseClicked
+
+    boolean done = false;
+    private void buttonLoginMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buttonLoginMousePressed
+        buttonLogin.setVisible(false);
+        labelLoading.setIcon(new ImageIcon("src/Resources/loading/checken_cropped.gif"));
+        labelLoading.setVisible(true);
+
+        new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                login(UsernameTf.getText(), PasswordTf.getText());
+                done = true;
+                if (done) {
+                    SwingUtilities.invokeLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            System.out.println("later");
+                            labelLoading.setVisible(false);
+                        }
+                    });
+                }
+            }
+
+        }).start();
+    }//GEN-LAST:event_buttonLoginMousePressed
+
     private void ExitLblMouseClicked(java.awt.event.MouseEvent evt) {// GEN-FIRST:event_ExitLblMouseClicked
         System.exit(0);
     }// GEN-LAST:event_ExitLblMouseClicked
@@ -187,23 +238,10 @@ public class LoginPage extends javax.swing.JFrame {
         this.setState(JFrame.ICONIFIED);
     }// GEN-LAST:event_MinLblMouseClicked
 
-    private void buttonLoginActionPerformed(java.awt.event.ActionEvent evt) {// GEN-FIRST:event_buttonLoginActionPerformed
-        login(UsernameTf.getText(), PasswordTf.getText());
-
-    }// GEN-LAST:event_buttonLoginActionPerformed
-
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        // <editor-fold defaultstate="collapsed" desc=" Look and feel setting code
-        // (optional) ">
-        /*
-         * If Nimbus (introduced in Java SE 6) is not available, stay with the default
-         * look and feel. For details see
-         * http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
-         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -220,9 +258,6 @@ public class LoginPage extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(LoginPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        // </editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LoginPage().setVisible(true);
@@ -243,6 +278,7 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel labelLoading;
     private javax.swing.JLabel lblConnectStatus;
     // End of variables declaration//GEN-END:variables
 
@@ -250,8 +286,10 @@ public class LoginPage extends javax.swing.JFrame {
         while (conn == null) {
             conn = getConnection();
         }
+        System.out.println("1");
         st = createStatement();
 
+        System.out.println("1");
         try {
             rs = returnUser("Admins", text, password);
             if (rs.next()) {
@@ -333,7 +371,7 @@ public class LoginPage extends javax.swing.JFrame {
             }
             return DriverManager.getConnection(DB_URL, DB_Username, DB_Password);
         } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Incorrect URL or login for database. \n Please enter valid details."+ex);
+            JOptionPane.showMessageDialog(null, "Incorrect URL or login for database. \n Please enter valid details." + ex);
             return null;
         }
     }
@@ -428,6 +466,7 @@ public class LoginPage extends javax.swing.JFrame {
         showLogin(true);
         clearPassword();
     }
+
     public void signOut(StorePage page) {
         page.dispose();
         showLogin(true);
@@ -441,6 +480,30 @@ public class LoginPage extends javax.swing.JFrame {
 
     private void clearPassword() {
         PasswordTf.setText("");
+    }
+
+    boolean loadingDone = false;
+    int count = 0;
+
+    Timer timer = null;
+
+    public ImageIcon getImageIcon(File f) {
+
+        ImageIcon ii = null;
+        try {
+            Image im = ImageIO.read(f);
+
+            ii = new ImageIcon("ajax-loader.gif");
+
+        } catch (IOException i) {
+
+            i.printStackTrace();
+
+        } finally {
+
+            return ii;
+
+        }
     }
 
 }
