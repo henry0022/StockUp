@@ -384,7 +384,7 @@ public class DispatchPage extends javax.swing.JFrame {
     }//GEN-LAST:event_ExportToExcelBtnActionPerformed
 
     private void ProcessOrderBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ProcessOrderBtn1ActionPerformed
-        // TODO add your handling code here:
+        processOrder(IncomingOrdersTbl.getSelectedRow());
     }//GEN-LAST:event_ProcessOrderBtn1ActionPerformed
 
 
@@ -499,7 +499,6 @@ public class DispatchPage extends javax.swing.JFrame {
         } catch (SQLException e) {
             Logger.getLogger(DispatchPage.class.getName()).log(Level.SEVERE, null, e);
         }
-
     }
 
     private void toExcel(int row) {
