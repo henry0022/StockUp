@@ -65,6 +65,9 @@ public class AdminPage extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(AdminPage.class.getName()).log(Level.SEVERE, null, ex);
         }
+        ordersInfoVisible(false);
+        refridgeratorVisible(false);
+        staffInfoVisible(true);
     }
 
     /**
@@ -95,6 +98,8 @@ public class AdminPage extends javax.swing.JFrame {
         LblTaff = new javax.swing.JLabel();
         LblI = new javax.swing.JLabel();
         LblNformation = new javax.swing.JLabel();
+        LblO = new javax.swing.JLabel();
+        LblRders = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         DispatchUserLbl = new javax.swing.JLabel();
@@ -256,7 +261,7 @@ public class AdminPage extends javax.swing.JFrame {
             }
         });
         jPanel11.add(LblStaffInfo);
-        LblStaffInfo.setBounds(10, 0, 310, 70);
+        LblStaffInfo.setBounds(0, 0, 320, 70);
 
         jPanel8.add(jPanel11);
         jPanel11.setBounds(0, 130, 330, 70);
@@ -318,7 +323,7 @@ public class AdminPage extends javax.swing.JFrame {
             }
         });
         jPanel13.add(LblRefridgerator);
-        LblRefridgerator.setBounds(10, 4, 310, 60);
+        LblRefridgerator.setBounds(-20, 4, 340, 60);
 
         jPanel8.add(jPanel13);
         jPanel13.setBounds(0, 270, 330, 70);
@@ -329,29 +334,41 @@ public class AdminPage extends javax.swing.JFrame {
         jPanel9.setBackground(new java.awt.Color(0, 0, 0));
         jPanel9.setLayout(null);
 
-        LblS.setFont(new java.awt.Font("Viner Hand ITC", 1, 75)); // NOI18N
+        LblS.setFont(new java.awt.Font("Viner Hand ITC", 1, 65)); // NOI18N
         LblS.setForeground(new java.awt.Color(255, 255, 255));
         LblS.setText("S");
         jPanel9.add(LblS);
-        LblS.setBounds(180, 10, 70, 100);
+        LblS.setBounds(230, 20, 50, 80);
 
-        LblTaff.setFont(new java.awt.Font("Tw Cen MT", 0, 45)); // NOI18N
+        LblTaff.setFont(new java.awt.Font("Tw Cen MT", 0, 35)); // NOI18N
         LblTaff.setForeground(new java.awt.Color(255, 255, 255));
         LblTaff.setText("taff");
         jPanel9.add(LblTaff);
-        LblTaff.setBounds(230, 40, 80, 30);
+        LblTaff.setBounds(270, 40, 60, 30);
 
-        LblI.setFont(new java.awt.Font("Viner Hand ITC", 1, 75)); // NOI18N
+        LblI.setFont(new java.awt.Font("Viner Hand ITC", 1, 65)); // NOI18N
         LblI.setForeground(new java.awt.Color(255, 255, 255));
         LblI.setText("I");
         jPanel9.add(LblI);
-        LblI.setBounds(330, 20, 40, 80);
+        LblI.setBounds(340, 30, 30, 70);
 
-        LblNformation.setFont(new java.awt.Font("Tw Cen MT", 0, 45)); // NOI18N
+        LblNformation.setFont(new java.awt.Font("Tw Cen MT", 0, 35)); // NOI18N
         LblNformation.setForeground(new java.awt.Color(255, 255, 255));
         LblNformation.setText("nformation");
         jPanel9.add(LblNformation);
         LblNformation.setBounds(360, 30, 210, 50);
+
+        LblO.setFont(new java.awt.Font("Viner Hand ITC", 1, 65)); // NOI18N
+        LblO.setForeground(new java.awt.Color(255, 255, 255));
+        LblO.setText("O");
+        jPanel9.add(LblO);
+        LblO.setBounds(230, 30, 40, 70);
+
+        LblRders.setFont(new java.awt.Font("Tw Cen MT", 0, 35)); // NOI18N
+        LblRders.setForeground(new java.awt.Color(255, 255, 255));
+        LblRders.setText("rders");
+        jPanel9.add(LblRders);
+        LblRders.setBounds(260, 40, 110, 30);
 
         jPanel7.add(jPanel9);
         jPanel9.setBounds(330, 30, 710, 100);
@@ -1092,14 +1109,14 @@ public class AdminPage extends javax.swing.JFrame {
 
     private void LblOrdersInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblOrdersInfoMouseClicked
         staffInfoVisible(false);
-        ordersInfoVisible(true);
         refridgeratorVisible(false);
+        ordersInfoVisible(true);
     }//GEN-LAST:event_LblOrdersInfoMouseClicked
 
     private void LblStaffInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblStaffInfoMouseClicked
-        staffInfoVisible(true);
         ordersInfoVisible(false);
         refridgeratorVisible(false);
+        staffInfoVisible(true);
     }//GEN-LAST:event_LblStaffInfoMouseClicked
 
     private void LblRefridgeratorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblRefridgeratorMouseClicked
@@ -1141,7 +1158,9 @@ public class AdminPage extends javax.swing.JFrame {
     private javax.swing.JLabel ExitLbl;
     private javax.swing.JLabel LblI;
     private javax.swing.JLabel LblNformation;
+    private javax.swing.JLabel LblO;
     private javax.swing.JLabel LblOrdersInfo;
+    private javax.swing.JLabel LblRders;
     private javax.swing.JLabel LblRefridgerator;
     private javax.swing.JLabel LblS;
     private javax.swing.JLabel LblStaffInfo;
@@ -1221,7 +1240,10 @@ public class AdminPage extends javax.swing.JFrame {
     }
     
     public void ordersInfoVisible(boolean temp){
-        
+        LblO.setVisible(temp);
+        LblRders.setVisible(temp);
+        LblI.setVisible(temp);
+        LblNformation.setVisible(temp);
     }
     
     public void refridgeratorVisible(boolean temp){
