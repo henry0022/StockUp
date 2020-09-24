@@ -46,7 +46,7 @@ public class StorePage extends javax.swing.JFrame {
         initComponents();
         setInitialGUIState();
         try {
-            StoreNameLbl.setText(rs.getString("staff_Name"));
+            StoreNameLbl.setText(rs.getString("staff_Name") + " " + rs.getString("staff_Surname"));
             storeID = rs.getInt("store_ID");
             this.conn = conn;
             loadAllProducts_ResetProductTable();
@@ -147,7 +147,7 @@ public class StorePage extends javax.swing.JFrame {
         StoreNameLbl.setForeground(new java.awt.Color(255, 255, 255));
         StoreNameLbl.setText("StoreName");
         jPanel3.add(StoreNameLbl);
-        StoreNameLbl.setBounds(50, 10, 240, 40);
+        StoreNameLbl.setBounds(50, 10, 380, 40);
 
         btnSignOut.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnSignOut.setForeground(new java.awt.Color(255, 255, 255));
