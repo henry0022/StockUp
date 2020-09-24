@@ -59,7 +59,7 @@ public class AdminPage extends javax.swing.JFrame {
             this.conn = conn;
             st = this.conn.createStatement();
             adminUsername = rs.getString("username");
-            AdminNameLbl.setText(rs.getString("admin_Name"));
+            AdminNameLbl.setText(rs.getString("admin_Name") + " " + rs.getString("admin_Surname"));
             populateStoresDropdown();
             displayTable();
         } catch (SQLException ex) {
@@ -85,14 +85,16 @@ public class AdminPage extends javax.swing.JFrame {
         AdminNameLbl = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
+        LblStaffInfo = new javax.swing.JLabel();
         jPanel12 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
+        LblOrdersInfo = new javax.swing.JLabel();
+        jPanel13 = new javax.swing.JPanel();
+        LblRefridgerator = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        LblS = new javax.swing.JLabel();
+        LblTaff = new javax.swing.JLabel();
+        LblI = new javax.swing.JLabel();
+        LblNformation = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         DispatchUserLbl = new javax.swing.JLabel();
@@ -232,13 +234,29 @@ public class AdminPage extends javax.swing.JFrame {
         jPanel11.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
         jPanel11.setLayout(null);
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/icons8_Staff_50px_1.png"))); // NOI18N
-        jLabel6.setText("  Staff Information");
-        jPanel11.add(jLabel6);
-        jLabel6.setBounds(10, 0, 310, 70);
+        LblStaffInfo.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        LblStaffInfo.setForeground(new java.awt.Color(255, 255, 255));
+        LblStaffInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblStaffInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/icons8_Staff_50px_1.png"))); // NOI18N
+        LblStaffInfo.setText("    Staff Information");
+        LblStaffInfo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                LblStaffInfoMouseMoved(evt);
+            }
+        });
+        LblStaffInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LblStaffInfoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                LblStaffInfoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                LblStaffInfoMouseExited(evt);
+            }
+        });
+        jPanel11.add(LblStaffInfo);
+        LblStaffInfo.setBounds(10, 0, 310, 70);
 
         jPanel8.add(jPanel11);
         jPanel11.setBounds(0, 130, 330, 70);
@@ -247,16 +265,63 @@ public class AdminPage extends javax.swing.JFrame {
         jPanel12.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
         jPanel12.setLayout(null);
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/icons8_Course_52px.png"))); // NOI18N
-        jLabel7.setText("  Orders Information");
-        jPanel12.add(jLabel7);
-        jLabel7.setBounds(10, 0, 310, 70);
+        LblOrdersInfo.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        LblOrdersInfo.setForeground(new java.awt.Color(255, 255, 255));
+        LblOrdersInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblOrdersInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/icons8_Course_52px.png"))); // NOI18N
+        LblOrdersInfo.setText("  Orders Information");
+        LblOrdersInfo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                LblOrdersInfoMouseMoved(evt);
+            }
+        });
+        LblOrdersInfo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LblOrdersInfoMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                LblOrdersInfoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                LblOrdersInfoMouseExited(evt);
+            }
+        });
+        jPanel12.add(LblOrdersInfo);
+        LblOrdersInfo.setBounds(10, 0, 310, 70);
 
         jPanel8.add(jPanel12);
         jPanel12.setBounds(0, 200, 330, 70);
+
+        jPanel13.setBackground(new java.awt.Color(133, 1, 41));
+        jPanel13.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
+        jPanel13.setLayout(null);
+
+        LblRefridgerator.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        LblRefridgerator.setForeground(new java.awt.Color(255, 255, 255));
+        LblRefridgerator.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        LblRefridgerator.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/icons8_Library_50px_1.png"))); // NOI18N
+        LblRefridgerator.setText("    Refridgerator ");
+        LblRefridgerator.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                LblRefridgeratorMouseMoved(evt);
+            }
+        });
+        LblRefridgerator.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                LblRefridgeratorMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                LblRefridgeratorMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                LblRefridgeratorMouseExited(evt);
+            }
+        });
+        jPanel13.add(LblRefridgerator);
+        LblRefridgerator.setBounds(10, 4, 310, 60);
+
+        jPanel8.add(jPanel13);
+        jPanel13.setBounds(0, 270, 330, 70);
 
         jPanel7.add(jPanel8);
         jPanel8.setBounds(0, 0, 330, 520);
@@ -264,29 +329,29 @@ public class AdminPage extends javax.swing.JFrame {
         jPanel9.setBackground(new java.awt.Color(0, 0, 0));
         jPanel9.setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Viner Hand ITC", 1, 75)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("S");
-        jPanel9.add(jLabel2);
-        jLabel2.setBounds(180, 10, 70, 100);
+        LblS.setFont(new java.awt.Font("Viner Hand ITC", 1, 75)); // NOI18N
+        LblS.setForeground(new java.awt.Color(255, 255, 255));
+        LblS.setText("S");
+        jPanel9.add(LblS);
+        LblS.setBounds(180, 10, 70, 100);
 
-        jLabel3.setFont(new java.awt.Font("Tw Cen MT", 0, 45)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("taff");
-        jPanel9.add(jLabel3);
-        jLabel3.setBounds(230, 40, 80, 30);
+        LblTaff.setFont(new java.awt.Font("Tw Cen MT", 0, 45)); // NOI18N
+        LblTaff.setForeground(new java.awt.Color(255, 255, 255));
+        LblTaff.setText("taff");
+        jPanel9.add(LblTaff);
+        LblTaff.setBounds(230, 40, 80, 30);
 
-        jLabel4.setFont(new java.awt.Font("Viner Hand ITC", 1, 75)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("I");
-        jPanel9.add(jLabel4);
-        jLabel4.setBounds(330, 20, 40, 80);
+        LblI.setFont(new java.awt.Font("Viner Hand ITC", 1, 75)); // NOI18N
+        LblI.setForeground(new java.awt.Color(255, 255, 255));
+        LblI.setText("I");
+        jPanel9.add(LblI);
+        LblI.setBounds(330, 20, 40, 80);
 
-        jLabel5.setFont(new java.awt.Font("Tw Cen MT", 0, 45)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText("nformation");
-        jPanel9.add(jLabel5);
-        jLabel5.setBounds(360, 30, 210, 50);
+        LblNformation.setFont(new java.awt.Font("Tw Cen MT", 0, 45)); // NOI18N
+        LblNformation.setForeground(new java.awt.Color(255, 255, 255));
+        LblNformation.setText("nformation");
+        jPanel9.add(LblNformation);
+        LblNformation.setBounds(360, 30, 210, 50);
 
         jPanel7.add(jPanel9);
         jPanel9.setBounds(330, 30, 710, 100);
@@ -983,6 +1048,66 @@ public class AdminPage extends javax.swing.JFrame {
         btnSignOut.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
     }//GEN-LAST:event_btnSignOutMouseMoved
 
+    private void LblStaffInfoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblStaffInfoMouseMoved
+        LblStaffInfo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_LblStaffInfoMouseMoved
+
+    private void LblStaffInfoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblStaffInfoMouseEntered
+        Color clr = new Color(150,40,27);
+        jPanel11.setBackground(clr);
+    }//GEN-LAST:event_LblStaffInfoMouseEntered
+
+    private void LblStaffInfoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblStaffInfoMouseExited
+        Color clr = new Color(133,1,41);
+        jPanel11.setBackground(clr);
+    }//GEN-LAST:event_LblStaffInfoMouseExited
+
+    private void LblOrdersInfoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblOrdersInfoMouseEntered
+        Color clr = new Color(150,40,27);
+        jPanel12.setBackground(clr);
+    }//GEN-LAST:event_LblOrdersInfoMouseEntered
+
+    private void LblOrdersInfoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblOrdersInfoMouseExited
+        Color clr = new Color(133,1,41);
+        jPanel12.setBackground(clr);
+    }//GEN-LAST:event_LblOrdersInfoMouseExited
+
+    private void LblOrdersInfoMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblOrdersInfoMouseMoved
+        LblOrdersInfo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_LblOrdersInfoMouseMoved
+
+    private void LblRefridgeratorMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblRefridgeratorMouseMoved
+        LblRefridgerator.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_LblRefridgeratorMouseMoved
+
+    private void LblRefridgeratorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblRefridgeratorMouseEntered
+        Color clr = new Color(150,40,27);
+        jPanel13.setBackground(clr);
+    }//GEN-LAST:event_LblRefridgeratorMouseEntered
+
+    private void LblRefridgeratorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblRefridgeratorMouseExited
+        Color clr = new Color(133,1,41);
+        jPanel13.setBackground(clr);
+    }//GEN-LAST:event_LblRefridgeratorMouseExited
+
+    private void LblOrdersInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblOrdersInfoMouseClicked
+        staffInfoVisible(false);
+        ordersInfoVisible(true);
+        refridgeratorVisible(false);
+    }//GEN-LAST:event_LblOrdersInfoMouseClicked
+
+    private void LblStaffInfoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblStaffInfoMouseClicked
+        staffInfoVisible(true);
+        ordersInfoVisible(false);
+        refridgeratorVisible(false);
+    }//GEN-LAST:event_LblStaffInfoMouseClicked
+
+    private void LblRefridgeratorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblRefridgeratorMouseClicked
+        staffInfoVisible(false);
+        ordersInfoVisible(false);
+        refridgeratorVisible(true);
+    }//GEN-LAST:event_LblRefridgeratorMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddProductBtn;
@@ -1014,6 +1139,13 @@ public class AdminPage extends javax.swing.JFrame {
     private javax.swing.JTextField DispatchUser_Surname_Tf;
     private javax.swing.JTextField DispatchUser_Username_Tf;
     private javax.swing.JLabel ExitLbl;
+    private javax.swing.JLabel LblI;
+    private javax.swing.JLabel LblNformation;
+    private javax.swing.JLabel LblOrdersInfo;
+    private javax.swing.JLabel LblRefridgerator;
+    private javax.swing.JLabel LblS;
+    private javax.swing.JLabel LblStaffInfo;
+    private javax.swing.JLabel LblTaff;
     private javax.swing.JLabel MinLbl;
     private javax.swing.JLabel ProductNameLbl;
     private javax.swing.JTextField ProductNameTf;
@@ -1046,16 +1178,11 @@ public class AdminPage extends javax.swing.JFrame {
     private javax.swing.JTextField UnitsPerCrateTf;
     private javax.swing.JButton btnSignOut;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
+    private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -1086,6 +1213,21 @@ public class AdminPage extends javax.swing.JFrame {
     private javax.swing.JLabel warning_Store_Number_Lbl;
     // End of variables declaration//GEN-END:variables
 
+    public void staffInfoVisible(boolean temp){
+        LblS.setVisible(temp);
+        LblTaff.setVisible(temp);
+        LblI.setVisible(temp);
+        LblNformation.setVisible(temp);
+    }
+    
+    public void ordersInfoVisible(boolean temp){
+        
+    }
+    
+    public void refridgeratorVisible(boolean temp){
+        
+    }
+    
     private void addStore(String store, String phone, String address) {
 
         boolean valid = true;
