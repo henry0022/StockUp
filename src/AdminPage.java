@@ -156,6 +156,7 @@ public class AdminPage extends javax.swing.JFrame {
         password_warning_lbl8 = new javax.swing.JLabel();
         password_warning_lbl9 = new javax.swing.JLabel();
         showPassword_AddAdminUser_Lbl = new javax.swing.JLabel();
+        jPanel7 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         AdminNameLbl = new javax.swing.JLabel();
         btnSignOut = new javax.swing.JButton();
@@ -690,17 +691,20 @@ public class AdminPage extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Add/Delete User", jPanel2);
 
+        jPanel7.setBackground(new java.awt.Color(133, 1, 41));
+        jTabbedPane1.addTab("Orders", jPanel7);
+
         jPanel1.add(jTabbedPane1);
         jTabbedPane1.setBounds(120, 130, 1040, 550);
 
         jPanel6.setBackground(new java.awt.Color(0, 0, 0));
         jPanel6.setLayout(null);
 
-        AdminNameLbl.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
+        AdminNameLbl.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
         AdminNameLbl.setForeground(new java.awt.Color(255, 255, 255));
         AdminNameLbl.setText("AdminName");
         jPanel6.add(AdminNameLbl);
-        AdminNameLbl.setBounds(760, 0, 180, 70);
+        AdminNameLbl.setBounds(650, 0, 270, 70);
 
         btnSignOut.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnSignOut.setForeground(new java.awt.Color(255, 255, 255));
@@ -958,6 +962,7 @@ public class AdminPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
