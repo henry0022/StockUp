@@ -21,6 +21,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 
@@ -748,12 +749,14 @@ public class AdminPage extends javax.swing.JFrame {
     private void AddStoreBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddStoreBtnActionPerformed
         if (doneblinking) {
             addStore(StoreNameTf.getText(), ContactNumberTf.getText(), StoreAddressTa.getText());
+            clearAddStoreFields();
         }
     }//GEN-LAST:event_AddStoreBtnActionPerformed
 
     private void AddProductBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddProductBtnActionPerformed
         if (doneblinking) {
             addProduct(ProductNameTf.getText(), UnitsPerCrateTf.getText());
+            clearAddProductFields();
             try {
                 displayTable();
             } catch (SQLException e) {
@@ -764,6 +767,9 @@ public class AdminPage extends javax.swing.JFrame {
 
     private void StoreUserAddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StoreUserAddBtnActionPerformed
         addStoreUser(StoreUser_Name_Tf.getText(), StoreUser_Surname_Tf.getText(), StoreUser_StoreName_Cb.getSelectedItem().toString(), StoreUser_Username_Tf.getText(), StoreUser_Password_Pf.getText());
+        clearAddAdminUserFields();
+        clearAddDispatchUserFields();
+        clearAddStoreUserFields();
     }//GEN-LAST:event_StoreUserAddBtnActionPerformed
 
     private void showPassword_AddDispatchUser_LblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showPassword_AddDispatchUser_LblMouseClicked
@@ -781,6 +787,8 @@ public class AdminPage extends javax.swing.JFrame {
 
     private void StoreUserDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_StoreUserDeleteBtnActionPerformed
         String u_name = StoreUser_Username_Tf.getText();
+        clearAddAdminUserFields();
+        clearAddDispatchUserFields();
         clearAddStoreUserFields();
         deleteStoreUser(u_name);
     }//GEN-LAST:event_StoreUserDeleteBtnActionPerformed
@@ -790,8 +798,9 @@ public class AdminPage extends javax.swing.JFrame {
     }//GEN-LAST:event_DispatchUserAddBtnActionPerformed
 
     private void DispatchUserDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DispatchUserDeleteBtnActionPerformed
-
         String u_name = DispatchUser_Username_Tf.getText();
+        clearAddAdminUserFields();
+        clearAddDispatchUserFields();
         clearAddStoreUserFields();
         deleteDispatchUser(u_name);
     }//GEN-LAST:event_DispatchUserDeleteBtnActionPerformed
@@ -811,6 +820,9 @@ public class AdminPage extends javax.swing.JFrame {
 
     private void AdminUserAddBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminUserAddBtnActionPerformed
         addAdminUser(AdminNameTf.getText(), AdminSurnameTf.getText(), AdminUsernameTf.getText(), AdminUser_Password_Pf.getText());
+        clearAddAdminUserFields();
+        clearAddDispatchUserFields();
+        clearAddStoreUserFields();
     }//GEN-LAST:event_AdminUserAddBtnActionPerformed
 
     private void showPassword_AddAdminUser_LblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showPassword_AddAdminUser_LblMouseClicked
@@ -829,6 +841,8 @@ public class AdminPage extends javax.swing.JFrame {
     private void AdminUserDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminUserDeleteBtnActionPerformed
         String u_name = AdminUsernameTf.getText();
         clearAddAdminUserFields();
+        clearAddDispatchUserFields();
+        clearAddStoreUserFields();
         deleteAdminUser(u_name);
     }//GEN-LAST:event_AdminUserDeleteBtnActionPerformed
 
@@ -843,8 +857,11 @@ public class AdminPage extends javax.swing.JFrame {
 
     private void DeleteStoreBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteStoreBtnActionPerformed
         String name = StoreNameTf.getText();
-        clearAddStoreFields();
-        deleteStore(name);        // TODO add your handling code here:
+        int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete " + name);
+        if (confirm == 0) {
+            clearAddStoreFields();
+            deleteStore(name);
+        }
     }//GEN-LAST:event_DeleteStoreBtnActionPerformed
 
     private void ExitLblMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExitLblMouseMoved
@@ -1431,6 +1448,7 @@ public class AdminPage extends javax.swing.JFrame {
     private void clearAddStoreFields() {
         ContactNumberTf.setText("");
         StoreAddressTa.setText("");
+        StoreNameTf.setText("");
         warning_Store_Number_Lbl.setVisible(false);
         warning_Store_Address_Lbl.setVisible(false);
     }
@@ -1455,6 +1473,11 @@ public class AdminPage extends javax.swing.JFrame {
         AdminUsernameTf.setText("");
         AdminUser_Password_Pf.setText("");
         AdminUser_Password_Pf.setEchoChar('*');
+    }
+
+    private void clearAddProductFields() {
+        ProductNameTf.setText("");
+        UnitsPerCrateTf.setText("");
     }
 
     private void deleteStoreUser(String u_name) {
@@ -1527,7 +1550,7 @@ public class AdminPage extends javax.swing.JFrame {
     }
 
     private void deleteProduct() {
-        String prod_Name = ProductTbl.getValueAt((ProductTbl.getSelectedRow()),0)+"";
+        String prod_Name = ProductTbl.getValueAt((ProductTbl.getSelectedRow()), 0) + "";
         try {
             if (doneblinking) {
                 if (productExists(prod_Name)) {
