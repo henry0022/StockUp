@@ -46,6 +46,8 @@ public class AdminPage extends javax.swing.JFrame {
     ResultSet rs = null;
     ArrayList<Object[]> productList = new ArrayList();
 
+    String adminUsername = "";
+
     public AdminPage(LoginPage login, ResultSet rs, Connection conn) {
         login.dispose();
         initComponents();
@@ -56,6 +58,7 @@ public class AdminPage extends javax.swing.JFrame {
         try {
             this.conn = conn;
             st = this.conn.createStatement();
+            adminUsername = rs.getString("username");
             AdminNameLbl.setText(rs.getString("admin_Name"));
             populateStoresDropdown();
             displayTable();
@@ -931,12 +934,18 @@ public class AdminPage extends javax.swing.JFrame {
 
     private void AdminUserDeleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminUserDeleteBtnActionPerformed
         String u_name = AdminUsernameTf.getText();
-        int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete " + u_name);
-        if (confirm == 0) {
-            clearAddAdminUserFields();
-            clearAddDispatchUserFields();
-            clearAddStoreUserFields();
-            deleteAdminUser(u_name);
+        if (isCurrentAdmin(u_name)) {
+            Ta_AddAdminUserWarnings.setText("You cannot delete your own account.");
+            ScrollPane_AddAdminUserWarnings.setVisible(true);
+        } else {
+
+            int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete " + u_name);
+            if (confirm == 0) {
+                clearAddAdminUserFields();
+                clearAddDispatchUserFields();
+                clearAddStoreUserFields();
+                deleteAdminUser(u_name);
+            }
         }
     }//GEN-LAST:event_AdminUserDeleteBtnActionPerformed
 
@@ -1138,7 +1147,7 @@ public class AdminPage extends javax.swing.JFrame {
 
     private void populateStoresDropdown() throws SQLException {
 
-        rs = st.executeQuery("SELECT * FROM store");
+        rs = st.executeQuery("SELECT * FROM Store");
         while (rs.next()) {
             StoreUser_StoreName_Cb.addItem(rs.getInt("store_ID") + ":" + rs.getString("store_Name"));
         }
@@ -1412,7 +1421,7 @@ public class AdminPage extends javax.swing.JFrame {
     }
 
     private boolean companyExists(int c_ID) throws SQLException {
-        rs = st.executeQuery("SELECT * FROM company WHERE company_ID= " + c_ID + ";");
+        rs = st.executeQuery("SELECT * FROM Company WHERE company_ID= " + c_ID + ";");
         if (rs.next()) {
             //lblWarningCompanyId.setVisible(false);
             return true;
@@ -1431,7 +1440,7 @@ public class AdminPage extends javax.swing.JFrame {
         } else {
             lblWarningProduct.setVisible(false);
         }
-        rs = st.executeQuery("SELECT * FROM PRODUCT WHERE product_Name = '" + name + "';");
+        rs = st.executeQuery("SELECT * FROM Product WHERE product_Name = '" + name + "';");
         if (rs.next()) {
             lblWarningProduct.setVisible(true);
             lblWarningProduct.setText("Product already exists.");
@@ -1445,7 +1454,7 @@ public class AdminPage extends javax.swing.JFrame {
     private boolean storeExists(String store_Name) {
 
         try {
-            rs = st.executeQuery("SELECT * FROM store WHERE store_Name = '" + store_Name + "';");
+            rs = st.executeQuery("SELECT * FROM Store WHERE store_Name = '" + store_Name + "';");
             if (rs.next()) {
                 return true;
             } else {
@@ -1687,7 +1696,7 @@ public class AdminPage extends javax.swing.JFrame {
 
     private void displayTable() throws SQLException {
         st = conn.createStatement();
-        rs = st.executeQuery("SELECT * FROM product");
+        rs = st.executeQuery("SELECT * FROM Product");
         DefaultTableModel model = new DefaultTableModel(new Object[]{"Product name", "Units per crate", "Product ID"}, 0);
         //int a = 0;
         while (rs.next()) {
@@ -1699,6 +1708,14 @@ public class AdminPage extends javax.swing.JFrame {
             model.addRow(productList.get(productList.size() - 1));
         }
         ProductTbl.setModel(model);
+    }
+
+    private boolean isCurrentAdmin(String u_name) {
+
+        if (u_name.equalsIgnoreCase(adminUsername)) {
+            return true;
+        }
+        return false;
     }
 
 }

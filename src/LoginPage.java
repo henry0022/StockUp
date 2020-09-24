@@ -25,9 +25,9 @@ import javax.swing.JOptionPane;
  */
 public class LoginPage extends javax.swing.JFrame {
 
-    String DB_URL = "jdbc:mysql://localhost:3306/stockup_db";
-    String DB_Username = "root";
-    String DB_Password = "";
+    String DB_URL = "jdbc:mysql://remotemysql.com:3306/8zzEvO42x5";
+    String DB_Username = "8zzEvO42x5";
+    String DB_Password = "rQCELYaPvq";
     boolean serverFound = false;
     boolean DBFound = false;
 
@@ -253,15 +253,15 @@ public class LoginPage extends javax.swing.JFrame {
         st = createStatement();
 
         try {
-            rs = returnUser("admins", text, password);
+            rs = returnUser("Admins", text, password);
             if (rs.next()) {
                 new AdminPage(this, rs, conn);
             } else {
-                rs = returnUser("staff", text, password);
+                rs = returnUser("Staff", text, password);
                 if (rs.next()) {
                     new StorePage(this, rs, conn);
                 } else {
-                    rs = returnUser("dispatch", text, password);
+                    rs = returnUser("Dispatch", text, password);
                     if (rs.next()) {
                         new DispatchPage(this, rs, conn);
                     } else {
@@ -274,23 +274,6 @@ public class LoginPage extends javax.swing.JFrame {
             Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-    }
-
-    private boolean isLogin(String roleTableName, String username, String password) {
-
-        String query = "SELECT * FROM " + roleTableName + " WHERE username = '" + username + "' AND password = '"
-                + password + "';";
-        try {
-            rs = st.executeQuery(query);
-            while (rs.next()) {
-            }
-            return true;
-
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginPage.class
-                    .getName()).log(Level.SEVERE, null, ex);
-            return false;
-        }
     }
 
     private void testConnection() {

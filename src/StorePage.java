@@ -63,6 +63,7 @@ public class StorePage extends javax.swing.JFrame {
         removeProductBtn.setVisible(false);
         AddtoOrderBtn.setVisible(false);
         QuantitySpnr.setEnabled(false);
+        QuantitySpnr.setValue(1);
         ProductsTbl.setDefaultEditor(Object.class, null);
         YourOrdersTbl.setDefaultEditor(Object.class, null);
         ConfirmOrderBtn.setEnabled(false);
@@ -73,7 +74,6 @@ public class StorePage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        //storePageButtonGroup = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         ExitLbl = new javax.swing.JLabel();
         MinLbl = new javax.swing.JLabel();
@@ -223,9 +223,19 @@ public class StorePage extends javax.swing.JFrame {
 
         ProductTf.setEditable(false);
         jPanel2.add(ProductTf);
-        ProductTf.setBounds(730, 100, 330, 40);
+        ProductTf.setBounds(730, 110, 160, 20);
 
         QuantitySpnr.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
+        QuantitySpnr.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                QuantitySpnrStateChanged(evt);
+            }
+        });
+        QuantitySpnr.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                QuantitySpnrPropertyChange(evt);
+            }
+        });
         jPanel2.add(QuantitySpnr);
         QuantitySpnr.setBounds(730, 150, 160, 20);
 
@@ -262,7 +272,7 @@ public class StorePage extends javax.swing.JFrame {
             }
         });
         jPanel2.add(UpdateOrderBtn);
-        UpdateOrderBtn.setBounds(620, 200, 170, 25);
+        UpdateOrderBtn.setBounds(630, 200, 170, 25);
 
         YourOrderLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         YourOrderLbl.setForeground(new java.awt.Color(255, 255, 255));
@@ -316,7 +326,7 @@ public class StorePage extends javax.swing.JFrame {
             }
         });
         jPanel2.add(AddtoOrderBtn);
-        AddtoOrderBtn.setBounds(620, 200, 170, 25);
+        AddtoOrderBtn.setBounds(630, 200, 170, 25);
 
         removeProductBtn.setBackground(new java.awt.Color(168, 153, 104));
         removeProductBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -327,7 +337,7 @@ public class StorePage extends javax.swing.JFrame {
             }
         });
         jPanel2.add(removeProductBtn);
-        removeProductBtn.setBounds(830, 200, 170, 25);
+        removeProductBtn.setBounds(810, 200, 170, 25);
 
         jPanel1.add(jPanel2);
         jPanel2.setBounds(90, 100, 1090, 540);
@@ -357,7 +367,7 @@ public class StorePage extends javax.swing.JFrame {
 
     private void ProductsTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductsTblMouseClicked
         AddtoOrderBtn.setVisible(true);
-        QuantitySpnr.setEnabled(true);
+        QuantitySpnr.setEnabled(false);
         ProductTf.setText(ProductsTbl.getValueAt(ProductsTbl.getSelectedRow(), 0) + "");
         QuantitySpnr.setValue(1);
         UpdateOrderBtn.setVisible(false);
@@ -411,22 +421,6 @@ public class StorePage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_LowonStockRdioMouseClicked
 
-    private void OutofStockRdioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OutofStockRdioMouseClicked
-        if (!sleeping) {
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(StorePage.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            if (LowonStockRdio.isSelected()) {
-                LowonStockRdio.setSelected(false);
-                if (OutofStockRdio.isSelected()) {
-                    LowonStockRdio.setSelected(false);
-                }
-            }
-        }
-    }//GEN-LAST:event_OutofStockRdioMouseClicked
-
     private void ConfirmOrderBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmOrderBtnActionPerformed
         if (OutofStockRdio.isSelected() && LowonStockRdio.isSelected()) {
             OutofStockRdio.setForeground(Color.RED);
@@ -461,6 +455,41 @@ public class StorePage extends javax.swing.JFrame {
         removeFromOrder();
     }//GEN-LAST:event_removeProductBtnActionPerformed
 
+    private void QuantitySpnrPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_QuantitySpnrPropertyChange
+        System.out.println(Integer.parseInt(QuantitySpnr.getValue() + ""));
+        if (Integer.parseInt(QuantitySpnr.getValue() + "") < 1) {
+            System.out.println("aaa");
+            QuantitySpnr.setValue(1);
+        }
+    }//GEN-LAST:event_QuantitySpnrPropertyChange
+
+    private void QuantitySpnrStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_QuantitySpnrStateChanged
+        System.out.println(Integer.parseInt(QuantitySpnr.getValue() + ""));
+        if (Integer.parseInt(QuantitySpnr.getValue() + "") < 1) {
+            System.out.println("aaa");
+            QuantitySpnr.setValue(1);
+        }
+    }//GEN-LAST:event_QuantitySpnrStateChanged
+
+    private void OutofStockRdioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OutofStockRdioMouseClicked
+
+        if (!sleeping) {
+            try {
+                sleeping = true;
+                Thread.sleep(500);
+                sleeping = false;
+            } catch (InterruptedException ex) {
+                Logger.getLogger(StorePage.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if (LowonStockRdio.isSelected()) {
+                LowonStockRdio.setSelected(false);
+                if (OutofStockRdio.isSelected()) {
+                    LowonStockRdio.setSelected(false);
+                }
+            }
+        }
+    }//GEN-LAST:event_OutofStockRdioMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddtoOrderBtn;
@@ -491,7 +520,7 @@ public class StorePage extends javax.swing.JFrame {
 
     private void loadAllProducts_ResetProductTable() throws SQLException {
         st = conn.createStatement();
-        rs = st.executeQuery("SELECT * FROM product");
+        rs = st.executeQuery("SELECT * FROM Product");
         DefaultTableModel model = new DefaultTableModel(new Object[]{"Product name", "Units per crate", "Product ID"}, 0);
         productList = new ArrayList<>();
         boolean productExists = false;
@@ -593,7 +622,7 @@ public class StorePage extends javax.swing.JFrame {
         try {
             if (getNrItemsInOrder() > 0) {
                 Long t = Calendar.getInstance().getTimeInMillis();
-                try (PreparedStatement ps = conn.prepareStatement("INSERT INTO orders (order_Date, urgency, order_Status, store_ID) VALUES (?,?,?,?)",
+                try (PreparedStatement ps = conn.prepareStatement("INSERT INTO Orders (order_Date, urgency, order_Status, store_ID) VALUES (?,?,?,?)",
                         Statement.RETURN_GENERATED_KEYS)) {
                     ps.setTimestamp(1, new java.sql.Timestamp(t));
                     ps.setString(2, urgency);
@@ -611,7 +640,7 @@ public class StorePage extends javax.swing.JFrame {
                                 productList.get(i).setIsOnCurrentOrder(false);
                                 int nr_Crates = productList.get(i).getAmountOfCrates();
                                 int product_ID = productList.get(i).getProduct_ID();
-                                st.executeUpdate("INSERT INTO orderdetails (od_CratesOrdered,product_ID,order_ID) VALUES (" + nr_Crates + "," + product_ID + "," + orderID + ");");
+                                st.executeUpdate("INSERT INTO OrderDetails (od_CratesOrdered,product_ID,order_ID) VALUES (" + nr_Crates + "," + product_ID + "," + orderID + ");");
                             }
                         }
                         JOptionPane.showMessageDialog(this,

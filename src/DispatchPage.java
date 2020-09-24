@@ -52,6 +52,8 @@ public class DispatchPage extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(DispatchPage.class.getName()).log(Level.SEVERE, null, ex);
         }
+        IncomingOrdersTbl.setDefaultEditor(Object.class, null);
+        SelectedOrderTbl.setDefaultEditor(Object.class, null);
         IncomingOrdersTbl.setRowSelectionInterval(0, 0);
 
         row = IncomingOrdersTbl.getSelectedRow();
