@@ -697,7 +697,7 @@ public class AdminPage extends javax.swing.JFrame {
         AdminNameLbl.setForeground(new java.awt.Color(255, 255, 255));
         AdminNameLbl.setText("AdminName");
         jPanel6.add(AdminNameLbl);
-        AdminNameLbl.setBounds(760, 0, 240, 70);
+        AdminNameLbl.setBounds(760, 0, 180, 70);
 
         btnSignOut.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnSignOut.setForeground(new java.awt.Color(255, 255, 255));

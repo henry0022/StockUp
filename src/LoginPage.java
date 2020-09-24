@@ -118,7 +118,7 @@ public class LoginPage extends javax.swing.JFrame {
             }
         });
         jPanel1.add(PasswordTf);
-        PasswordTf.setBounds(100, 180, 140, 20);
+        PasswordTf.setBounds(100, 180, 140, 30);
 
         jPanel2.add(jPanel1);
         jPanel1.setBounds(380, 170, 510, 390);
