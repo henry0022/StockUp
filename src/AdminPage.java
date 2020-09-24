@@ -78,6 +78,18 @@ public class AdminPage extends javax.swing.JFrame {
         ExitLbl = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
+        jPanel8 = new javax.swing.JPanel();
+        AdminNameLbl = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jPanel12 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         DispatchUserLbl = new javax.swing.JLabel();
@@ -158,7 +170,6 @@ public class AdminPage extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         ProductTbl = new javax.swing.JTable();
         jPanel6 = new javax.swing.JPanel();
-        AdminNameLbl = new javax.swing.JLabel();
         btnSignOut = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
@@ -200,9 +211,84 @@ public class AdminPage extends javax.swing.JFrame {
         jPanel1.add(ExitLbl);
         ExitLbl.setBounds(1220, 0, 27, 64);
 
-        jPanel7.setBackground(new java.awt.Color(133, 1, 41));
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setLayout(null);
-        jTabbedPane1.addTab("Orders", jPanel7);
+
+        jPanel8.setBackground(new java.awt.Color(133, 1, 41));
+        jPanel8.setLayout(null);
+
+        AdminNameLbl.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        AdminNameLbl.setForeground(new java.awt.Color(255, 255, 255));
+        AdminNameLbl.setText("AdminName");
+        jPanel8.add(AdminNameLbl);
+        AdminNameLbl.setBounds(20, 20, 270, 70);
+        jPanel8.add(jPanel10);
+        jPanel10.setBounds(20, 85, 290, 5);
+
+        jPanel11.setBackground(new java.awt.Color(133, 1, 41));
+        jPanel11.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
+        jPanel11.setLayout(null);
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/icons8_Staff_50px_1.png"))); // NOI18N
+        jLabel6.setText("  Staff Information");
+        jPanel11.add(jLabel6);
+        jLabel6.setBounds(10, 0, 310, 70);
+
+        jPanel8.add(jPanel11);
+        jPanel11.setBounds(0, 130, 330, 70);
+
+        jPanel12.setBackground(new java.awt.Color(133, 1, 41));
+        jPanel12.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(255, 255, 255)));
+        jPanel12.setLayout(null);
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/icons8_Course_52px.png"))); // NOI18N
+        jLabel7.setText("  Orders Information");
+        jPanel12.add(jLabel7);
+        jLabel7.setBounds(10, 0, 310, 70);
+
+        jPanel8.add(jPanel12);
+        jPanel12.setBounds(0, 200, 330, 70);
+
+        jPanel7.add(jPanel8);
+        jPanel8.setBounds(0, 0, 330, 520);
+
+        jPanel9.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel9.setLayout(null);
+
+        jLabel2.setFont(new java.awt.Font("Viner Hand ITC", 1, 75)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("S");
+        jPanel9.add(jLabel2);
+        jLabel2.setBounds(180, 10, 70, 100);
+
+        jLabel3.setFont(new java.awt.Font("Tw Cen MT", 0, 45)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("taff");
+        jPanel9.add(jLabel3);
+        jLabel3.setBounds(230, 40, 80, 30);
+
+        jLabel4.setFont(new java.awt.Font("Viner Hand ITC", 1, 75)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("I");
+        jPanel9.add(jLabel4);
+        jLabel4.setBounds(330, 20, 40, 80);
+
+        jLabel5.setFont(new java.awt.Font("Tw Cen MT", 0, 45)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("nformation");
+        jPanel9.add(jLabel5);
+        jLabel5.setBounds(360, 30, 210, 50);
+
+        jPanel7.add(jPanel9);
+        jPanel9.setBounds(330, 30, 710, 100);
+
+        jTabbedPane1.addTab("Home", jPanel7);
 
         jPanel2.setBackground(new java.awt.Color(133, 1, 41));
         jPanel2.setLayout(null);
@@ -701,12 +787,6 @@ public class AdminPage extends javax.swing.JFrame {
         jPanel6.setBackground(new java.awt.Color(0, 0, 0));
         jPanel6.setLayout(null);
 
-        AdminNameLbl.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
-        AdminNameLbl.setForeground(new java.awt.Color(255, 255, 255));
-        AdminNameLbl.setText("AdminName");
-        jPanel6.add(AdminNameLbl);
-        AdminNameLbl.setBounds(650, 0, 270, 70);
-
         btnSignOut.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         btnSignOut.setForeground(new java.awt.Color(255, 255, 255));
         btnSignOut.setText("Sign Out");
@@ -957,13 +1037,24 @@ public class AdminPage extends javax.swing.JFrame {
     private javax.swing.JTextField UnitsPerCrateTf;
     private javax.swing.JButton btnSignOut;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
+    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
