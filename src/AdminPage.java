@@ -68,6 +68,7 @@ public class AdminPage extends javax.swing.JFrame {
         ordersInfoVisible(false);
         refridgeratorVisible(false);
         staffInfoVisible(true);
+        setForegroundColourToWhite();
     }
 
     /**
@@ -94,12 +95,16 @@ public class AdminPage extends javax.swing.JFrame {
         jPanel13 = new javax.swing.JPanel();
         LblRefridgerator = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
-        LblS = new javax.swing.JLabel();
-        LblTaff = new javax.swing.JLabel();
+        LblO = new javax.swing.JLabel();
         LblI = new javax.swing.JLabel();
         LblNformation = new javax.swing.JLabel();
-        LblO = new javax.swing.JLabel();
         LblRders = new javax.swing.JLabel();
+        LblAnagement = new javax.swing.JLabel();
+        LblM = new javax.swing.JLabel();
+        LblReezer = new javax.swing.JLabel();
+        LblF = new javax.swing.JLabel();
+        LblS = new javax.swing.JLabel();
+        LblTaff = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         DispatchUserLbl = new javax.swing.JLabel();
@@ -334,41 +339,55 @@ public class AdminPage extends javax.swing.JFrame {
         jPanel9.setBackground(new java.awt.Color(0, 0, 0));
         jPanel9.setLayout(null);
 
+        LblO.setFont(new java.awt.Font("Viner Hand ITC", 1, 65)); // NOI18N
+        LblO.setText("O");
+        jPanel9.add(LblO);
+        LblO.setBounds(220, 20, 40, 70);
+
+        LblI.setFont(new java.awt.Font("Viner Hand ITC", 1, 65)); // NOI18N
+        LblI.setText("I");
+        jPanel9.add(LblI);
+        LblI.setBounds(340, 20, 30, 70);
+
+        LblNformation.setFont(new java.awt.Font("Tw Cen MT", 0, 35)); // NOI18N
+        LblNformation.setText("nformation");
+        jPanel9.add(LblNformation);
+        LblNformation.setBounds(360, 30, 210, 50);
+
+        LblRders.setFont(new java.awt.Font("Tw Cen MT", 0, 35)); // NOI18N
+        LblRders.setText("rders");
+        jPanel9.add(LblRders);
+        LblRders.setBounds(250, 40, 110, 30);
+
+        LblAnagement.setFont(new java.awt.Font("Tw Cen MT", 0, 35)); // NOI18N
+        LblAnagement.setText("anagement");
+        jPanel9.add(LblAnagement);
+        LblAnagement.setBounds(390, 40, 170, 30);
+
+        LblM.setFont(new java.awt.Font("Viner Hand ITC", 1, 65)); // NOI18N
+        LblM.setText("M");
+        jPanel9.add(LblM);
+        LblM.setBounds(340, 20, 72, 70);
+
+        LblReezer.setFont(new java.awt.Font("Tw Cen MT", 0, 35)); // NOI18N
+        LblReezer.setText("reezer");
+        jPanel9.add(LblReezer);
+        LblReezer.setBounds(230, 40, 110, 30);
+
+        LblF.setFont(new java.awt.Font("Viner Hand ITC", 1, 65)); // NOI18N
+        LblF.setText("F");
+        jPanel9.add(LblF);
+        LblF.setBounds(200, 20, 50, 70);
+
         LblS.setFont(new java.awt.Font("Viner Hand ITC", 1, 65)); // NOI18N
-        LblS.setForeground(new java.awt.Color(255, 255, 255));
         LblS.setText("S");
         jPanel9.add(LblS);
         LblS.setBounds(230, 20, 50, 80);
 
         LblTaff.setFont(new java.awt.Font("Tw Cen MT", 0, 35)); // NOI18N
-        LblTaff.setForeground(new java.awt.Color(255, 255, 255));
         LblTaff.setText("taff");
         jPanel9.add(LblTaff);
         LblTaff.setBounds(270, 40, 60, 30);
-
-        LblI.setFont(new java.awt.Font("Viner Hand ITC", 1, 65)); // NOI18N
-        LblI.setForeground(new java.awt.Color(255, 255, 255));
-        LblI.setText("I");
-        jPanel9.add(LblI);
-        LblI.setBounds(340, 30, 30, 70);
-
-        LblNformation.setFont(new java.awt.Font("Tw Cen MT", 0, 35)); // NOI18N
-        LblNformation.setForeground(new java.awt.Color(255, 255, 255));
-        LblNformation.setText("nformation");
-        jPanel9.add(LblNformation);
-        LblNformation.setBounds(360, 30, 210, 50);
-
-        LblO.setFont(new java.awt.Font("Viner Hand ITC", 1, 65)); // NOI18N
-        LblO.setForeground(new java.awt.Color(255, 255, 255));
-        LblO.setText("O");
-        jPanel9.add(LblO);
-        LblO.setBounds(230, 30, 40, 70);
-
-        LblRders.setFont(new java.awt.Font("Tw Cen MT", 0, 35)); // NOI18N
-        LblRders.setForeground(new java.awt.Color(255, 255, 255));
-        LblRders.setText("rders");
-        jPanel9.add(LblRders);
-        LblRders.setBounds(260, 40, 110, 30);
 
         jPanel7.add(jPanel9);
         jPanel9.setBounds(330, 30, 710, 100);
@@ -1156,11 +1175,15 @@ public class AdminPage extends javax.swing.JFrame {
     private javax.swing.JTextField DispatchUser_Surname_Tf;
     private javax.swing.JTextField DispatchUser_Username_Tf;
     private javax.swing.JLabel ExitLbl;
+    private javax.swing.JLabel LblAnagement;
+    private javax.swing.JLabel LblF;
     private javax.swing.JLabel LblI;
+    private javax.swing.JLabel LblM;
     private javax.swing.JLabel LblNformation;
     private javax.swing.JLabel LblO;
     private javax.swing.JLabel LblOrdersInfo;
     private javax.swing.JLabel LblRders;
+    private javax.swing.JLabel LblReezer;
     private javax.swing.JLabel LblRefridgerator;
     private javax.swing.JLabel LblS;
     private javax.swing.JLabel LblStaffInfo;
@@ -1247,7 +1270,23 @@ public class AdminPage extends javax.swing.JFrame {
     }
     
     public void refridgeratorVisible(boolean temp){
-        
+        LblM.setVisible(temp);
+        LblAnagement.setVisible(temp);
+        LblF.setVisible(temp);
+        LblReezer.setVisible(temp);
+    }
+    
+    public void setForegroundColourToWhite(){
+        LblS.setForeground(Color.white);
+        LblTaff.setForeground(Color.white);
+        LblI.setForeground(Color.white);
+        LblNformation.setForeground(Color.white);
+        LblO.setForeground(Color.white);
+        LblRders.setForeground(Color.white);
+        LblM.setForeground(Color.white);
+        LblAnagement.setForeground(Color.white);
+        LblF.setForeground(Color.white);
+        LblReezer.setForeground(Color.white);
     }
     
     private void addStore(String store, String phone, String address) {
