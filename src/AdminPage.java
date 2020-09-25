@@ -261,7 +261,7 @@ public class AdminPage extends javax.swing.JFrame {
             }
         });
         jPanel11.add(LblStaffInfo);
-        LblStaffInfo.setBounds(0, 0, 320, 70);
+        LblStaffInfo.setBounds(-10, 0, 330, 70);
 
         jPanel8.add(jPanel11);
         jPanel11.setBounds(0, 130, 330, 70);
@@ -274,7 +274,7 @@ public class AdminPage extends javax.swing.JFrame {
         LblOrdersInfo.setForeground(new java.awt.Color(255, 255, 255));
         LblOrdersInfo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblOrdersInfo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/icons8_Course_52px.png"))); // NOI18N
-        LblOrdersInfo.setText("  Orders Information");
+        LblOrdersInfo.setText("   Orders Information");
         LblOrdersInfo.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 LblOrdersInfoMouseMoved(evt);
@@ -292,7 +292,7 @@ public class AdminPage extends javax.swing.JFrame {
             }
         });
         jPanel12.add(LblOrdersInfo);
-        LblOrdersInfo.setBounds(10, 0, 310, 70);
+        LblOrdersInfo.setBounds(0, 0, 320, 70);
 
         jPanel8.add(jPanel12);
         jPanel12.setBounds(0, 200, 330, 70);
@@ -305,7 +305,7 @@ public class AdminPage extends javax.swing.JFrame {
         LblRefridgerator.setForeground(new java.awt.Color(255, 255, 255));
         LblRefridgerator.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         LblRefridgerator.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/icons8_Library_50px_1.png"))); // NOI18N
-        LblRefridgerator.setText("    Refridgerator ");
+        LblRefridgerator.setText("  Freezer Management");
         LblRefridgerator.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
                 LblRefridgeratorMouseMoved(evt);
@@ -323,7 +323,7 @@ public class AdminPage extends javax.swing.JFrame {
             }
         });
         jPanel13.add(LblRefridgerator);
-        LblRefridgerator.setBounds(-20, 4, 340, 60);
+        LblRefridgerator.setBounds(10, 4, 310, 60);
 
         jPanel8.add(jPanel13);
         jPanel13.setBounds(0, 270, 330, 70);

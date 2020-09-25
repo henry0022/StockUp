@@ -190,7 +190,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="0" y="0" width="320" height="70"/>
+                              <AbsoluteConstraints x="-10" y="0" width="330" height="70"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -231,7 +231,7 @@
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/Resources/icons8_Course_52px.png"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="  Orders Information"/>
+                            <Property name="text" type="java.lang.String" value="   Orders Information"/>
                           </Properties>
                           <Events>
                             <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="LblOrdersInfoMouseMoved"/>
@@ -241,7 +241,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="10" y="0" width="310" height="70"/>
+                              <AbsoluteConstraints x="0" y="0" width="320" height="70"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -282,7 +282,7 @@
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/Resources/icons8_Library_50px_1.png"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="    Refridgerator "/>
+                            <Property name="text" type="java.lang.String" value="  Freezer Management"/>
                           </Properties>
                           <Events>
                             <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="LblRefridgeratorMouseMoved"/>
@@ -292,7 +292,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="-20" y="4" width="340" height="60"/>
+                              <AbsoluteConstraints x="10" y="4" width="310" height="60"/>
                             </Constraint>
                           </Constraints>
                         </Component>

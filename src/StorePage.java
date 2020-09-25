@@ -367,7 +367,7 @@ public class StorePage extends javax.swing.JFrame {
 
     private void ProductsTblMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ProductsTblMouseClicked
         AddtoOrderBtn.setVisible(true);
-        QuantitySpnr.setEnabled(false);
+        QuantitySpnr.setEnabled(true);
         ProductTf.setText(ProductsTbl.getValueAt(ProductsTbl.getSelectedRow(), 0) + "");
         QuantitySpnr.setValue(1);
         UpdateOrderBtn.setVisible(false);
