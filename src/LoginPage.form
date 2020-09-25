@@ -152,7 +152,6 @@
             </Component>
             <Component class="javax.swing.JLabel" name="labelLoading">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Checken"/>
                 <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[190, 109]"/>
                 </Property>

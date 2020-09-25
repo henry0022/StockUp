@@ -138,7 +138,6 @@ public class LoginPage extends javax.swing.JFrame {
         jPanel1.add(PasswordTf);
         PasswordTf.setBounds(100, 180, 140, 30);
 
-        labelLoading.setText("Checken");
         labelLoading.setPreferredSize(new java.awt.Dimension(190, 109));
         jPanel1.add(labelLoading);
         labelLoading.setBounds(100, 210, 120, 70);
@@ -220,7 +219,7 @@ public class LoginPage extends javax.swing.JFrame {
                     SwingUtilities.invokeLater(new Runnable() {
                         @Override
                         public void run() {
-                            System.out.println("later");
+                            buttonLogin.setVisible(true);
                             labelLoading.setVisible(false);
                         }
                     });
