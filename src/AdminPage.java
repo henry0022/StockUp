@@ -105,6 +105,10 @@ public class AdminPage extends javax.swing.JFrame {
         LblM = new javax.swing.JLabel();
         LblReezer = new javax.swing.JLabel();
         LblF = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        JTOrdersInfo = new javax.swing.JTable();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        JTStaffInfo = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         DispatchUserLbl = new javax.swing.JLabel();
@@ -395,6 +399,42 @@ public class AdminPage extends javax.swing.JFrame {
 
         jPanel7.add(jPanel9);
         jPanel9.setBounds(330, 30, 710, 100);
+
+        jScrollPane4.setBackground(new java.awt.Color(255, 255, 255));
+
+        JTOrdersInfo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane4.setViewportView(JTOrdersInfo);
+
+        jPanel7.add(jScrollPane4);
+        jScrollPane4.setBounds(370, 160, 630, 330);
+
+        jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
+
+        JTStaffInfo.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane3.setViewportView(JTStaffInfo);
+
+        jPanel7.add(jScrollPane3);
+        jScrollPane3.setBounds(370, 160, 630, 330);
 
         jTabbedPane1.addTab("Home", jPanel7);
 
@@ -1179,6 +1219,8 @@ public class AdminPage extends javax.swing.JFrame {
     private javax.swing.JTextField DispatchUser_Surname_Tf;
     private javax.swing.JTextField DispatchUser_Username_Tf;
     private javax.swing.JLabel ExitLbl;
+    private javax.swing.JTable JTOrdersInfo;
+    private javax.swing.JTable JTStaffInfo;
     private javax.swing.JLabel LblAnagement;
     private javax.swing.JLabel LblF;
     private javax.swing.JLabel LblI;
@@ -1239,6 +1281,8 @@ public class AdminPage extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblWarningProduct;
     private javax.swing.JLabel lblWarningUnits;
@@ -1264,6 +1308,8 @@ public class AdminPage extends javax.swing.JFrame {
         LblTaff.setVisible(temp);
         LblI.setVisible(temp);
         LblNformation.setVisible(temp);
+        JTStaffInfo.setVisible(temp);
+        jScrollPane3.setVisible(temp);
     }
     
     public void ordersInfoVisible(boolean temp){
@@ -1271,6 +1317,8 @@ public class AdminPage extends javax.swing.JFrame {
         LblRders.setVisible(temp);
         LblI.setVisible(temp);
         LblNformation.setVisible(temp);
+        JTOrdersInfo.setVisible(temp);
+        jScrollPane4.setVisible(temp);
     }
     
     public void refridgeratorVisible(boolean temp){
