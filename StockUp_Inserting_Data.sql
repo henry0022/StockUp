@@ -94,3 +94,8 @@ values	('10', '002', '006'),
         ('21', '020', '003'),
         ('15', '024', '003'),
         ('5', '011', '003');
+
+insert into Freezer (freezer_Number, freeser_Type, last_Service, store_ID)
+values	('001', 'Slide-Top', '2020-06-22', '001'),
+        ('004', 'Lid-Top', '2020-03-25', '002'),
+        ('006', 'Standing', '2020-04-26', '005');
