@@ -45,6 +45,8 @@ public class AdminPage extends javax.swing.JFrame {
     Statement st = null;
     ResultSet rs = null;
     ArrayList<Object[]> productList = new ArrayList();
+    ArrayList<Object[]> staffList = new ArrayList();
+    ArrayList<Object[]> orderList = new ArrayList();
 
     String adminUsername = "";
 
@@ -1133,22 +1135,22 @@ public class AdminPage extends javax.swing.JFrame {
     }//GEN-LAST:event_LblStaffInfoMouseMoved
 
     private void LblStaffInfoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblStaffInfoMouseEntered
-        Color clr = new Color(150,40,27);
+        Color clr = new Color(150, 40, 27);
         jPanel11.setBackground(clr);
     }//GEN-LAST:event_LblStaffInfoMouseEntered
 
     private void LblStaffInfoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblStaffInfoMouseExited
-        Color clr = new Color(133,1,41);
+        Color clr = new Color(133, 1, 41);
         jPanel11.setBackground(clr);
     }//GEN-LAST:event_LblStaffInfoMouseExited
 
     private void LblOrdersInfoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblOrdersInfoMouseEntered
-        Color clr = new Color(150,40,27);
+        Color clr = new Color(150, 40, 27);
         jPanel12.setBackground(clr);
     }//GEN-LAST:event_LblOrdersInfoMouseEntered
 
     private void LblOrdersInfoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblOrdersInfoMouseExited
-        Color clr = new Color(133,1,41);
+        Color clr = new Color(133, 1, 41);
         jPanel12.setBackground(clr);
     }//GEN-LAST:event_LblOrdersInfoMouseExited
 
@@ -1161,12 +1163,12 @@ public class AdminPage extends javax.swing.JFrame {
     }//GEN-LAST:event_LblRefridgeratorMouseMoved
 
     private void LblRefridgeratorMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblRefridgeratorMouseEntered
-        Color clr = new Color(150,40,27);
+        Color clr = new Color(150, 40, 27);
         jPanel13.setBackground(clr);
     }//GEN-LAST:event_LblRefridgeratorMouseEntered
 
     private void LblRefridgeratorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LblRefridgeratorMouseExited
-        Color clr = new Color(133,1,41);
+        Color clr = new Color(133, 1, 41);
         jPanel13.setBackground(clr);
     }//GEN-LAST:event_LblRefridgeratorMouseExited
 
@@ -1303,32 +1305,101 @@ public class AdminPage extends javax.swing.JFrame {
     private javax.swing.JLabel warning_Store_Number_Lbl;
     // End of variables declaration//GEN-END:variables
 
-    public void staffInfoVisible(boolean temp){
+    private void displayStaff() throws SQLException {
+        st = conn.createStatement();
+        rs = st.executeQuery("SELECT * FROM Staff ORDER BY store_ID, staff_Surname");
+        DefaultTableModel model = new DefaultTableModel(new Object[]{"Name", "Surname", "Store", "Username"}, 0);
+
+        while (rs.next()) {
+            //System.out.println(a++);
+            //System.out.println(rs.getInt("order_ID") + "," + rs.getInt("order_Status"));
+
+            Object order[] = {rs.getString("staff_Name"), rs.getString("staff_Surname"), getStoreName(rs.getInt("store_ID")), rs.getString("username")};
+            staffList.add(order);
+            //System.out.println(orderList.size());
+            model.addRow(staffList.get(staffList.size() - 1));
+        }
+        JTStaffInfo.setModel(model);
+    }
+
+    private void displayOrders() throws SQLException {
+        st = conn.createStatement();
+        rs = st.executeQuery("SELECT * FROM Orders ORDER BY order_Status, store_ID, order_Date");
+        DefaultTableModel model = new DefaultTableModel(new Object[]{"Order ID", "Order Date", "Store", "Order Status"}, 0);
+
+        while (rs.next()) {
+            //System.out.println(a++);
+            //System.out.println(rs.getInt("order_ID") + "," + rs.getInt("order_Status"));
+
+            if (rs.getInt("order_Status") > 0) {
+                Object order[] = {rs.getInt("order_ID"), rs.getDate("order_Date"), getStoreName(rs.getInt("store_ID")), "Complete"};
+                orderList.add(order);
+            } else {
+                Object order[] = {rs.getInt("order_ID"), rs.getDate("order_Date"), getStoreName(rs.getInt("store_ID")), "Incomplete"};
+                orderList.add(order);
+            }
+            //System.out.println(orderList.size());
+            model.addRow(orderList.get(orderList.size() - 1));
+        }
+        JTOrdersInfo.setModel(model);
+    }
+
+    private String getStoreName(int ID) {
+        String store_Name = null;
+        Statement st_1;
+        ResultSet rs_1;
+
+        try {
+            st_1 = conn.createStatement();
+            rs_1 = st_1.executeQuery("SELECT store_Name FROM Store WHERE store_ID =" + ID);
+            while (rs_1.next()) {
+                store_Name = rs_1.getString("store_Name");
+            }
+
+        } catch (SQLException e) {
+            Logger.getLogger(DispatchPage.class.getName()).log(Level.SEVERE, null, e);
+            //System.out.println("Here");
+        }
+        return store_Name;
+    }
+
+    public void staffInfoVisible(boolean temp) {
         LblS.setVisible(temp);
         LblTaff.setVisible(temp);
         LblI.setVisible(temp);
         LblNformation.setVisible(temp);
         JTStaffInfo.setVisible(temp);
+        try {
+            displayStaff();
+        } catch (SQLException e) {
+            Logger.getLogger(DispatchPage.class.getName()).log(Level.SEVERE, null, e);
+        }
+
         jScrollPane3.setVisible(temp);
     }
-    
-    public void ordersInfoVisible(boolean temp){
+
+    public void ordersInfoVisible(boolean temp) {
         LblO.setVisible(temp);
         LblRders.setVisible(temp);
         LblI.setVisible(temp);
         LblNformation.setVisible(temp);
         JTOrdersInfo.setVisible(temp);
+        try {
+            displayOrders();
+        } catch (SQLException e) {
+            Logger.getLogger(DispatchPage.class.getName()).log(Level.SEVERE, null, e);
+        }
         jScrollPane4.setVisible(temp);
     }
-    
-    public void refridgeratorVisible(boolean temp){
+
+    public void refridgeratorVisible(boolean temp) {
         LblM.setVisible(temp);
         LblAnagement.setVisible(temp);
         LblF.setVisible(temp);
         LblReezer.setVisible(temp);
     }
-    
-    public void setForegroundColourToWhite(){
+
+    public void setForegroundColourToWhite() {
         LblS.setForeground(Color.white);
         LblTaff.setForeground(Color.white);
         LblI.setForeground(Color.white);
@@ -1340,7 +1411,7 @@ public class AdminPage extends javax.swing.JFrame {
         LblF.setForeground(Color.white);
         LblReezer.setForeground(Color.white);
     }
-    
+
     private void addStore(String store, String phone, String address) {
 
         boolean valid = true;
