@@ -48,6 +48,7 @@ public class AdminPage extends javax.swing.JFrame {
     ArrayList<Object[]> staffList = new ArrayList();
     ArrayList<Object[]> orderList = new ArrayList();
     ArrayList<Object[]> storeList = new ArrayList();
+    ArrayList<Object[]> freezerList = new ArrayList();
 
     String adminUsername = "";
 
@@ -1355,6 +1356,23 @@ public class AdminPage extends javax.swing.JFrame {
     private javax.swing.JLabel warning_Store_Number_Lbl;
     // End of variables declaration//GEN-END:variables
 
+    private void displayFreezer() throws SQLException {
+        st = conn.createStatement();
+        rs = st.executeQuery("SELECT * FROM Freezer ORDER BY store_ID, freeser_Type");
+        DefaultTableModel model = new DefaultTableModel(new Object[]{"Number", "Type", "Last Service", "Store"}, 0);
+
+        while (rs.next()) {
+            //System.out.println(a++);
+            //System.out.println(rs.getInt("order_ID") + "," + rs.getInt("order_Status"));
+
+            Object order[] = {rs.getInt("freezer_ID"), rs.getString("freeser_Type"), rs.getDate("last_Service"), getStoreName(rs.getInt("store_ID"))};
+            freezerList.add(order);
+            //System.out.println(orderList.size());
+            model.addRow(freezerList.get(freezerList.size() - 1));
+        }
+        JTFreezerManagement.setModel(model);
+    }
+
     private void displayStaff() throws SQLException {
         st = conn.createStatement();
         rs = st.executeQuery("SELECT * FROM Staff ORDER BY store_ID, staff_Surname");
@@ -1468,6 +1486,11 @@ public class AdminPage extends javax.swing.JFrame {
         LblReezer.setVisible(temp);
         jScrollPane6.setVisible(temp);
         JTFreezerManagement.setVisible(temp);
+        try {
+            displayFreezer();
+        } catch (SQLException e) {
+            Logger.getLogger(DispatchPage.class.getName()).log(Level.SEVERE, null, e);
+        }
     }
 
     public void setForegroundColourToWhite() {
