@@ -47,6 +47,7 @@ public class AdminPage extends javax.swing.JFrame {
     ArrayList<Object[]> productList = new ArrayList();
     ArrayList<Object[]> staffList = new ArrayList();
     ArrayList<Object[]> orderList = new ArrayList();
+    ArrayList<Object[]> storeList = new ArrayList();
 
     String adminUsername = "";
 
@@ -64,6 +65,7 @@ public class AdminPage extends javax.swing.JFrame {
             AdminNameLbl.setText(rs.getString("admin_Name") + " " + rs.getString("admin_Surname"));
             populateStoresDropdown();
             displayTable();
+            displayStores();
         } catch (SQLException ex) {
             Logger.getLogger(AdminPage.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -179,6 +181,8 @@ public class AdminPage extends javax.swing.JFrame {
         warning_Store_Name_Lbl = new javax.swing.JLabel();
         warning_Store_Number_Lbl = new javax.swing.JLabel();
         warning_Store_Address_Lbl = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        JTStores = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
         ProductNameLbl = new javax.swing.JLabel();
         ProductNameTf = new javax.swing.JTextField();
@@ -214,7 +218,7 @@ public class AdminPage extends javax.swing.JFrame {
             }
         });
         jPanel1.add(MinLbl);
-        MinLbl.setBounds(1180, 0, 19, 64);
+        MinLbl.setBounds(1180, 0, 31, 58);
 
         ExitLbl.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         ExitLbl.setForeground(new java.awt.Color(255, 255, 255));
@@ -230,7 +234,7 @@ public class AdminPage extends javax.swing.JFrame {
             }
         });
         jPanel1.add(ExitLbl);
-        ExitLbl.setBounds(1220, 0, 27, 64);
+        ExitLbl.setBounds(1220, 0, 28, 58);
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setLayout(null);
@@ -402,8 +406,6 @@ public class AdminPage extends javax.swing.JFrame {
         jPanel7.add(jPanel9);
         jPanel9.setBounds(330, 30, 710, 100);
 
-        jScrollPane4.setBackground(new java.awt.Color(255, 255, 255));
-
         JTOrdersInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -419,8 +421,6 @@ public class AdminPage extends javax.swing.JFrame {
 
         jPanel7.add(jScrollPane4);
         jScrollPane4.setBounds(370, 160, 630, 330);
-
-        jScrollPane3.setBackground(new java.awt.Color(255, 255, 255));
 
         JTStaffInfo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -520,19 +520,19 @@ public class AdminPage extends javax.swing.JFrame {
         password_warning_lbl5.setForeground(new java.awt.Color(255, 0, 0));
         password_warning_lbl5.setText("One special character (@#$%^&+=)");
         jPanel5.add(password_warning_lbl5);
-        password_warning_lbl5.setBounds(130, 370, 202, 30);
+        password_warning_lbl5.setBounds(130, 370, 204, 30);
 
         DispatchUser_Name_Lbl1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         DispatchUser_Name_Lbl1.setForeground(new java.awt.Color(255, 255, 255));
         DispatchUser_Name_Lbl1.setText("Name:");
         jPanel5.add(DispatchUser_Name_Lbl1);
-        DispatchUser_Name_Lbl1.setBounds(70, 110, 40, 15);
+        DispatchUser_Name_Lbl1.setBounds(70, 110, 40, 14);
 
         DispatchUser_Surame_Lbl1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         DispatchUser_Surame_Lbl1.setForeground(new java.awt.Color(255, 255, 255));
         DispatchUser_Surame_Lbl1.setText("Surame:");
         jPanel5.add(DispatchUser_Surame_Lbl1);
-        DispatchUser_Surame_Lbl1.setBounds(60, 160, 50, 15);
+        DispatchUser_Surame_Lbl1.setBounds(60, 160, 50, 14);
 
         password_warning_lbl4.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         password_warning_lbl4.setForeground(new java.awt.Color(255, 0, 0));
@@ -544,7 +544,7 @@ public class AdminPage extends javax.swing.JFrame {
         password_warning_lbl6.setForeground(new java.awt.Color(255, 0, 0));
         password_warning_lbl6.setText("One uppercase, one lowercase");
         jPanel5.add(password_warning_lbl6);
-        password_warning_lbl6.setBounds(130, 360, 180, 15);
+        password_warning_lbl6.setBounds(130, 360, 180, 14);
 
         showPassword_AddDispatchUser_Lbl.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         showPassword_AddDispatchUser_Lbl.setForeground(new java.awt.Color(255, 255, 255));
@@ -582,7 +582,7 @@ public class AdminPage extends javax.swing.JFrame {
         StoreIdentityLbl.setForeground(new java.awt.Color(255, 255, 255));
         StoreIdentityLbl.setText("Store:");
         jPanel2.add(StoreIdentityLbl);
-        StoreIdentityLbl.setBounds(90, 210, 60, 15);
+        StoreIdentityLbl.setBounds(90, 210, 60, 14);
 
         AdminUsernameLbl.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         AdminUsernameLbl.setForeground(new java.awt.Color(255, 255, 255));
@@ -691,7 +691,7 @@ public class AdminPage extends javax.swing.JFrame {
         password_warning_lbl2.setForeground(new java.awt.Color(255, 0, 0));
         password_warning_lbl2.setText("One uppercase, one lowercase");
         jPanel2.add(password_warning_lbl2);
-        password_warning_lbl2.setBounds(140, 360, 190, 15);
+        password_warning_lbl2.setBounds(140, 360, 190, 14);
 
         ScrollPane_AddStoreUserWarnings.setBorder(null);
 
@@ -740,13 +740,13 @@ public class AdminPage extends javax.swing.JFrame {
         DispatchUser_Name_Lbl.setForeground(new java.awt.Color(255, 255, 255));
         DispatchUser_Name_Lbl.setText("Name:");
         jPanel2.add(DispatchUser_Name_Lbl);
-        DispatchUser_Name_Lbl.setBounds(760, 110, 40, 15);
+        DispatchUser_Name_Lbl.setBounds(760, 110, 40, 14);
 
         DispatchUser_Surame_Lbl.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         DispatchUser_Surame_Lbl.setForeground(new java.awt.Color(255, 255, 255));
         DispatchUser_Surame_Lbl.setText("Surname:");
         jPanel2.add(DispatchUser_Surame_Lbl);
-        DispatchUser_Surame_Lbl.setBounds(740, 160, 60, 15);
+        DispatchUser_Surame_Lbl.setBounds(740, 160, 60, 14);
 
         AdminUsernameTf.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         jPanel2.add(AdminUsernameTf);
@@ -768,13 +768,13 @@ public class AdminPage extends javax.swing.JFrame {
         password_warning_lbl8.setForeground(new java.awt.Color(255, 0, 0));
         password_warning_lbl8.setText("One uppercase, one lowercase");
         jPanel2.add(password_warning_lbl8);
-        password_warning_lbl8.setBounds(820, 360, 180, 15);
+        password_warning_lbl8.setBounds(820, 360, 180, 14);
 
         password_warning_lbl9.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         password_warning_lbl9.setForeground(new java.awt.Color(255, 0, 0));
         password_warning_lbl9.setText("One special character (@#$%^&+=)");
         jPanel2.add(password_warning_lbl9);
-        password_warning_lbl9.setBounds(820, 370, 202, 30);
+        password_warning_lbl9.setBounds(820, 370, 204, 30);
 
         showPassword_AddAdminUser_Lbl.setFont(new java.awt.Font("Leelawadee UI", 1, 48)); // NOI18N
         showPassword_AddAdminUser_Lbl.setForeground(new java.awt.Color(255, 255, 255));
@@ -796,30 +796,30 @@ public class AdminPage extends javax.swing.JFrame {
         StoreNameLbl.setForeground(new java.awt.Color(255, 255, 255));
         StoreNameLbl.setText("Store name:");
         jPanel3.add(StoreNameLbl);
-        StoreNameLbl.setBounds(260, 77, 100, 30);
+        StoreNameLbl.setBounds(380, 80, 100, 30);
 
         ContactNumberLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         ContactNumberLbl.setForeground(new java.awt.Color(255, 255, 255));
         ContactNumberLbl.setText("Contact number:");
         jPanel3.add(ContactNumberLbl);
-        ContactNumberLbl.setBounds(230, 120, 118, 30);
+        ContactNumberLbl.setBounds(350, 120, 117, 30);
 
         StoreAddressLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         StoreAddressLbl.setForeground(new java.awt.Color(255, 255, 255));
         StoreAddressLbl.setText("Store address:");
         jPanel3.add(StoreAddressLbl);
-        StoreAddressLbl.setBounds(250, 160, 110, 30);
+        StoreAddressLbl.setBounds(370, 170, 110, 30);
         jPanel3.add(StoreNameTf);
-        StoreNameTf.setBounds(370, 80, 310, 30);
+        StoreNameTf.setBounds(480, 80, 310, 30);
         jPanel3.add(ContactNumberTf);
-        ContactNumberTf.setBounds(370, 120, 310, 30);
+        ContactNumberTf.setBounds(480, 120, 310, 30);
 
         StoreAddressTa.setColumns(20);
         StoreAddressTa.setRows(5);
         jScrollPane1.setViewportView(StoreAddressTa);
 
         jPanel3.add(jScrollPane1);
-        jScrollPane1.setBounds(370, 160, 310, 180);
+        jScrollPane1.setBounds(480, 170, 310, 180);
 
         AddStoreBtn.setBackground(new java.awt.Color(168, 153, 104));
         AddStoreBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -830,7 +830,7 @@ public class AdminPage extends javax.swing.JFrame {
             }
         });
         jPanel3.add(AddStoreBtn);
-        AddStoreBtn.setBounds(390, 400, 120, 30);
+        AddStoreBtn.setBounds(580, 380, 120, 30);
 
         DeleteStoreBtn.setBackground(new java.awt.Color(168, 153, 104));
         DeleteStoreBtn.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -841,22 +841,38 @@ public class AdminPage extends javax.swing.JFrame {
             }
         });
         jPanel3.add(DeleteStoreBtn);
-        DeleteStoreBtn.setBounds(540, 400, 110, 30);
+        DeleteStoreBtn.setBounds(110, 390, 110, 30);
 
         warning_Store_Name_Lbl.setForeground(new java.awt.Color(255, 0, 0));
         warning_Store_Name_Lbl.setText("warning");
         jPanel3.add(warning_Store_Name_Lbl);
-        warning_Store_Name_Lbl.setBounds(690, 80, 220, 30);
+        warning_Store_Name_Lbl.setBounds(800, 80, 220, 30);
 
         warning_Store_Number_Lbl.setForeground(new java.awt.Color(255, 0, 0));
         warning_Store_Number_Lbl.setText("warning");
         jPanel3.add(warning_Store_Number_Lbl);
-        warning_Store_Number_Lbl.setBounds(690, 120, 220, 30);
+        warning_Store_Number_Lbl.setBounds(800, 120, 220, 30);
 
         warning_Store_Address_Lbl.setForeground(new java.awt.Color(255, 0, 0));
         warning_Store_Address_Lbl.setText("warning");
         jPanel3.add(warning_Store_Address_Lbl);
-        warning_Store_Address_Lbl.setBounds(690, 160, 220, 30);
+        warning_Store_Address_Lbl.setBounds(800, 160, 220, 30);
+
+        JTStores.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {},
+                {},
+                {},
+                {}
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane5.setViewportView(JTStores);
+
+        jPanel3.add(jScrollPane5);
+        jScrollPane5.setBounds(20, 30, 320, 330);
 
         jTabbedPane1.addTab("Add/Delete Store", jPanel3);
 
@@ -899,7 +915,7 @@ public class AdminPage extends javax.swing.JFrame {
         lblWarningUnits.setForeground(new java.awt.Color(255, 0, 0));
         lblWarningUnits.setText("warning");
         jPanel4.add(lblWarningUnits);
-        lblWarningUnits.setBounds(880, 210, 210, 14);
+        lblWarningUnits.setBounds(880, 210, 210, 16);
 
         UnitsPerCrateLbl1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         UnitsPerCrateLbl1.setForeground(new java.awt.Color(255, 255, 255));
@@ -911,7 +927,7 @@ public class AdminPage extends javax.swing.JFrame {
         lblWarningProduct.setForeground(new java.awt.Color(255, 0, 0));
         lblWarningProduct.setText("warning");
         jPanel4.add(lblWarningProduct);
-        lblWarningProduct.setBounds(880, 160, 210, 14);
+        lblWarningProduct.setBounds(880, 160, 210, 16);
 
         ProductTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -927,7 +943,7 @@ public class AdminPage extends javax.swing.JFrame {
         jScrollPane2.setViewportView(ProductTbl);
 
         jPanel4.add(jScrollPane2);
-        jScrollPane2.setBounds(40, 30, 452, 404);
+        jScrollPane2.setBounds(40, 30, 454, 404);
 
         jTabbedPane1.addTab("Add/Delete Product", jPanel4);
 
@@ -1223,6 +1239,7 @@ public class AdminPage extends javax.swing.JFrame {
     private javax.swing.JLabel ExitLbl;
     private javax.swing.JTable JTOrdersInfo;
     private javax.swing.JTable JTStaffInfo;
+    private javax.swing.JTable JTStores;
     private javax.swing.JLabel LblAnagement;
     private javax.swing.JLabel LblF;
     private javax.swing.JLabel LblI;
@@ -1285,6 +1302,7 @@ public class AdminPage extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblWarningProduct;
     private javax.swing.JLabel lblWarningUnits;
@@ -1320,6 +1338,23 @@ public class AdminPage extends javax.swing.JFrame {
             model.addRow(staffList.get(staffList.size() - 1));
         }
         JTStaffInfo.setModel(model);
+    }
+    
+        private void displayStores() throws SQLException {
+        st = conn.createStatement();
+        rs = st.executeQuery("SELECT * FROM Store ORDER BY store_ID");
+        DefaultTableModel model = new DefaultTableModel(new Object[]{"Store Name", "Phone Number"}, 0);
+
+        while (rs.next()) {
+            //System.out.println(a++);
+            //System.out.println(rs.getInt("order_ID") + "," + rs.getInt("order_Status"));
+
+            Object order[] = {rs.getString("store_Name"), rs.getString("store_PhoneNumber")};
+            storeList.add(order);
+            //System.out.println(orderList.size());
+            model.addRow(storeList.get(storeList.size() - 1));
+        }
+        JTStores.setModel(model);
     }
 
     private void displayOrders() throws SQLException {

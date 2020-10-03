@@ -285,10 +285,10 @@ public class LoginPage extends javax.swing.JFrame {
         while (conn == null) {
             conn = getConnection();
         }
-        System.out.println("1");
+        //System.out.println("1");
         st = createStatement();
 
-        System.out.println("1");
+        //System.out.println("1");
         try {
             rs = returnUser("Admins", text, password);
             if (rs.next()) {
