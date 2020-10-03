@@ -1019,6 +1019,12 @@ public class AdminPage extends javax.swing.JFrame {
         if (doneblinking) {
             addStore(StoreNameTf.getText(), ContactNumberTf.getText(), StoreAddressTa.getText());
             clearAddStoreFields();
+            try {
+                displayStores();
+            } catch (SQLException e) {
+                Logger.getLogger(DispatchPage.class.getName()).log(Level.SEVERE, null, e);
+            }
+
         }
     }//GEN-LAST:event_AddStoreBtnActionPerformed
 
@@ -1144,11 +1150,17 @@ public class AdminPage extends javax.swing.JFrame {
     }//GEN-LAST:event_DeleteProductBtnActionPerformed
 
     private void DeleteStoreBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteStoreBtnActionPerformed
-        String name = StoreNameTf.getText();
+        String name = JTStores.getValueAt(JTStores.getSelectedRow(), 0) + "";
         int confirm = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete " + name);
         if (confirm == 0) {
             clearAddStoreFields();
             deleteStore(name);
+            try {
+                displayStores();
+            } catch (SQLException e) {
+                Logger.getLogger(DispatchPage.class.getName()).log(Level.SEVERE, null, e);
+            }
+
         }
     }//GEN-LAST:event_DeleteStoreBtnActionPerformed
 
@@ -1359,8 +1371,8 @@ public class AdminPage extends javax.swing.JFrame {
         }
         JTStaffInfo.setModel(model);
     }
-    
-        private void displayStores() throws SQLException {
+
+    private void displayStores() throws SQLException {
         st = conn.createStatement();
         rs = st.executeQuery("SELECT * FROM Store ORDER BY store_ID");
         DefaultTableModel model = new DefaultTableModel(new Object[]{"Store Name", "Phone Number"}, 0);
@@ -1521,7 +1533,7 @@ public class AdminPage extends javax.swing.JFrame {
         try {
             if (valid) {
 
-                st.executeUpdate("INSERT INTO store (store_Name, store_Address, store_PhoneNumber) VALUES ('" + store + "','" + address + "','" + phone + "')");
+                st.executeUpdate("INSERT INTO Store (store_Name, store_Address, store_PhoneNumber) VALUES ('" + store + "','" + address + "','" + phone + "')");
                 blinkGreen(AddStoreBtn, "ADDED!");
             }
         } catch (SQLException ex) {
@@ -2003,7 +2015,7 @@ public class AdminPage extends javax.swing.JFrame {
     private void deleteStore(String store) {
         if (storeExists(store)) {
             try {
-                st.executeUpdate("DELETE FROM store WHERE store_Name = '" + store + "'");
+                st.executeUpdate("DELETE FROM Store WHERE store_Name = '" + store + "'");
 
                 blinkGreen(DeleteStoreBtn, "DELETED");
                 warning_Store_Name_Lbl.setVisible(false);

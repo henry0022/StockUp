@@ -55,8 +55,8 @@ public class LoginPage extends javax.swing.JFrame {
      */
     public LoginPage() {
         initComponents();
-        UsernameTf.setText("dispatchOne");
-        PasswordTf.setText("P@ssword123");
+        UsernameTf.setText("");
+        PasswordTf.setText("");
         testConnection();
         setSize(1270, 730);
         this.setLocationRelativeTo(null);

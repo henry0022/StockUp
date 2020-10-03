@@ -79,7 +79,6 @@ primary key (orderDetails)
 
 create table if not exists Freezer (
 freezer_ID int not null auto_increment,
-freezer_Number int not null,
 freeser_Type varchar(45) not null,
 last_Service date not null,
 store_ID int not null,
