@@ -353,25 +353,21 @@ public class AdminPage extends javax.swing.JFrame {
         jPanel9.setLayout(null);
 
         LblS.setFont(new java.awt.Font("Viner Hand ITC", 1, 65)); // NOI18N
-        LblS.setForeground(new java.awt.Color(255, 255, 255));
         LblS.setText("S");
         jPanel9.add(LblS);
         LblS.setBounds(230, 20, 50, 70);
 
         LblTaff.setFont(new java.awt.Font("Tw Cen MT", 0, 35)); // NOI18N
-        LblTaff.setForeground(new java.awt.Color(255, 255, 255));
         LblTaff.setText("taff");
         jPanel9.add(LblTaff);
         LblTaff.setBounds(270, 40, 60, 30);
 
         LblNformation.setFont(new java.awt.Font("Tw Cen MT", 0, 35)); // NOI18N
-        LblNformation.setForeground(new java.awt.Color(255, 255, 255));
         LblNformation.setText("nformation");
         jPanel9.add(LblNformation);
         LblNformation.setBounds(360, 30, 210, 50);
 
         LblI.setFont(new java.awt.Font("Viner Hand ITC", 1, 65)); // NOI18N
-        LblI.setForeground(new java.awt.Color(255, 255, 255));
         LblI.setText("I");
         jPanel9.add(LblI);
         LblI.setBounds(340, 20, 30, 70);
@@ -1375,9 +1371,29 @@ public class AdminPage extends javax.swing.JFrame {
 
     private void displayStaff() throws SQLException {
         st = conn.createStatement();
-        rs = st.executeQuery("SELECT * FROM Staff ORDER BY store_ID, staff_Surname");
-        DefaultTableModel model = new DefaultTableModel(new Object[]{"Name", "Surname", "Store", "Username"}, 0);
 
+        DefaultTableModel model = new DefaultTableModel(new Object[]{"Name", "Surname", "Role", "Username"}, 0);
+        ResultSet rs_1 = st.executeQuery("SELECT * FROM Admins");
+        while (rs_1.next()) {
+            //System.out.println(a++);
+            //System.out.println(rs.getInt("order_ID") + "," + rs.getInt("order_Status"));
+
+            Object order[] = {rs_1.getString("admin_Name"), rs_1.getString("admin_Surname"), "Admin", rs_1.getString("username")};
+            staffList.add(order);
+            //System.out.println(orderList.size());
+            model.addRow(staffList.get(staffList.size() - 1));
+        }
+        ResultSet rs_2 = st.executeQuery("SELECT * FROM Dispatch");
+        while (rs_2.next()) {
+            //System.out.println(a++);
+            //System.out.println(rs.getInt("order_ID") + "," + rs.getInt("order_Status"));
+
+            Object order[] = {rs_2.getString("dispatch_Name"), rs_2.getString("dispatch_Surname"), "Dispatch", rs_2.getString("username")};
+            staffList.add(order);
+            //System.out.println(orderList.size());
+            model.addRow(staffList.get(staffList.size() - 1));
+        }
+        rs = st.executeQuery("SELECT * FROM Staff ORDER BY store_ID, staff_Surname");
         while (rs.next()) {
             //System.out.println(a++);
             //System.out.println(rs.getInt("order_ID") + "," + rs.getInt("order_Status"));
@@ -1387,6 +1403,7 @@ public class AdminPage extends javax.swing.JFrame {
             //System.out.println(orderList.size());
             model.addRow(staffList.get(staffList.size() - 1));
         }
+
         JTStaffInfo.setModel(model);
     }
 
