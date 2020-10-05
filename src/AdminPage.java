@@ -1358,14 +1358,14 @@ public class AdminPage extends javax.swing.JFrame {
 
     private void displayFreezer() throws SQLException {
         st = conn.createStatement();
-        rs = st.executeQuery("SELECT * FROM Freezer ORDER BY store_ID, freeser_Type");
+        rs = st.executeQuery("SELECT * FROM Freezer ORDER BY store_ID, freezer_Type");
         DefaultTableModel model = new DefaultTableModel(new Object[]{"Number", "Type", "Last Service", "Store"}, 0);
 
         while (rs.next()) {
             //System.out.println(a++);
             //System.out.println(rs.getInt("order_ID") + "," + rs.getInt("order_Status"));
 
-            Object order[] = {rs.getInt("freezer_ID"), rs.getString("freeser_Type"), rs.getDate("last_Service"), getStoreName(rs.getInt("store_ID"))};
+            Object order[] = {rs.getInt("freezer_ID"), rs.getString("freezer_Type"), rs.getDate("last_Service"), getStoreName(rs.getInt("store_ID"))};
             freezerList.add(order);
             //System.out.println(orderList.size());
             model.addRow(freezerList.get(freezerList.size() - 1));
