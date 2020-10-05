@@ -70,16 +70,16 @@ foreign key (store_ID) references Store (store_ID)
 );
 
 create table if not exists OrderDetails (
-order_Detail int not null auto_increment,
+orderDetail_ID int not null auto_increment,
 od_CratesOrdered int not null,
 product_ID int not null,
 order_ID int not null,
-primary key (orderDetails)
+primary key (orderDetail_ID)
 );
 
 create table if not exists Freezer (
 freezer_ID int not null auto_increment,
-freeser_Type varchar(45) not null,
+freezer_Type varchar(45) not null,
 last_Service date not null,
 store_ID int not null,
 primary key (freezer_ID),
