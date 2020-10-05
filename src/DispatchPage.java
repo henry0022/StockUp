@@ -1,6 +1,7 @@
 
 import java.awt.Cursor;
-import java.io.File;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
@@ -8,10 +9,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
@@ -37,6 +40,7 @@ public class DispatchPage extends javax.swing.JFrame {
     ArrayList<Object[]> orderList = new ArrayList();
     ArrayList<Object[]> productList = new ArrayList();
     int row;
+    private static javax.swing.Timer t;
 
     public DispatchPage(LoginPage login, ResultSet rs, Connection conn) {
         login.dispose();
@@ -44,7 +48,6 @@ public class DispatchPage extends javax.swing.JFrame {
         setSize(1270, 730);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-        //displayProducts();
 
         try {
             this.conn = conn;
@@ -58,7 +61,35 @@ public class DispatchPage extends javax.swing.JFrame {
 
         row = IncomingOrdersTbl.getSelectedRow();
         displayProducts(row);
+        myTimer();
 
+    }
+
+    public void myTimer() {
+        t = null;
+        t = new Timer(300000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                connection();
+            }
+        });
+
+        java.util.Timer tt = new java.util.Timer(false);
+        tt.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                t.start();
+            }
+        }, 0);
+    }
+
+    public void connection() {
+        try {
+            this.conn = conn;
+            displayOrders();
+        } catch (SQLException ex) {
+            Logger.getLogger(DispatchPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -434,17 +465,17 @@ public class DispatchPage extends javax.swing.JFrame {
     private void displayOrders() throws SQLException {
         st = conn.createStatement();
         rs = st.executeQuery("SELECT * FROM Orders ORDER BY order_Status, order_Date");
-        DefaultTableModel model = new DefaultTableModel(new Object[]{"Order ID", "Order Date", "Store", "Order Status"}, 0);
+        DefaultTableModel model = new DefaultTableModel(new Object[]{"Order ID", "Order Date", "Store", "Urgency", "Order Status"}, 0);
 
         while (rs.next()) {
             //System.out.println(a++);
             //System.out.println(rs.getInt("order_ID") + "," + rs.getInt("order_Status"));
 
             if (rs.getInt("order_Status") > 0) {
-                Object order[] = {rs.getInt("order_ID"), rs.getDate("order_Date"), getStoreName(rs.getInt("store_ID")), "Complete"};
+                Object order[] = {rs.getInt("order_ID"), rs.getDate("order_Date"), getStoreName(rs.getInt("store_ID")), rs.getString("urgency"), "Complete"};
                 orderList.add(order);
             } else {
-                Object order[] = {rs.getInt("order_ID"), rs.getDate("order_Date"), getStoreName(rs.getInt("store_ID")), "Incomplete"};
+                Object order[] = {rs.getInt("order_ID"), rs.getDate("order_Date"), getStoreName(rs.getInt("store_ID")), rs.getString("urgency"), "Incomplete"};
                 orderList.add(order);
             }
             //System.out.println(orderList.size());
@@ -505,9 +536,8 @@ public class DispatchPage extends javax.swing.JFrame {
 
     private void toExcel(int row) {
         int order_ID = Integer.parseInt(IncomingOrdersTbl.getValueAt(row, 0) + "");
-        String file = System.getProperty("user.home")+("/Desktop/Order "+order_ID+".csv");
-        
-        
+        String file = System.getProperty("user.home") + ("/Desktop/Order " + order_ID + ".csv");
+
         //File file = new File("Order "+order_ID);
         try {
             TableModel model = SelectedOrderTbl.getModel();
