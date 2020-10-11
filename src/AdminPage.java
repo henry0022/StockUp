@@ -1607,7 +1607,7 @@ public class AdminPage extends javax.swing.JFrame {
         }
         try {
             if (companyExists(compID) & !productExists(name) & valid) {
-                st.executeUpdate("INSERT INTO product (product_Name, product_UnitsPerCrate, company_ID) VALUES ('" + name + "'," + u_p_crate + "," + compID + ")");
+                st.executeUpdate("INSERT INTO Product (product_Name, product_UnitsPerCrate, company_ID) VALUES ('" + name + "'," + u_p_crate + "," + compID + ")");
                 blinkGreen(AddProductBtn, "ADDED!");
             } else {
                 blink(AddProductBtn);
